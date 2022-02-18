@@ -14,6 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manifests:
   - module:
+      moduleID: com.gamecreator.examples.core
+      version:
+        major: 1
+        minor: 1
+        patch: 4
+      displayName: Game Creator Examples
+      description: Example scenes that show how to use Game Creator tools.
+      category: Examples
+      dependencies: []
+      tags:
+      - examples
+      - game creator
+      authorName: Marti-Joan Nogue Coll
+      authorMail: marti@catsoft-studios.com
+      authorSite: https://gamecreator.io
+      includesData: 0
+      codePaths:
+      - Assets/Plugins/GameCreator/Examples/
+      dataPaths: []
+  - module:
       moduleID: com.firechickengames.examples.combat
       version:
         major: 0
@@ -226,52 +246,6 @@ MonoBehaviour:
       dataPaths:
       - Assets/Plugins/GameCreatorData/Behavior/
   - module:
-      moduleID: com.gamecreator.examples.core
-      version:
-        major: 1
-        minor: 1
-        patch: 4
-      displayName: Game Creator Examples
-      description: Example scenes that show how to use Game Creator tools.
-      category: Examples
-      dependencies: []
-      tags:
-      - examples
-      - game creator
-      authorName: Marti-Joan Nogue Coll
-      authorMail: marti@catsoft-studios.com
-      authorSite: https://gamecreator.io
-      includesData: 0
-      codePaths:
-      - Assets/Plugins/GameCreator/Examples/
-      dataPaths: []
-  - module:
-      moduleID: com.gamecreator.examples.melee
-      version:
-        major: 0
-        minor: 1
-        patch: 5
-      displayName: Melee Examples
-      description: Example scenes that show how to use the Melee module
-      category: Examples
-      dependencies:
-      - moduleID: com.gamecreator.module.melee
-        version:
-          major: 0
-          minor: 1
-          patch: 5
-      tags:
-      - examples
-      - melee
-      authorName: Marti-Joan Nogue Coll
-      authorMail: marti@catsoft-studios.com
-      authorSite: https://gamecreator.io
-      includesData: 0
-      codePaths:
-      - Assets/Plugins/GameCreator/MeleeExamples/
-      dataPaths:
-      - Assets/Plugins/GameCreatorData/Melee/
-  - module:
       moduleID: com.gamecreator.examples.shooter
       version:
         major: 0
@@ -345,26 +319,6 @@ MonoBehaviour:
       - Assets/Plugins/GameCreator/Behavior/
       dataPaths: []
   - module:
-      moduleID: com.gamecreator.module.melee
-      version:
-        major: 0
-        minor: 1
-        patch: 5
-      displayName: Melee Module
-      description: Create a complete melee combat system using visual tools
-      category: Modules
-      dependencies: []
-      tags:
-      - examples
-      - melee
-      authorName: Marti-Joan Nogue Coll
-      authorMail: marti@catsoft-studios.com
-      authorSite: https://gamecreator.io
-      includesData: 0
-      codePaths:
-      - Assets/Plugins/GameCreator/Melee/
-      dataPaths: []
-  - module:
       moduleID: com.gamecreator.module.shooter
       version:
         major: 0
@@ -402,4 +356,50 @@ MonoBehaviour:
       includesData: 0
       codePaths:
       - Assets/Plugins/GameCreator/Stats/
+      dataPaths: []
+  - module:
+      moduleID: com.gamecreator.examples.melee
+      version:
+        major: 0
+        minor: 1
+        patch: 5
+      displayName: Melee Examples
+      description: Example scenes that show how to use the Melee module
+      category: Examples
+      dependencies:
+      - moduleID: com.gamecreator.module.melee
+        version:
+          major: 0
+          minor: 1
+          patch: 5
+      tags:
+      - examples
+      - melee
+      authorName: Marti-Joan Nogue Coll
+      authorMail: marti@catsoft-studios.com
+      authorSite: https://gamecreator.io
+      includesData: 0
+      codePaths:
+      - Assets/Plugins/GameCreator/MeleeExamples/
+      dataPaths:
+      - Assets/Plugins/GameCreatorData/Melee/
+  - module:
+      moduleID: com.gamecreator.module.melee
+      version:
+        major: 0
+        minor: 1
+        patch: 5
+      displayName: Melee Module
+      description: Create a complete melee combat system using visual tools
+      category: Modules
+      dependencies: []
+      tags:
+      - examples
+      - melee
+      authorName: Marti-Joan Nogue Coll
+      authorMail: marti@catsoft-studios.com
+      authorSite: https://gamecreator.io
+      includesData: 0
+      codePaths:
+      - Assets/Plugins/GameCreator/Melee/
       dataPaths: []

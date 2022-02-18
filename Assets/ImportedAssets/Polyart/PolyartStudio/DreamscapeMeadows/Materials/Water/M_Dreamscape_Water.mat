@@ -79,6 +79,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _CameraDepthFade: -2.19
     - _CameraDepthFade1: 0.25
@@ -135,3 +136,4 @@ Material:
     - _FoamColor: {r: 1, g: 1, b: 1, a: 0.14509805}
     - _Shallow: {r: 0, g: 0.47493523, b: 0.6132076, a: 0}
     - _Shallow1: {r: 0.0028924954, g: 0.47558758, b: 0.6132076, a: 0}
+  m_BuildTextureStacks: []
