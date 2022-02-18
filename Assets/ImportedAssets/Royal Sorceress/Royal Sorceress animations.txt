@@ -1,0 +1,23 @@
+walk		0000	0032
+run		0034	0054
+roll		0056	0081
+stand		0083	0128
+stand blink	0130	0175
+idle		0177	0327
+talk		0329	0449
+deny		0451	0541
+stand to fly	0543	0618
+fly		0620	0665	
+fly backward	0667	0697
+fly forward	0699	0729
+fly left		0731	0761
+fly right		0763	0793
+fly to stand	0795	0840
+attack 1		0842	0872
+attack 2		0874	0954
+attack 3		0956	1046
+attack 4		1048	1198
+attack 5		1200	1320
+hit 1		1322	1342
+hit 2		1344	1364
+death		1366	1421

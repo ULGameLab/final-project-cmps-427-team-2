@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24939319dc9cc4e01818169a0943029e, type: 3}
+  m_Name: RevolverSettings
+  m_EditorClassIdentifier: 
+  ammoSettings:
+  - ammo: {fileID: 11400000, guid: b2726b2095955423fafd476be6c06cbb, type: 2}
+    hipFireType: 1
+    hasSingleShotMode: 1
+    hasBurstMode: 1
+    burstAmount: 2
+    hasFullAutoMode: 0
+    fireModeNameNone: 
+    fireModeNameSingle: 
+    fireModeNameBurst: x2 Shot
+    fireModeNameAuto: Auto
+  - ammo: {fileID: 11400000, guid: adcb17ae16d6e489892247112b39811f, type: 2}
+    hipFireType: 1
+    hasSingleShotMode: 1
+    hasBurstMode: 0
+    burstAmount: 0
+    hasFullAutoMode: 0
+    fireModeNameNone: 
+    fireModeNameSingle: 
+    fireModeNameBurst: Burst
+    fireModeNameAuto: Auto
+  shouldOverrideAmmoSettingsFireModeNames: 0
+  fireModeNameNone: 
+  fireModeNameSingle: 
+  fireModeNameBurst: 2
+  fireModeNameAuto: Auto

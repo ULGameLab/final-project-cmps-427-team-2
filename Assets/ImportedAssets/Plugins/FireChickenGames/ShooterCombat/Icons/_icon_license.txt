@@ -1,0 +1,2 @@
+Icons are from FontAwesome 5: https://fontawesome.com/ 
+License: https://creativecommons.org/licenses/by/4.0/
