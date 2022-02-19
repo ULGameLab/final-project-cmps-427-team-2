@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8430486443198145576}
   m_Layer: 0
   m_Name: vfx_Projectile_Comet_Blue
-  m_TagString: Untagged
+  m_TagString: MagicShot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
