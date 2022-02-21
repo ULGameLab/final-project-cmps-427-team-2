@@ -26,15 +26,13 @@ public class AiChasePlayerState : AiState
 
     public void Update(AiAgent agent)
     {
-        agent.navMeshAgent.speed = 3f;
-        if (agent.distanceFromPlayer < agent.config.attackDistance)
-        {
-            agent.stateMachine.ChangeState(AiStateID.Attack);
-        }
-        if (agent.distanceFromPlayer > agent.config.maxSightDistance)
-        {
-            agent.stateMachine.ChangeState(AiStateID.WanderState);
-        }
+        agent.navMeshAgent.speed = agent.chaseSpeed;
+
+        //conditions to change states
+        if ((agent.distanceFromPlayer < agent.config.rangeAttackDistance) && !agent.meleeCharacter) agent.stateMachine.ChangeState(AiStateID.RangeAttack);
+        if ((agent.distanceFromPlayer < agent.config.meleeAttackDistance) && agent.meleeCharacter) agent.stateMachine.ChangeState(AiStateID.MeleeAttack);
+        if (agent.distanceFromPlayer > agent.config.maxSightDistance) agent.stateMachine.ChangeState(AiStateID.WanderState);
+
 
         if (!agent.enabled)
         {

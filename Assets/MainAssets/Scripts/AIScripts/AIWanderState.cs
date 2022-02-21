@@ -31,10 +31,8 @@ public class AIWanderState : AiState
     {
 
         agent.navMeshAgent.speed = 2f;
-            if(agent.distanceFromPlayer < agent.config.maxSightDistance)
-        {
-            agent.stateMachine.ChangeState(AiStateID.chasePlayer);
-        }
+        if(agent.distanceFromPlayer < agent.config.maxSightDistance) agent.stateMachine.ChangeState(AiStateID.chasePlayer);
+
         Vector3 newPos = RandomNavSphere(agent.enemyTransform.position, wanderRadius, -1);
 
         if (agent.wanderBounds.bounds.Contains(newPos))

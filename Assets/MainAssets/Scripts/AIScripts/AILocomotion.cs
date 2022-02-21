@@ -19,8 +19,7 @@ public class AILocomotion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         animator.SetFloat("Speed", agent.velocity.magnitude);
-       
     }
 }

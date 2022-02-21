@@ -8,8 +8,9 @@ using UnityEngine;
         chasePlayer,
         deathState,
         Idle,
-        Attack,
-        WanderState
+        RangeAttack,
+        WanderState,
+        MeleeAttack
 
     }
 

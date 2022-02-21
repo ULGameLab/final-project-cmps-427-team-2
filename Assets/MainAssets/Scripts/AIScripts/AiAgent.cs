@@ -18,6 +18,8 @@ public class AiAgent : MonoBehaviour
     public Animator animator;
     public float distanceFromPlayer;
     public BoxCollider wanderBounds;
+    public float chaseSpeed;
+    public bool meleeCharacter;
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +34,9 @@ public class AiAgent : MonoBehaviour
         stateMachine.RegisterState(new AiChasePlayerState());
         stateMachine.RegisterState(new AiDeathState());
         stateMachine.RegisterState(new AiIdleState());
-        stateMachine.RegisterState(new AttackState());
+        stateMachine.RegisterState(new RangeAttackState());
         stateMachine.RegisterState(new AIWanderState());
+        stateMachine.RegisterState(new MeleeAttackState());
         stateMachine.ChangeState(initializeState);
     }
 

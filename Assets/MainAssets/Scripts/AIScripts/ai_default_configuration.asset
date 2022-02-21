@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5f17cfcaae38346a12468e036e0d28, type: 3}
   m_Name: ai_default_configuration
   m_EditorClassIdentifier: 
-  maxTime: 2
+  maxTime: 1
   maxDistance: 2
   maxSightDistance: 20
-  attackDistance: 7
+  rangeAttackDistance: 7.1
+  meleeAttackDistance: 3.1
