@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: ai_default_configuration
   m_EditorClassIdentifier: 
   maxTime: 2
-  maxDistance: 1
+  maxDistance: 2
   maxSightDistance: 20
+  attackDistance: 5

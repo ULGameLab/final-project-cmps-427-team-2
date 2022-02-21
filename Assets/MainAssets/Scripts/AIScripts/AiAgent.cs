@@ -14,6 +14,10 @@ public class AiAgent : MonoBehaviour
     public UIHealthBar ui;
     public AILocomotion aILocomotion;
     public Transform playerTransform;
+    public Transform enemyTransform;
+    public Animator animator;
+    public float distanceFromPlayer;
+    public BoxCollider wanderBounds;
 
     // Start is called before the first frame update
     void Start()
@@ -21,18 +25,22 @@ public class AiAgent : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         aILocomotion = GetComponent<AILocomotion>();
         ragdoll = GetComponent<Ragdoll>();
+        animator = GetComponent<Animator>();
         mesh = GetComponentInChildren<SkinnedMeshRenderer>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         stateMachine = new AiStateMachine(this);
         stateMachine.RegisterState(new AiChasePlayerState());
         stateMachine.RegisterState(new AiDeathState());
         stateMachine.RegisterState(new AiIdleState());
+        stateMachine.RegisterState(new AttackState());
+        stateMachine.RegisterState(new AIWanderState());
         stateMachine.ChangeState(initializeState);
     }
 
     // Update is called once per frame
     void Update()
     {
+        distanceFromPlayer = Vector3.Distance(playerTransform.position, enemyTransform.position);
         stateMachine.Update();
     }
 }
