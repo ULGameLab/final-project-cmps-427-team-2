@@ -24,8 +24,8 @@ MonoBehaviour:
   audioDraw: {fileID: 8300000, guid: 760917d0fda934a51b0ce4f314628e17, type: 3}
   audioHolster: {fileID: 8300000, guid: 65ef71d64f853479fb3be0b8e6b881bf, type: 3}
   ease:
-    state: {fileID: 11400000, guid: af6b2b8eeaace104aa8e59c7dfa2000b, type: 2}
-    mask: {fileID: 31900000, guid: 64c82f44d9940414c93fe66bc3fe11bf, type: 2}
+    state: {fileID: 11400000, guid: 942de692bdc23934580ccd3198ed157d, type: 2}
+    mask: {fileID: 31900000, guid: ab6263dd525ca4cd48e437ff0cae30f6, type: 2}
     upperBodyRotation: {x: 0, y: 0, z: 0}
     lowerBodyRotation: 0
     stabilizeBody: 1

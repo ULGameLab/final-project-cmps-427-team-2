@@ -15,4 +15,4 @@ MonoBehaviour:
   maxTime: 2
   maxDistance: 2
   maxSightDistance: 20
-  attackDistance: 5
+  attackDistance: 7

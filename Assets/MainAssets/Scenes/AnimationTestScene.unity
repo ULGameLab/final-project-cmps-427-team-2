@@ -555,6 +555,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireDemonAI
       objectReference: {fileID: 0}
+    - target: {fileID: 1862903309045841448, guid: 3a0689ba8ac44784c83430209f8ddbfc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1862903309045841449, guid: 3a0689ba8ac44784c83430209f8ddbfc, type: 3}
       propertyPath: m_RootOrder
       value: 0
