@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 114746509449440398}
   - component: {fileID: 114166802174419512}
   - component: {fileID: 114957383558122296}
+  - component: {fileID: -8519467675168605734}
   m_Layer: 0
   m_Name: OnStart-hb3ptyv9
   m_TagString: Untagged
@@ -29,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -47,14 +49,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentID: 0
   instanceID: 0
-  actionsList: {fileID: 114166802174419512}
+  actionsList: {fileID: -8519467675168605734}
   runInBackground: 1
-  destroyAfterFinishing: 1
+  destroyAfterFinishing: 0
   onFinish:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114166802174419512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,8 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d5a50368374438dbff3af09a8fefb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 114957383558122296}
+  actions: []
   executingIndex: -1
   isExecuting: 0
 --- !u!114 &114957383558122296
@@ -83,6 +82,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9e621b1ec874c8daa5bd0d1aaede64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isExpanded: 1
+  isExpanded: 0
   logType: 0
-  message: Start Poison
+  message: debug message
+--- !u!114 &-8519467675168605734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292581610970920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d5a50368374438dbff3af09a8fefb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: []
+  executingIndex: -1
+  isExecuting: 0
