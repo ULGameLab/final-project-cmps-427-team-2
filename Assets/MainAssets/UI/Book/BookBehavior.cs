@@ -8,8 +8,6 @@ public class BookBehavior : MonoBehaviour
 {
     public int activePage = 1;
 
-    public int AmountOfActiveQuests = 0;
-
     bool bookActive = false;
 
     public TextMeshProUGUI QuestText;
@@ -20,12 +18,24 @@ public class BookBehavior : MonoBehaviour
     public GameObject SpellsHandler;
     public GameObject InventoryHandler;
 
-    // Quests
+    [Header("Quests")]
     public GameObject Quest1Handler;
     public GameObject Quest2Handler;
     public GameObject Quest3Handler;
     public GameObject Quest4Handler;
     public GameObject Quest5Handler;
+
+    public TextMeshProUGUI Quest1TitleText;
+    public TextMeshProUGUI Quest2TitleText;
+    public TextMeshProUGUI Quest3TitleText;
+    public TextMeshProUGUI Quest4TitleText;
+    public TextMeshProUGUI Quest5TitleText;
+
+    public TextMeshProUGUI Quest1DesText;
+    public TextMeshProUGUI Quest2DesText;
+    public TextMeshProUGUI Quest3DesText;
+    public TextMeshProUGUI Quest4DesText;
+    public TextMeshProUGUI Quest5DesText;
 
     string Quest1Title = "Quest 1";
     string Quest2Title = "Quest 2";
@@ -45,18 +55,84 @@ public class BookBehavior : MonoBehaviour
     bool Quest4Free = true;
     bool Quest5Free = true;
 
+    public int AmountOfActiveQuests = 0;
+
 
     // Start is called before the first frame update
     void Start()
     {
         deactivatePages(1);
         openQuest();
+        StartCoroutine(testFunction());
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    // just for testing the code
+    IEnumerator testFunction()
+    {
+        openSpells();
+        yield return new WaitForSeconds(2);
+
+        openInventory();
+        yield return new WaitForSeconds(2);
+
+        openQuest();
+        yield return new WaitForSeconds(2);
+
+        Debug.Log(firstFreeQuestSlot());
+        Debug.Log(questSlotAvailable());
+
+        setQuest("Hello World", "Is this thing on?");
+        yield return new WaitForSeconds(2);
+
+        Debug.Log(firstFreeQuestSlot());
+        Debug.Log(questSlotAvailable());
+
+        setQuest(2, "Hello World 2", "Is this thing on too?");
+        yield return new WaitForSeconds(2);
+
+        Debug.Log(firstFreeQuestSlot());
+        Debug.Log(questSlotAvailable());
+
+        setQuest("Hello World 3", "Is this thing on 3?");
+        yield return new WaitForSeconds(2);
+
+        CompleteQuest(1);
+        Debug.Log(firstFreeQuestSlot());
+        Debug.Log(questSlotAvailable());
+
+        yield return new WaitForSeconds(2);
+
+        setQuest("Hello World 4", "Is this thing on 4?");
+
+        Debug.Log(firstFreeQuestSlot());
+        Debug.Log(questSlotAvailable());
+
+        setQuest("Hello World 5", "Is this thing on 5?");
+        yield return new WaitForSeconds(2);
+
+        CompleteQuest(3);
+        Debug.Log(firstFreeQuestSlot());
+        Debug.Log(questSlotAvailable());
+
+        yield return new WaitForSeconds(2);
+
+        Debug.Log(firstFreeQuestSlot());
+        Debug.Log(questSlotAvailable());
+
+        setQuest("Hello World 6", "Is this thing on 6?");
+        yield return new WaitForSeconds(2);
+
+        Debug.Log(firstFreeQuestSlot());
+        Debug.Log(questSlotAvailable());
+
+        setQuest("Hello World ", "Is this thing on 7?");
+        yield return new WaitForSeconds(2);
     }
 
     // activates Quest Page
@@ -150,35 +226,35 @@ public class BookBehavior : MonoBehaviour
         {
             switch (firstFreeQuestSlot())
             {
-                case 0:
+                case 1:
                     Quest1Title = Title;
                     Quest1Des = Description;
                     Quest1Handler.SetActive(true);
                     Quest1Free = false;
 
                     break;
-                case 1:
+                case 2:
                     Quest2Title = Title;
                     Quest2Des = Description;
                     Quest2Handler.SetActive(true);
                     Quest2Free = false;
 
                     break;
-                case 2:
+                case 3:
                     Quest3Title = Title;
                     Quest3Des = Description;
                     Quest3Handler.SetActive(true);
                     Quest3Free = false;
 
                     break;
-                case 3:
+                case 4:
                     Quest4Title = Title;
                     Quest4Des = Description;
                     Quest4Handler.SetActive(true);
                     Quest4Free = false;
 
                     break;
-                case 4:
+                case 5:
                     Quest5Title = Title;
                     Quest5Des = Description;
                     Quest5Handler.SetActive(true);
@@ -187,6 +263,7 @@ public class BookBehavior : MonoBehaviour
                     break;
             }
             AmountOfActiveQuests++;
+            UdateQuestText();
         }
 
         else return;
@@ -199,7 +276,7 @@ public class BookBehavior : MonoBehaviour
         {
             switch (questNum)
             {
-                case 0:
+                case 1:
                     if (Quest1Free) AmountOfActiveQuests++;
                     Quest1Title = Title;
                     Quest1Des = Description;
@@ -207,7 +284,7 @@ public class BookBehavior : MonoBehaviour
                     Quest1Free = false;
 
                     break;
-                case 1:
+                case 2:
                     if (Quest2Free) AmountOfActiveQuests++;
                     Quest2Title = Title;
                     Quest2Des = Description;
@@ -215,7 +292,7 @@ public class BookBehavior : MonoBehaviour
                     Quest2Free = false;
 
                     break;
-                case 2:
+                case 3:
                     if (Quest3Free) AmountOfActiveQuests++;
                     Quest3Title = Title;
                     Quest3Des = Description;
@@ -223,7 +300,7 @@ public class BookBehavior : MonoBehaviour
                     Quest3Free = false;
 
                     break;
-                case 3:
+                case 4:
                     if (Quest4Free) AmountOfActiveQuests++;
                     Quest4Title = Title;
                     Quest4Des = Description;
@@ -231,7 +308,7 @@ public class BookBehavior : MonoBehaviour
                     Quest4Free = false;
 
                     break;
-                case 4:
+                case 5:
                     if (Quest5Free) AmountOfActiveQuests++;
                     Quest5Title = Title;
                     Quest5Des = Description;
@@ -240,6 +317,7 @@ public class BookBehavior : MonoBehaviour
 
                     break;
             }
+            UdateQuestText();
         }
 
         else return;
@@ -287,6 +365,22 @@ public class BookBehavior : MonoBehaviour
                 break;
         }
         AmountOfActiveQuests--;
+        UdateQuestText();
+    }
+
+    public void UdateQuestText()
+    {
+        Quest1TitleText.text = Quest1Title;
+        Quest2TitleText.text = Quest2Title;
+        Quest3TitleText.text = Quest3Title;
+        Quest4TitleText.text = Quest4Title;
+        Quest5TitleText.text = Quest5Title;
+
+        Quest1DesText.text = Quest1Des;
+        Quest2DesText.text = Quest2Des;
+        Quest3DesText.text = Quest3Des;
+        Quest4DesText.text = Quest4Des;
+        Quest5DesText.text = Quest5Des;
     }
 
 }
