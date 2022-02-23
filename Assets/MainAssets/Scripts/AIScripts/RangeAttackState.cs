@@ -30,9 +30,8 @@ public class RangeAttackState : AiState
         if(timeRemaining <= 0)
         {
             int randomNumber = Random.Range(1, 4);
-            Debug.Log(randomNumber);
             agent.animator.SetTrigger("RangeAttack" + randomNumber);
-            timeRemaining = 2f;
+            timeRemaining = Random.Range(2, 4); ;
         }
         else
         {

@@ -19,6 +19,7 @@ public class Health : MonoBehaviour
   
         currentHealth = maxHealth;
         
+        
         var rigidBodies = GetComponentsInChildren<Rigidbody>();
         foreach(var rigidbody in rigidBodies)
         {
