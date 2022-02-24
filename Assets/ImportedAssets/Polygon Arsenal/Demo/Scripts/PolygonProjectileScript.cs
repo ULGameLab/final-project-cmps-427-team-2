@@ -60,7 +60,7 @@ namespace PolygonArsenal
                     Destroy(curTrail, 3f);
                 }
                 Destroy(projectileParticle, 3f);
-                Destroy(impactP, 3.5f);
+                Destroy(impactP, 5.0f);
                 Destroy(gameObject);
 
                 ParticleSystem[] trails = GetComponentsInChildren<ParticleSystem>();

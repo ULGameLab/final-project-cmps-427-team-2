@@ -1,5 +1,3 @@
-// Made with Amplify Shader Editor
-// Available at the Unity Asset Store - http://u3d.as/y3X 
 Shader "PolygonArsenal/PolyLitSurface"
 {
 	Properties
@@ -37,7 +35,7 @@ Shader "PolygonArsenal/PolyLitSurface"
 		ENDCG
 	}
 	Fallback "Diffuse"
-	CustomEditor "ASEMaterialInspector"
+	//CustomEditor "ASEMaterialInspector"
 }
 /*ASEBEGIN
 Version=13801

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using GameCreator.Variables;
 
 namespace PolygonArsenal
 {
@@ -14,10 +15,17 @@ public class PolygonBeamScript : MonoBehaviour {
 
     private int currentBeam = 0;
 
+    public Transform instantiatedBeamPosition;
+
+
+        int enemyLayer;
+
     private GameObject beamStart;
     private GameObject beamEnd;
     private GameObject beam;
     private LineRenderer line;
+
+    public GameObject Player;
 
     [Header("Adjustable Variables")]
     public float beamEndOffset = 1f; //How far from the raycast hit point the end effect is positioned
@@ -34,6 +42,9 @@ public class PolygonBeamScript : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+
+            
+
         if (textBeamName)
             textBeamName.text = beamLineRendererPrefab[currentBeam].name;
         if (endOffSetSlider)
@@ -45,10 +56,18 @@ public class PolygonBeamScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+            enemyLayer = 1 << 3;
+            enemyLayer = ~enemyLayer;
+    
+     var isAiming = VariablesManager.GetLocal(Player, "isAiming").ToString();
+
+
+    float screenX = Screen.width / 2;
+     float screenY = Screen.height / 2;
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isAiming == "True")
         {
             beamStart = Instantiate(beamStartPrefab[currentBeam], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
             beamEnd = Instantiate(beamEndPrefab[currentBeam], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
@@ -62,59 +81,25 @@ public class PolygonBeamScript : MonoBehaviour {
             Destroy(beam);
         }
 
-        if (Input.GetMouseButton(0))
+
+
+
+        if (Input.GetMouseButton(0) && isAiming == "True")
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(new Vector3(screenX, screenY, 0));
             RaycastHit hit;
-            if (Physics.Raycast(ray.origin, ray.direction, out hit))
+            if (Physics.Raycast(ray.origin, ray.direction, out hit, 100f, enemyLayer))
             {
                 Vector3 tdir = hit.point - transform.position;
-                ShootBeamInDir(transform.position, tdir);
+                ShootBeamInDir(instantiatedBeamPosition.position, tdir);
             }
         }
 		
-		if (Input.GetKeyDown(KeyCode.RightArrow)) //4 next if commands are just hotkeys for cycling beams
-        {
-            nextBeam();
-        }
-
-		if (Input.GetKeyDown(KeyCode.D))
-		{
-			nextBeam();
-		}
-
-		if (Input.GetKeyDown(KeyCode.A))
-		{
-			previousBeam();
-		}
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            previousBeam();
-        }
+		
 		
     }
 
-    public void nextBeam() // Next beam
-    {
-        if (currentBeam < beamLineRendererPrefab.Length - 1)
-            currentBeam++;
-        else
-            currentBeam = 0;
-
-        if (textBeamName)
-            textBeamName.text = beamLineRendererPrefab[currentBeam].name;
-    }
-	
-	    public void previousBeam() // Previous beam
-    {
-        if (currentBeam > - 0)
-            currentBeam--;
-        else
-            currentBeam = beamLineRendererPrefab.Length - 1;
-
-        if (textBeamName)
-            textBeamName.text = beamLineRendererPrefab[currentBeam].name;
-    }
+   
 	
 
     public void UpdateEndOffset()
@@ -135,7 +120,7 @@ public class PolygonBeamScript : MonoBehaviour {
 
         Vector3 end = Vector3.zero;
         RaycastHit hit;
-        if (Physics.Raycast(start, dir, out hit))
+        if (Physics.Raycast(start, dir, out hit, 100f, enemyLayer))
             end = hit.point - (dir.normalized * beamEndOffset);
         else
             end = transform.position + (dir * 100);

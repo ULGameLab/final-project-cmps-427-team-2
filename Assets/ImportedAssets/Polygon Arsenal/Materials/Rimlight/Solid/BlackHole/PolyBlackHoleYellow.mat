@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: PolyBlackHoleYellow
   m_Shader: {fileID: 4800000, guid: 86889086497f4f4459550c816ab55e34, type: 3}
   m_ShaderKeywords: 
@@ -28,9 +29,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _InvFade: 3
-    - _RimGlow: 6.75
+    - _RimGlow: 7
     - _RimPower: 3.14
-    - _RimWidth: 4.1
+    - _RimWidth: 3.5
     - _Shininess: 1
     m_Colors:
     - _InnerColor: {r: 0, g: 0, b: 0, a: 1}

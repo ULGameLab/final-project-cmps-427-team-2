@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTime: 1
   maxDistance: 2
-  maxSightDistance: 20
-  rangeAttackDistance: 7.1
+  maxSightDistance: 30
+  rangeAttackDistance: 15
   meleeAttackDistance: 3.1

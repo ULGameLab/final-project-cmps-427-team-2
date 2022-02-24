@@ -23,43 +23,32 @@ namespace PolygonArsenal
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
                 nextEffect();
             }
 
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                nextEffect();
-            }
-
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                previousEffect();
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 previousEffect();
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0)) //On left mouse down-click
             {
-
-                if (!EventSystem.current.IsPointerOverGameObject())
+                if (!EventSystem.current.IsPointerOverGameObject()) //Checks if the mouse is not over a UI part
                 {
-                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f))
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f)) //Finds the point where you click with the mouse
                     {
-                        GameObject projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject;
-                        projectile.transform.LookAt(hit.point);
-                        projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed);
+                        GameObject projectile = Instantiate(projectiles[currentProjectile], spawnPosition.position, Quaternion.identity) as GameObject; //Spawns the selected projectile
+                        projectile.transform.LookAt(hit.point); //Sets the projectiles rotation to look at the point clicked
+                        projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed); //Set the speed of the projectile by applying force to the rigidbody
                     }
                 }
-
             }
             Debug.DrawRay(Camera.main.ScreenPointToRay(Input.mousePosition).origin, Camera.main.ScreenPointToRay(Input.mousePosition).direction * 100, Color.yellow);
         }
 
-        public void nextEffect()
+        public void nextEffect() //Changes the selected projectile to the next. Used by UI
         {
             if (currentProjectile < projectiles.Length - 1)
                 currentProjectile++;
@@ -68,7 +57,7 @@ namespace PolygonArsenal
 			selectedProjectileButton.getProjectileNames();
         }
 
-        public void previousEffect()
+        public void previousEffect() //Changes the selected projectile to the previous. Used by UI
         {
             if (currentProjectile > 0)
                 currentProjectile--;
@@ -77,7 +66,7 @@ namespace PolygonArsenal
 			selectedProjectileButton.getProjectileNames();
         }
 
-        public void AdjustSpeed(float newSpeed)
+        public void AdjustSpeed(float newSpeed) //Used by UI to set projectile speed
         {
             speed = newSpeed;
         }

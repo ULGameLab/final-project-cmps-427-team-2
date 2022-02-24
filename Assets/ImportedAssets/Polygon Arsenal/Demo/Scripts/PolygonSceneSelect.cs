@@ -13,109 +13,72 @@ public class PolygonSceneSelect : MonoBehaviour
 	public bool GUIHide = false;
 	public bool GUIHide2 = false;
 	public bool GUIHide3 = false;
+	public bool GUIHide4 = false;
+	public bool GUIHide5 = false;
 	
-    public void LoadSceneDemoMissiles()
-    {
-        SceneManager.LoadScene("PolygonDemoMissiles");
-    }
+	//Combat Scenes
 	
-	public void LoadSceneDemoBeams()
-    {
-        SceneManager.LoadScene("PolygonDemoBeams");
-    }
+    public void CBLoadSceneMissiles()		{ SceneManager.LoadScene("PolyMissiles");	}
+	public void CBLoadSceneBeams()			{ SceneManager.LoadScene("PolyBeams"); 		}
+	public void CBLoadSceneBeams2()			{ SceneManager.LoadScene("PolyBeams2"); 	}
+	public void CBLoadSceneAura()			{ SceneManager.LoadScene("PolyAura"); 		}
+	public void CBLoadSceneAura2()			{ SceneManager.LoadScene("PolyAura2");	 	}
+	public void CBLoadSceneAura3()			{ SceneManager.LoadScene("PolyAura3"); 		}
+	public void CBLoadSceneAura4()			{ SceneManager.LoadScene("PolyAura4"); 		}
+	public void CBLoadSceneBarrage()		{ SceneManager.LoadScene("PolyBarrage"); 	}
+	public void CBLoadSceneBarrage2()		{ SceneManager.LoadScene("PolyBarrage2"); 	}
+	public void CBLoadSceneChains()			{ SceneManager.LoadScene("PolyChains"); 	}
+	public void CBLoadSceneChains2()		{ SceneManager.LoadScene("PolyChains2"); 	}
+	public void CBLoadSceneCleave()			{ SceneManager.LoadScene("PolyCleave"); 	}
+	public void CBLoadSceneCombat01()		{ SceneManager.LoadScene("PolyCombat01"); 	}
+	public void CBLoadSceneCombat02()		{ SceneManager.LoadScene("PolyCombat02"); 	}
+	public void CBLoadSceneCurses()			{ SceneManager.LoadScene("PolyCurses"); 	}
+	public void CBLoadSceneDeath()			{ SceneManager.LoadScene("PolyDeath");	 	}
+	public void CBLoadSceneEnchant()		{ SceneManager.LoadScene("PolyEnchant"); 	}
+	public void CBLoadSceneExploMini()		{ SceneManager.LoadScene("PolyExploMini"); 	}
+	public void CBLoadSceneGore()			{ SceneManager.LoadScene("PolyGore"); 		}
+	public void CBLoadSceneHitscan()		{ SceneManager.LoadScene("PolyHitscan"); 	}
+	public void CBLoadSceneNecromancy()		{ SceneManager.LoadScene("PolyNecromancy");	}
+	public void CBLoadSceneNova()			{ SceneManager.LoadScene("PolyNova"); 		}
+	public void CBLoadSceneOrbitalBeam()	{ SceneManager.LoadScene("PolyOrbitalBeam");}
+	public void CBLoadSceneSpikes()			{ SceneManager.LoadScene("PolySpikes"); 	}
+	public void CBLoadSceneSpikes2()		{ SceneManager.LoadScene("PolySpikes2"); 	}
+	public void CBLoadSceneSpikes3()		{ SceneManager.LoadScene("PolySpikes3"); 	}
+	public void CBLoadSceneSpikes4()		{ SceneManager.LoadScene("PolySpikes4"); 	}
+	public void CBLoadSceneSurfaceDmg()		{ SceneManager.LoadScene("PolySurfaceDmg");	}
+	public void CBLoadSceneSword()			{ SceneManager.LoadScene("PolySword"); 		}
+	public void CBLoadSceneSwordTrail()		{ SceneManager.LoadScene("PolySwordTrail");	}
 	
-    public void LoadSceneDemo01()
-    {
-        SceneManager.LoadScene("PolygonDemo01");
-    }
-    public void LoadSceneDemo02()
-    {
-        SceneManager.LoadScene("PolygonDemo02");
-    }
-    public void LoadSceneDemo03()
-    {
-        SceneManager.LoadScene("PolygonDemo03");
-    }
-    public void LoadSceneDemo04()
-    {
-        SceneManager.LoadScene("PolygonDemo04");
-    }
-    public void LoadSceneDemo05()
-    {
-        SceneManager.LoadScene("PolygonDemo05");
-    }
-    public void LoadSceneDemo06()
-    {
-        SceneManager.LoadScene("PolygonDemo06");
-    }
-    public void LoadSceneDemo07()
-    {
-        SceneManager.LoadScene("PolygonDemo07");
-    }
-    public void LoadSceneDemo08()
-    {
-        SceneManager.LoadScene("PolygonDemo08");
-    }
-    public void LoadSceneDemo09()
-    {
-        SceneManager.LoadScene("PolygonDemo09");
-    }
-    public void LoadSceneDemo10()
-    {
-        SceneManager.LoadScene("PolygonDemo10");
-    }
-	public void LoadSceneDemo11()
-    {
-        SceneManager.LoadScene("PolygonDemo11");
-    }
-	public void LoadSceneDemo12()
-    {
-        SceneManager.LoadScene("PolygonDemo12");
-    }
-	public void LoadSceneDemo13()
-    {
-        SceneManager.LoadScene("PolygonDemo13");
-    }
-	public void LoadSceneDemo14()
-    {
-        SceneManager.LoadScene("PolygonDemo14");
-    }
-	public void LoadSceneDemo15()
-    {
-        SceneManager.LoadScene("PolygonDemo15");
-    }
-	public void LoadSceneDemo16()
-    {
-        SceneManager.LoadScene("PolygonDemo16");
-    }
-	public void LoadSceneDemo17()
-    {
-        SceneManager.LoadScene("PolygonDemo17");
-    }
-	public void LoadSceneDemo18()
-    {
-        SceneManager.LoadScene("PolygonDemo18");
-    }
-	public void LoadSceneDemo19()
-    {
-        SceneManager.LoadScene("PolygonDemo19");
-    }
-	public void LoadSceneDemo20()
-    {
-        SceneManager.LoadScene("PolygonDemo20");
-    }
-	public void LoadSceneDemo21()
-    {
-        SceneManager.LoadScene("PolygonDemo21");
-    }
-	public void LoadSceneDemo22()
-    {
-        SceneManager.LoadScene("PolygonDemo22");
-    }
-	public void LoadSceneDemo23()
-    {
-        SceneManager.LoadScene("PolygonDemo23");
-    }
+	//Environment Scenes
+	
+	public void ENVLoadSceneConfetti()		{ SceneManager.LoadScene("PolyConfetti"); 	}
+	public void ENVLoadSceneEnvironment()	{ SceneManager.LoadScene("PolyEnvironment");}
+	public void ENVLoadSceneFire()			{ SceneManager.LoadScene("PolyFire"); 		}
+	public void ENVLoadSceneFire2()			{ SceneManager.LoadScene("PolyFire2"); 		}
+	public void ENVLoadSceneFireflies()		{ SceneManager.LoadScene("PolyFireflies"); 	}
+	public void ENVLoadSceneFireworks()		{ SceneManager.LoadScene("PolyFireworks"); 	}
+	public void ENVLoadSceneLiquid()		{ SceneManager.LoadScene("PolyLiquid"); 	}
+	public void ENVLoadSceneLiquid2()		{ SceneManager.LoadScene("PolyLiquid2"); 	}
+	public void ENVLoadSceneRocks()			{ SceneManager.LoadScene("PolyRocks"); 		}
+	public void ENVLoadSceneSparks()		{ SceneManager.LoadScene("PolySparks"); 	}
+	public void ENVLoadSceneTornado()		{ SceneManager.LoadScene("PolyTornado"); 	}
+	public void ENVLoadSceneWeather()		{ SceneManager.LoadScene("PolyWeather"); 	}
+	
+	//Interactive Scenes
+	
+	public void INTLoadSceneBeamUp()		{ SceneManager.LoadScene("PolyBeamUp"); 	}
+	public void INTLoadSceneBlackHole()		{ SceneManager.LoadScene("PolyBlackHole"); 	}
+	public void INTLoadSceneHeal()			{ SceneManager.LoadScene("PolyHeal"); 		}
+	public void INTLoadSceneJets()			{ SceneManager.LoadScene("PolyJets"); 		}
+	public void INTLoadSceneLoot()			{ SceneManager.LoadScene("PolyLoot"); 		}
+	public void INTLoadScenePortal()		{ SceneManager.LoadScene("PolyPortal"); 	}
+	public void INTLoadScenePortal2()		{ SceneManager.LoadScene("PolyPortal2"); 	}
+	public void INTLoadScenePowerupIcon()	{ SceneManager.LoadScene("PolyPowerupIcon");}
+	public void INTLoadSceneSpawn()			{ SceneManager.LoadScene("PolySpawn"); 		}
+	public void INTLoadSceneTrails()		{ SceneManager.LoadScene("PolyTrails"); 	}
+	public void INTLoadSceneTreasure()		{ SceneManager.LoadScene("PolyTreasure"); 	}
+	public void INTLoadSceneTreasure2()		{ SceneManager.LoadScene("PolyTreasure2"); 	}
+	public void INTLoadSceneZones()			{ SceneManager.LoadScene("PolyZones"); 		}
 	
 	 void Update ()
 	 {
@@ -126,11 +89,12 @@ public class PolygonSceneSelect : MonoBehaviour
      
          if (GUIHide)
 		 {
-             GameObject.Find("CanvasSceneSelect").GetComponent<Canvas> ().enabled = false;
+             GameObject.Find("CanvasSceneSelectCom").GetComponent<Canvas> ().enabled = false;
          }
+		 
 		 else
 		 {
-             GameObject.Find("CanvasSceneSelect").GetComponent<Canvas> ().enabled = true;
+             GameObject.Find("CanvasSceneSelectCom").GetComponent<Canvas> ().enabled = true;
          }
      }
 	      if(Input.GetKeyDown(KeyCode.J))
@@ -159,9 +123,35 @@ public class PolygonSceneSelect : MonoBehaviour
              GameObject.Find("CanvasTips").GetComponent<Canvas> ().enabled = true;
          }
      }
+	 if(Input.GetKeyDown(KeyCode.M))
+	 {
+         GUIHide4 = !GUIHide4;
+     
+         if (GUIHide4)
+		 {
+             GameObject.Find("CanvasSceneSelectInt").GetComponent<Canvas> ().enabled = false;
+         }
+		 
+		 else
+		 {
+             GameObject.Find("CanvasSceneSelectInt").GetComponent<Canvas> ().enabled = true;
+         }
+     }
+	 if(Input.GetKeyDown(KeyCode.N))
+	 {
+         GUIHide5 = !GUIHide5;
+     
+         if (GUIHide5)
+		 {
+             GameObject.Find("CanvasSceneSelectEnv").GetComponent<Canvas> ().enabled = false;
+         }
+		 
+		 else
+		 {
+             GameObject.Find("CanvasSceneSelectEnv").GetComponent<Canvas> ().enabled = true;
+         }
+     }
 	}
 }
-
-
 
 }

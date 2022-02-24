@@ -7,11 +7,13 @@ TagManager:
   - Item
   - Door
   - MagicShot
+  - NovaLocation
+  - instantiatedEffects
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - EnemyLayer
   - Water
   - UI
   - 
