@@ -24,7 +24,7 @@
                 this.coroutine = CoroutinesManager.Instance.StartCoroutine(Run());
 			}
 
-			private IEnumerator Run() 
+			public IEnumerator Run() 
 			{
 				while (this.target.MoveNext()) 
 				{

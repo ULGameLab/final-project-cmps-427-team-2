@@ -15,5 +15,5 @@ MonoBehaviour:
   maxTime: 1
   maxDistance: 2
   maxSightDistance: 30
-  rangeAttackDistance: 15
+  rangeAttackDistance: 30
   meleeAttackDistance: 3.1

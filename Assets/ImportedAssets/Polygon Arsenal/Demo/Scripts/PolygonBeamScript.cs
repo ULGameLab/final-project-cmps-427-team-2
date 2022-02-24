@@ -13,6 +13,8 @@ public class PolygonBeamScript : MonoBehaviour {
     public GameObject[] beamStartPrefab;
     public GameObject[] beamEndPrefab;
 
+        
+
     private int currentBeam = 0;
 
     public Transform instantiatedBeamPosition;
@@ -42,9 +44,7 @@ public class PolygonBeamScript : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-
-            
-
+        
         if (textBeamName)
             textBeamName.text = beamLineRendererPrefab[currentBeam].name;
         if (endOffSetSlider)
@@ -60,14 +60,13 @@ public class PolygonBeamScript : MonoBehaviour {
             enemyLayer = ~enemyLayer;
     
      var isAiming = VariablesManager.GetLocal(Player, "isAiming").ToString();
+    var isDodging = VariablesManager.GetLocal(Player, "isDodging").ToString();
 
 
-    float screenX = Screen.width / 2;
+            float screenX = Screen.width / 2;
      float screenY = Screen.height / 2;
-        if (Input.GetKeyDown(KeyCode.Escape))
-            Application.Quit();
 
-        if (Input.GetMouseButtonDown(0) && isAiming == "True")
+        if (Input.GetMouseButtonDown(0) && isAiming == "True" && isDodging == "False")
         {
             beamStart = Instantiate(beamStartPrefab[currentBeam], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
             beamEnd = Instantiate(beamEndPrefab[currentBeam], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
@@ -76,22 +75,38 @@ public class PolygonBeamScript : MonoBehaviour {
         }
         if (Input.GetMouseButtonUp(0))
         {
-            Destroy(beamStart);
-            Destroy(beamEnd);
-            Destroy(beam);
-        }
+                if (beamStart != null && beamEnd != null && beam != null)
+                {
+                    Destroy(beamStart);
+                    Destroy(beamEnd);
+                    Destroy(beam);
+                }
+
+            }
+
+        if(isDodging == "True")
+            {
+                if (beamStart != null && beamEnd != null && beam != null)
+                {
+                    Destroy(beamStart);
+                    Destroy(beamEnd);
+                    Destroy(beam);
+                }
+            }
 
 
-
-
-        if (Input.GetMouseButton(0) && isAiming == "True")
+        if (Input.GetMouseButton(0) && isAiming == "True" && isDodging == "False")
         {
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(screenX, screenY, 0));
             RaycastHit hit;
             if (Physics.Raycast(ray.origin, ray.direction, out hit, 100f, enemyLayer))
             {
                 Vector3 tdir = hit.point - transform.position;
-                ShootBeamInDir(instantiatedBeamPosition.position, tdir);
+                if(beam != null)
+                    {
+                        ShootBeamInDir(instantiatedBeamPosition.position, tdir);
+                    }
+                
             }
         }
 		
