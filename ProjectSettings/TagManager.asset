@@ -9,6 +9,7 @@ TagManager:
   - MagicShot
   - NovaLocation
   - instantiatedEffects
+  - GoblinArcher
   layers:
   - Default
   - TransparentFX
