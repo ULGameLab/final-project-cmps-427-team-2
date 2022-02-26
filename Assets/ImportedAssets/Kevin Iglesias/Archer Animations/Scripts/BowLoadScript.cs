@@ -4,12 +4,13 @@
 //  Contact Support: support@keviniglesias.com                           //
 ///////////////////////////////////////////////////////////////////////////
 
-// This script makes the bow animate when pulling arrow, also it makes thes
-// arrow look ready to shot when drawing it from the quivers.
+// This script makes the bow animate and the arrow look ready to shot when 
+// drawing it from the quiver.
 
-// To do the pulling animation, the bow mesh needs a blenshape named 'Load' 
-// and the character needs an empty Gameobject in your Unity scene named 
-// 'ArrowLoad' as a child, see character dummies hierarchy from the demo 
+// To do the pulling animation, the bow mesh needs a BlendShape/ShapeKey named 'Load' 
+// and the character needs empty Gameobjects in your Unity scene named 'LeftHandProp' 
+// and 'RightHandProp' (depending of the hand to use) as a child of another empty
+// GameObject called 'Retargeters', see character dummies hierarchy from the demo 
 // scene as example. More information at Documentation PDF file.
 
 using System.Collections;
@@ -21,7 +22,10 @@ namespace KevinIglesias {
 	{
 	   
 		public Transform bow;
-		public Transform arrowLoad;
+        
+        //Retargeters
+		public Transform arrowHandRetargeter;
+        public Transform bowHandRetargeter;
 		
 		//Bow Blendshape
 		SkinnedMeshRenderer bowSkinnedMeshRenderer;
@@ -52,42 +56,40 @@ namespace KevinIglesias {
 		void Update()
 		{
 			//Bow blendshape animation
-				if(bowSkinnedMeshRenderer != null && bow != null && arrowLoad != null)
-				{
-					float bowWeight = Mathf.InverseLerp(0, -0.7f, arrowLoad.localPosition.z);
-					bowSkinnedMeshRenderer.SetBlendShapeWeight(0, bowWeight*100);
-				}
+            if(bowSkinnedMeshRenderer != null && bow != null && bowHandRetargeter != null)
+            {
+                float bowWeight = Mathf.InverseLerp(0, -1f, bowHandRetargeter.localPosition.z);
+                bowSkinnedMeshRenderer.SetBlendShapeWeight(0, bowWeight*100);
+            }
 			
 			//Draw arrow from quiver and rotate it
-				if(arrowToDraw != null && arrowToShoot != null && arrowLoad != null)
-				{
-					if(arrowLoad.localPosition.y == 0.5f)
-					{
-						if(arrowToDraw != null)
-						{
-							arrowOnHand = true;
-							arrowToDraw.gameObject.SetActive(true);
-						}
-					}
-					
-					if(arrowLoad.localPosition.y > 0.5f)
-					{
-						if(arrowToDraw != null && arrowToShoot != null)
-						{
-							arrowToDraw.gameObject.SetActive(false);
-							arrowToShoot.gameObject.SetActive(true);
-						}
-					}
-					
-					if(arrowLoad.localScale.z < 1f)
-					{
-						if(arrowToShoot != null)
-						{
-							arrowToShoot.gameObject.SetActive(false);
-							arrowOnHand = false;
-						}
-					}
-				}
+            if(arrowToDraw != null && arrowToShoot != null && arrowHandRetargeter != null)
+            {
+                
+                if(arrowHandRetargeter.localPosition.y <= 0.99f)
+                {
+                    if(arrowToShoot != null && arrowToDraw != null)
+                    {
+                        arrowToDraw.gameObject.SetActive(false);
+                        arrowToShoot.gameObject.SetActive(false);
+                        arrowOnHand = false;
+                    }
+                }else{
+                    if(arrowHandRetargeter.localPosition.y <= 1.01f)
+                    {
+                        arrowToShoot.gameObject.SetActive(true);
+                        arrowToDraw.gameObject.SetActive(false);
+                        arrowOnHand = true; 
+                    }else{
+                        if(arrowToShoot != null && arrowToDraw != null)
+                        {
+                            arrowToDraw.gameObject.SetActive(false);
+                            arrowToShoot.gameObject.SetActive(false);
+                            arrowOnHand = true;
+                        }
+                    }
+                }
+            }
 		}
 	}
 }

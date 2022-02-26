@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class AiChasePlayerState : AiState
 {
-    
-    
+
+    float timeForGoblinRunArcherAttack = 3.04f;
     float timer = 0f;
 
     public void Enter(AiAgent agent)
@@ -26,6 +26,17 @@ public class AiChasePlayerState : AiState
 
     public void Update(AiAgent agent)
     {
+        timeForGoblinRunArcherAttack -= Time.deltaTime;
+
+        if(timeForGoblinRunArcherAttack < 0 && agent.arrowRunning)
+        {
+            timeForGoblinRunArcherAttack = 3.04f;
+            agent.arrowRunning = false;
+            agent.stateMachine.ChangeState(AiStateID.RangeAttack);
+
+        }
+
+
         agent.navMeshAgent.speed = agent.chaseSpeed;
 
         //conditions to change states

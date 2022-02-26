@@ -20,6 +20,8 @@ public class AiAgent : MonoBehaviour
     public BoxCollider wanderBounds;
     public float chaseSpeed;
     public bool meleeCharacter;
+    public bool animationRunning;
+    public bool arrowRunning;
 
     // Start is called before the first frame update
     void Start()
