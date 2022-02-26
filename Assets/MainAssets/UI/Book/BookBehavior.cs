@@ -63,7 +63,7 @@ public class BookBehavior : MonoBehaviour
     {
         deactivatePages(1);
         openQuest();
-        StartCoroutine(testFunction());
+        //StartCoroutine(testFunction());
     }
 
     // Update is called once per frame
