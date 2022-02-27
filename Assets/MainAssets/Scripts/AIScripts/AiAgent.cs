@@ -10,6 +10,7 @@ public class AiAgent : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public AiAgentConfig config;
     public Ragdoll ragdoll;
+    public UIHealthBar health;
     public SkinnedMeshRenderer mesh;
     public UIHealthBar ui;
     public AILocomotion aILocomotion;
@@ -22,6 +23,7 @@ public class AiAgent : MonoBehaviour
     public bool meleeCharacter;
     public bool animationRunning;
     public bool arrowRunning;
+    public bool randomNumberSet;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,7 @@ public class AiAgent : MonoBehaviour
         aILocomotion = GetComponent<AILocomotion>();
         ragdoll = GetComponent<Ragdoll>();
         animator = GetComponent<Animator>();
+        health = GetComponent<UIHealthBar>();
         mesh = GetComponentInChildren<SkinnedMeshRenderer>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         stateMachine = new AiStateMachine(this);
@@ -40,11 +43,13 @@ public class AiAgent : MonoBehaviour
         stateMachine.RegisterState(new AIWanderState());
         stateMachine.RegisterState(new MeleeAttackState());
         stateMachine.ChangeState(initializeState);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log($"{stateMachine.currentState}, {randomNumberSet}, {animationRunning}, {arrowRunning}");
         distanceFromPlayer = Vector3.Distance(playerTransform.position, enemyTransform.position);
         stateMachine.Update();
     }

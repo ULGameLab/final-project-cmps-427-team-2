@@ -32,6 +32,7 @@ public class AiChasePlayerState : AiState
         {
             timeForGoblinRunArcherAttack = 3.04f;
             agent.arrowRunning = false;
+            agent.randomNumberSet = false;
             agent.stateMachine.ChangeState(AiStateID.RangeAttack);
 
         }

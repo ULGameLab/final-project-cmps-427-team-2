@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class RangeAttackState : AiState
 {
+    int randomNumber;
     
-    float timeRemaining = Random.Range(2, 4);
+    public float timeRemaining = Random.Range(2, 4);
+    public float currentTimeRemaining;
     public void Enter(AiAgent agent)
     {
        
@@ -25,6 +27,8 @@ public class RangeAttackState : AiState
 
     public void Update(AiAgent agent)
     {
+        Debug.Log(randomNumber);
+        
 
         if (agent.animator.GetCurrentAnimatorStateInfo(0).IsTag("Arrow")) //if animation with the tag Arrow is running returns true
         {
@@ -47,29 +51,34 @@ public class RangeAttackState : AiState
 
         agent.transform.LookAt(agent.playerTransform);
         
-        if ((agent.distanceFromPlayer > agent.config.rangeAttackDistance) && !agent.meleeCharacter && (!agent.animationRunning)) agent.stateMachine.ChangeState(AiStateID.chasePlayer);
+        if ((agent.distanceFromPlayer > agent.config.rangeAttackDistance) && !agent.meleeCharacter && (!agent.animationRunning) && !agent.randomNumberSet) agent.stateMachine.ChangeState(AiStateID.chasePlayer);
 
         if(timeRemaining <= 0)
         {
 
+            if (!agent.randomNumberSet)
+            {
+                randomNumber = Random.Range(1, 4);
+                agent.randomNumberSet = true;
+            }
             
-            int randomNumber = Random.Range(1, 4);
             
 
-            if (agent.enemyTransform.tag == "GoblinArcher" && randomNumber == 2 && !agent.animationRunning)
+            if (agent.enemyTransform.tag == "GoblinArcher" && randomNumber == 2 && !agent.animationRunning && agent.randomNumberSet)
                 {
                     agent.arrowRunning = true;
+                    agent.StartCoroutine(Wait(.5f));
                     agent.animator.SetTrigger("RangeAttack" + randomNumber);
                     timeRemaining = Random.Range(2, 4);
-                    
-                   
-                
-            }
-                else
+                    agent.stateMachine.ChangeState(AiStateID.chasePlayer);
+                 }
+            else if(agent.randomNumberSet && !agent.animationRunning)
                 {
-                
-                agent.animator.SetTrigger("RangeAttack" + randomNumber);
-                timeRemaining = Random.Range(2, 4);
+                    agent.StartCoroutine(Wait(.5f));
+                    agent.animator.SetTrigger("RangeAttack" + randomNumber);
+                    timeRemaining = Random.Range(2, 4);
+                    agent.randomNumberSet = false;
+                    agent.animationRunning = true;
                 }
         }
 
@@ -79,9 +88,9 @@ public class RangeAttackState : AiState
         }
     }
 
-    public void Attacks(AiAgent agent)
+    public IEnumerator Wait(float seconds)
     {
-
+        yield return new WaitForSeconds(seconds);
     }
 
     
