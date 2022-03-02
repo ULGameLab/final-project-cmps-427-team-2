@@ -57,13 +57,24 @@ public class BookBehavior : MonoBehaviour
 
     public int AmountOfActiveQuests = 0;
 
+    [Header("Spells")]
+    public GameObject QuickSpells;
+    public GameObject ComboSpells;
+
+    QuickSpellStruct[] quickSpellsArray = new QuickSpellStruct[11];
+    ComboSpellStruct[] comboSpellsArray = new ComboSpellStruct[9];
+
+    public int activeQuickSpell;
 
     // Start is called before the first frame update
     void Start()
     {
         deactivatePages(1);
         openQuest();
+        populateSpells();
         //StartCoroutine(testFunction());
+        //StartCoroutine(TestSpells());
+        
     }
 
     // Update is called once per frame
@@ -383,4 +394,257 @@ public class BookBehavior : MonoBehaviour
         Quest5DesText.text = Quest5Des;
     }
 
+    // *****************************************************************************************************************************
+    //
+    //
+    //         -   -- - --  - - -- - -   - - --- -- - -  --  --  -- - - - -   -  - - - - - - - - - --  - - -- - -  - -- - - -   --  -Spells
+    //
+    //
+    //******************************************************************************************************************************
+
+    // every quick spell is going to be made of this
+    public struct QuickSpellStruct
+    {
+        // constructor
+        public QuickSpellStruct(int num, GameObject Spell)
+        {
+            Active = false;
+            Locked = true;
+            number = num;
+            spellObject = Spell;
+            lockedImage = Spell.transform.GetChild(4).gameObject;
+            activeImage = Spell.transform.GetChild(5).gameObject;
+
+            lockedImage.SetActive(Locked);
+            activeImage.SetActive(Active);
+        }
+
+        // variables
+        bool Active;
+        bool Locked;
+        int number;
+        GameObject spellObject;
+        GameObject lockedImage;
+        GameObject activeImage;
+
+        // getters
+        public bool getAcitve()
+        {
+            return Active;
+        }
+
+        public bool getLocked()
+        {
+            return Locked;
+        }
+
+        public GameObject getSpell()
+        {
+            return spellObject;
+        }
+        public int getNumber()
+        {
+            return number;
+        }
+
+        // setters
+        public void setActive(bool val)
+        {
+            Active = val;
+            activeImage.SetActive(val);
+        }
+
+        public void setLocked(bool val)
+        {
+            Locked = val;
+            lockedImage.SetActive(val);
+        }      
+    }
+
+    // every combo spell is going to be made of this
+    public struct ComboSpellStruct
+    {
+        // constructor
+        public ComboSpellStruct(int num, GameObject Spell)
+        {
+            Locked = true;
+            number = num;
+            spellObject = Spell;
+            lockedImage = Spell.transform.GetChild(4).gameObject;
+
+            lockedImage.SetActive(Locked);
+        }
+
+        // variables
+        bool Locked;
+        int number;
+        GameObject spellObject;
+        GameObject lockedImage;
+
+        // getters
+        public bool getLocked()
+        {
+            return Locked;
+        }
+
+        public GameObject getSpell()
+        {
+            return spellObject;
+        }
+        public int getNumber()
+        {
+            return number;
+        }
+
+        // setters        
+        public void setLocked(bool val)
+        {
+            Locked = val;
+            lockedImage.SetActive(val);
+        }
+    }
+
+    // populates the arrays with all of the spells (on start)
+    void populateSpells ()
+    {
+        for (int i = 0; i < quickSpellsArray.Length; i++)
+        {
+            quickSpellsArray[i] = new QuickSpellStruct(i + 1, QuickSpells.transform.GetChild(i).gameObject);
+        }
+
+        for (int i = 0; i < comboSpellsArray.Length; i++)
+        {
+            comboSpellsArray[i] = new ComboSpellStruct(i + 12, ComboSpells.transform.GetChild(i).gameObject);
+        }
+    }
+
+    // lock all spells
+    public void lockAll()
+    {
+        for (int i = 0; i < quickSpellsArray.Length; i++)
+        {
+            quickSpellsArray[i].setLocked(true);
+        }
+
+        for (int i = 0; i < comboSpellsArray.Length; i++)
+        {
+            comboSpellsArray[i].setLocked(true);
+        }
+    }
+
+    // unlock all spells
+    public void unLockAll()
+    {
+        for (int i = 0; i < quickSpellsArray.Length; i++)
+        {
+            quickSpellsArray[i].setLocked(false);
+        }
+
+        for (int i = 0; i < comboSpellsArray.Length; i++)
+        {
+            comboSpellsArray[i].setLocked(false);
+        }
+    }
+
+    // locks the spell with the associated number passed
+    public void unLockSpell(int num)
+    {
+        if (num <= 11)
+        {
+            quickSpellsArray[num - 1].setLocked(false);
+        }
+        else
+        {
+            comboSpellsArray[num - 12].setLocked(false);
+        }
+    }
+
+    // unlocks the spell with the associated number passed
+    public void lockSpell(int num)
+    {
+        if (num <= 11)
+        {
+            quickSpellsArray[num - 1].setLocked(true);
+        }
+        else
+        {
+            comboSpellsArray[num - 12].setLocked(true);
+        }
+    }
+
+    // activates the spell with the associated number and deactivates all other spells if the spell is unlocked
+    public void activateSpell(int num)
+    {
+        if (quickSpellsArray[num - 1].getLocked() == false)
+        {
+            deactivateAllSpells();
+            quickSpellsArray[num - 1].setActive(true);
+            activeQuickSpell = num;
+        }
+    }
+
+    // deactivates the spell with the associated number
+    public void deactivateSpell(int num)
+    {
+        quickSpellsArray[num - 1].setActive(false);
+    }
+
+    // deactivate all the quick spells
+    public void deactivateAllSpells()
+    {
+        for (int i = 0; i < quickSpellsArray.Length; i++)
+        {
+            quickSpellsArray[i].setActive(false);
+        }
+    }
+
+    public int getActiveQuickSpell()
+    {
+        return activeQuickSpell;
+    }
+
+    IEnumerator TestSpells()
+    {
+        openSpells();
+        yield return new WaitForSeconds(2);
+
+        for(int i = 0; i < quickSpellsArray.Length; i++)
+        {
+            unLockSpell(i + 1);
+            yield return new WaitForSeconds(1);
+        }
+
+        for (int i = 0; i < quickSpellsArray.Length; i++)
+        {
+            lockSpell(i + 1);
+            yield return new WaitForSeconds(1);
+        }
+
+        for (int i = 0; i < comboSpellsArray.Length; i++)
+        {
+            unLockSpell(i + 12);
+            yield return new WaitForSeconds(1);
+        }
+
+        for (int i = 0; i < comboSpellsArray.Length; i++)
+        {
+            lockSpell(i + 12);
+            yield return new WaitForSeconds(1);
+        }
+
+        unLockAll();
+        yield return new WaitForSeconds(2);
+
+        lockAll();
+        yield return new WaitForSeconds(2);
+
+        unLockAll();
+        for (int i = 0; i < quickSpellsArray.Length; i++)
+        {
+            activateSpell(i + 1);
+            yield return new WaitForSeconds(1);
+        }
+        yield return new WaitForSeconds(2);
+        deactivateSpell(11);
+    }
 }
