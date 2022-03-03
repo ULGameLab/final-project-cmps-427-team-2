@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 114620292894462446}
   - component: {fileID: -2815664219014168206}
   - component: {fileID: 5156747014982599937}
+  - component: {fileID: 449911830001084379}
   m_Layer: 0
   m_Name: WhileActive-kzuck033
   m_TagString: Untagged
@@ -51,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentID: 0
   instanceID: 0
-  actionsList: {fileID: 5156747014982599937}
+  actionsList: {fileID: 449911830001084379}
   runInBackground: 1
   destroyAfterFinishing: 0
   onFinish:
@@ -173,6 +174,21 @@ MonoBehaviour:
   executingIndex: -1
   isExecuting: 0
 --- !u!114 &5156747014982599937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235254788817742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d5a50368374438dbff3af09a8fefb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: []
+  executingIndex: -1
+  isExecuting: 0
+--- !u!114 &449911830001084379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
