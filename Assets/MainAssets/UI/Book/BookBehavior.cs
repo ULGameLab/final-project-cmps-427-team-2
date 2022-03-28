@@ -74,6 +74,7 @@ public class BookBehavior : MonoBehaviour
         populateSpells();
         //StartCoroutine(testFunction());
         //StartCoroutine(TestSpells());
+        unLockAll();
         
     }
 
@@ -598,9 +599,19 @@ public class BookBehavior : MonoBehaviour
         }
     }
 
+    // returns the number associated with the current active spell
     public int getActiveQuickSpell()
     {
         return activeQuickSpell;
+    }
+
+    public void OnButtonPush(int spellNumber)
+    {
+        if (getActiveQuickSpell() != spellNumber)
+        {
+            activateSpell(spellNumber);
+            // insert code to call colby's function that activates spell action on character
+        }
     }
 
     IEnumerator TestSpells()
