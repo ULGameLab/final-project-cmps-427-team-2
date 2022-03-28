@@ -10,6 +10,8 @@ public class BookBehavior : MonoBehaviour
 
     bool bookActive = false;
 
+    public UseSpells useSpells;
+
     public TextMeshProUGUI QuestText;
     public TextMeshProUGUI SpellsText;
     public TextMeshProUGUI InventoryText;
@@ -610,6 +612,7 @@ public class BookBehavior : MonoBehaviour
         if (getActiveQuickSpell() != spellNumber)
         {
             activateSpell(spellNumber);
+            useSpells.Activate(spellNumber - 1);
             // insert code to call colby's function that activates spell action on character
         }
     }
