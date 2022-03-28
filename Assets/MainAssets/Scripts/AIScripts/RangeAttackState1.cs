@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class RangeAttackState : AiState
+public class RangeAttackState1 : AiState
 {
     int randomNumber;
     

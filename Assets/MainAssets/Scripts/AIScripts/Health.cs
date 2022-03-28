@@ -36,14 +36,14 @@ public class Health : MonoBehaviour
         healthbar.setHealthBarPercentage(currentHealth / maxHealth);
         if(currentHealth <= 0)
         {
-            Die();
+            //Die();
         }
     }
 
-    private void Die()
-    {
-        AiDeathState deathState = agent.stateMachine.GetState(AiStateID.deathState) as AiDeathState;
-        agent.stateMachine.ChangeState(AiStateID.deathState);
-    }
+    //private void Die()
+    //{
+    //    AiDeathState deathState = agent.stateMachine.GetState(AiStateID.deathState) as AiDeathState;
+    //    agent.stateMachine.ChangeState(AiStateID.deathState);
+    //}
 
 }

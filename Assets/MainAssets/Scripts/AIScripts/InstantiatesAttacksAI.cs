@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class InstantiatesAttacksAI : MonoBehaviour
 {
+    public Transform characterTranform;
 
-    
+    //FireDemon attack Locations
     public Transform volcanicSpikeLocation;
     public Transform novaLoction;
     public Transform tornadoLocation;
     public Transform moveToTornado;
 
+    //Fire Demon AttackObjects
     public GameObject volcanicSpikeAttack;
     public GameObject novaAttack;
     public GameObject tornadoAttack;
+
+    //GoblinArcher attack Location
+    public Transform arrowSpawnLocation;
+
+    //goblin attack objects
+    public GameObject arrowShot;
+
+
 
     private void Start()
     {
@@ -38,8 +48,15 @@ public class InstantiatesAttacksAI : MonoBehaviour
     public void InstantiateTornadoAttack()
     {
         GameObject instatiatedObject = Instantiate(tornadoAttack, tornadoLocation.position, Quaternion.Euler(0, 0, 0));
+        instatiatedObject.GetComponent<Rigidbody>().AddForce(transform.forward * 50f, ForceMode.Impulse);
         Destroy(instatiatedObject, 6);
     }
 
+    public void InstantiateArrowWithForce()
+    {
+        GameObject instatiatedObject = Instantiate(arrowShot, arrowSpawnLocation.position, Quaternion.Euler(90, characterTranform.transform.eulerAngles.y, Quaternion.identity.z));
+        instatiatedObject.GetComponent<Rigidbody>().AddForce(transform.forward * 50f, ForceMode.Impulse);
+        Destroy(instatiatedObject, 6);
+    }
   
 }

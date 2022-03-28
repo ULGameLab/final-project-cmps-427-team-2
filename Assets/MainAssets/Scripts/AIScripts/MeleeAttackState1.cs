@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeAttackState : AiState
+public class MeleeAttackState1 : AiState
 {
     
     float timeBetweenAttacks = Random.Range(2, 4);

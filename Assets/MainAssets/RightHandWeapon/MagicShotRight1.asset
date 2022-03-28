@@ -21,8 +21,8 @@ MonoBehaviour:
     postProcess: 0
     translationID: 0
   defaultAmmo: {fileID: 11400000, guid: 29d57382d6ab21348a0dc870299d7f26, type: 2}
-  audioDraw: {fileID: 8300000, guid: 760917d0fda934a51b0ce4f314628e17, type: 3}
-  audioHolster: {fileID: 8300000, guid: 65ef71d64f853479fb3be0b8e6b881bf, type: 3}
+  audioDraw: {fileID: 0}
+  audioHolster: {fileID: 0}
   ease:
     state: {fileID: 11400000, guid: 942de692bdc23934580ccd3198ed157d, type: 2}
     mask: {fileID: 31900000, guid: ab6263dd525ca4cd48e437ff0cae30f6, type: 2}

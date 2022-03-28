@@ -25,9 +25,16 @@ public class AiAgent : MonoBehaviour
     public bool arrowRunning;
     public bool randomNumberSet;
 
+    //points around the player the melee characters will go to so they dont all flock together on top of each other
+    public GameObject[] meleeFollowLocations; 
+    public bool[] meleeLocationsOpen;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        EmptySpots();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         aILocomotion = GetComponent<AILocomotion>();
         ragdoll = GetComponent<Ragdoll>();
@@ -39,9 +46,9 @@ public class AiAgent : MonoBehaviour
         stateMachine.RegisterState(new AiChasePlayerState());
         stateMachine.RegisterState(new AiDeathState());
         stateMachine.RegisterState(new AiIdleState());
-        stateMachine.RegisterState(new RangeAttackState());
+        stateMachine.RegisterState(new RangeAttackState1());
         stateMachine.RegisterState(new AIWanderState());
-        stateMachine.RegisterState(new MeleeAttackState());
+        stateMachine.RegisterState(new MeleeAttackState1());
         stateMachine.ChangeState(initializeState);
         
     }
@@ -49,8 +56,16 @@ public class AiAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"{stateMachine.currentState}, {randomNumberSet}, {animationRunning}, {arrowRunning}");
         distanceFromPlayer = Vector3.Distance(playerTransform.position, enemyTransform.position);
         stateMachine.Update();
     }
+
+    public void EmptySpots()
+    {
+        for(int i =0; i < meleeLocationsOpen.Length; i++)
+        {
+            meleeLocationsOpen[i] = false;
+        }
+    }
+
 }

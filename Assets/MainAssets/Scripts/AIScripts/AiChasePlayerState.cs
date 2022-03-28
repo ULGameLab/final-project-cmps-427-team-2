@@ -44,6 +44,7 @@ public class AiChasePlayerState : AiState
         if ((agent.distanceFromPlayer < agent.config.rangeAttackDistance) && !agent.meleeCharacter) agent.stateMachine.ChangeState(AiStateID.RangeAttack);
         if ((agent.distanceFromPlayer < agent.config.meleeAttackDistance) && agent.meleeCharacter) agent.stateMachine.ChangeState(AiStateID.MeleeAttack);
         if (agent.distanceFromPlayer > agent.config.maxSightDistance) agent.stateMachine.ChangeState(AiStateID.WanderState);
+        
 
 
         if (!agent.enabled)
