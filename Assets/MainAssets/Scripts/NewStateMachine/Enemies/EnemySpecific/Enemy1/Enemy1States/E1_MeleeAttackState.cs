@@ -35,23 +35,27 @@ public class E1_MeleeAttackState : MeleeAttackState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        Debug.Log(entity.AnimatorIsPlaying("MeleeAttacks"));
+        if (!entity.AnimatorIsPlaying("MeleeAttacks"))
+        {
+            if (entity.distanceFromPlayer > entity.entityData.meleeAttackDistance)
+            {
+                if (isPlayerInMinAgroRange && entity.distanceFromPlayer > entity.entityData.meleeAttackDistance)
+                {
+                    stateMachine.ChangeState(enemy.chaseState);
+                }
+                else
+                {
+                    stateMachine.ChangeState(enemy.moveState);
+                }
+            }
+        }
+
         MeleeAttackPlayer();
         entity.enemy.transform.LookAt(entity.player.transform.position);
 
         var rot = entity.enemy.transform.eulerAngles;
         entity.enemy.transform.rotation = Quaternion.Euler(new Vector3(0, rot.y, rot.z));
-
-        if (entity.distanceFromPlayer > entity.entityData.meleeAttackDistance)
-        {
-             if (isPlayerInMinAgroRange && entity.distanceFromPlayer > entity.entityData.meleeAttackDistance )
-            {
-                stateMachine.ChangeState(enemy.chaseState);
-            }
-            else
-            {
-                stateMachine.ChangeState(enemy.moveState);
-            }
-        }
            
         
     }

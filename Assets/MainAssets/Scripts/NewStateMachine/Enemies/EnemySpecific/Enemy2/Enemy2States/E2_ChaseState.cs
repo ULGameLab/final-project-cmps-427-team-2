@@ -26,6 +26,11 @@ public class E2_ChaseState : ChasePlayerState
         entity.SetSpeed(stateData.chaseSpeed);
         ChasePlayer();
 
+        if (performLongRangeAction && entity.distanceFromPlayer < entity.entityData.rangeAttackDistance)
+        {
+            stateMachine.ChangeState(enemy.rangeAttackState);
+        }
+
         if (performShortRangeAction && entity.distanceFromPlayer < entity.entityData.meleeAttackDistance)
         {
             stateMachine.ChangeState(enemy.meleeAttackState);

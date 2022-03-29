@@ -11,14 +11,21 @@ public class Health : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public UIHealthBar healthbar;
-    public AiAgent agent;
+    public GameObject healthCanvaas;
+
+    private AILocomotion locomotion;
+    private NavMeshAgent agent;
+    private Ragdoll ragdoll;
+
 
     // Start is called before the first frame update
     void Start()
     {
   
         currentHealth = maxHealth;
-        
+        ragdoll = GetComponent<Ragdoll>();
+        locomotion = GetComponent<AILocomotion>();
+        agent = GetComponent<NavMeshAgent>();
         
         var rigidBodies = GetComponentsInChildren<Rigidbody>();
         foreach(var rigidbody in rigidBodies)
@@ -36,14 +43,18 @@ public class Health : MonoBehaviour
         healthbar.setHealthBarPercentage(currentHealth / maxHealth);
         if(currentHealth <= 0)
         {
-            //Die();
+            Die();
         }
     }
 
-    //private void Die()
-    //{
-    //    AiDeathState deathState = agent.stateMachine.GetState(AiStateID.deathState) as AiDeathState;
-    //    agent.stateMachine.ChangeState(AiStateID.deathState);
-    //}
+    private void Die()
+    {
+        ragdoll.ActivateRagdoll();
+        locomotion.enabled = false;
+        healthCanvaas.SetActive(false);
+        agent.enabled = false;
+        //skinnedMesh.updateWhenOffscreen = true;
+        this.enabled = false;
+    }
 
 }

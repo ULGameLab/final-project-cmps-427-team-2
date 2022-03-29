@@ -16,7 +16,7 @@ public class AttackState : State
     public override void Enter()
     {
         base.Enter();
-        entity.animationToStateMachine.attackState = this;
+        //entity.animationToStateMachine.attackState = this;
         //isAnimationFinished = false;
         entity.SetSpeed(0f);
     }

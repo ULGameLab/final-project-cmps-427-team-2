@@ -51,7 +51,6 @@ public class MeleeAttackState : AttackState
     public override void TriggerAttack()
     {
         base.TriggerAttack();
-        //TODO: damage player
     }
 
     public void MeleeAttackPlayer()
@@ -60,7 +59,7 @@ public class MeleeAttackState : AttackState
         {
             if (!randomNumberSet)
             {
-                randomNumber = Random.Range(1, stateData.numberOfMeleeAttacks);
+                randomNumber = Random.Range(1, stateData.numberOfMeleeAttacks + 1);
                 randomNumberSet = true;
             }
             if(randomNumberSet)

@@ -88,4 +88,14 @@ public class Entity : MonoBehaviour
         }
         return false;
     }
+
+    //checks to see if the animation with specific tag is playing
+    public virtual bool AnimatorIsPlaying(string stateName)
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsTag(stateName))
+        {
+            return true;
+        }
+        return false;
+    }
 }

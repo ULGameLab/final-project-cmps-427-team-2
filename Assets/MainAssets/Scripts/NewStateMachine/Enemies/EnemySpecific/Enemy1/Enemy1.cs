@@ -9,6 +9,8 @@ public class Enemy1 : Entity
   public E1_ChaseState chaseState { get; private set; }
   public E1_MeleeAttackState meleeAttackState { get; private set; }
 
+  private Health health;
+
 
     [SerializeField]
     private D_IdleState idleStateData;
@@ -24,8 +26,19 @@ public class Enemy1 : Entity
         moveState = new E1_MoveState(this, stateMachine, "move", moveStateData, this);
         chaseState = new E1_ChaseState(this, stateMachine, "PlayerDetected", chasePlayerData, this);
         meleeAttackState = new E1_MeleeAttackState(this, stateMachine, "meleeAtack", meleeAttackStateData, this);
+        health = GetComponent<Health>();
 
         stateMachine.Initialize(moveState);
-       
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if(health.currentHealth <= 0)
+        {
+            this.enabled = false;
+        }
+
     }
 }

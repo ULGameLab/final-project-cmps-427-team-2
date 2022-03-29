@@ -49,4 +49,27 @@ public class RangeAttackState : AttackState
     {
         base.TriggerAttack();
     }
+
+    public void RangeAttack()
+    {
+        if (randomTimeBetweenAttacks <= 0)
+        {
+            if (!randomNumberSet)
+            {
+                randomNumber = Random.Range(1, stateData.numberOfRangeAttacks + 1);
+                randomNumberSet = true;
+            }
+            if (randomNumberSet)
+            {
+                entity.anim.SetTrigger("RangeAttack" + randomNumber);
+                randomTimeBetweenAttacks = Random.Range(stateData.lowerRandomTimeBetweenAttacksNumber, stateData.upperRandomTimeBetweenAttacksNumber);
+                randomNumberSet = false;
+            }
+
+        }
+        else
+        {
+            randomTimeBetweenAttacks -= Time.deltaTime;
+        }
+    }
 }
