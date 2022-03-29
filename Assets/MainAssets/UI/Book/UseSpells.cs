@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class UseSpells : MonoBehaviour
 {
-    public GameObject[] spells;
+    public GameObject[] quickSpells;
+    public GameObject[] comboSpells;
 
 
 
-    public void Activate(int spellNum)
+    public void ActivateQuickSpells(int spellNum)
     {
-        for(int i = 0; i < spells.Length; i++)
+        for(int i = 0; i < quickSpells.Length; i++)
         {
-            spells[i].SetActive(false);
+            quickSpells[i].SetActive(false);
         }
-        spells[spellNum].SetActive(true);
+
+        if(spellNum < quickSpells.Length)
+        {
+            quickSpells[spellNum].SetActive(true);
+        }
     }
 
-    public void DeactivateSpell(int spellNum)
+    public void ActivateComboSpells(int spellNum)
     {
-        spells[spellNum].SetActive(false);
+        if(spellNum < comboSpells.Length)
+        {
+            comboSpells[spellNum].SetActive(true);
+        }
     }
 
     

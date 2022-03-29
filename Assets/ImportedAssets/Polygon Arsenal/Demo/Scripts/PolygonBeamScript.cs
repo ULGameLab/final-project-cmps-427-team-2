@@ -108,6 +108,11 @@ public class PolygonBeamScript : MonoBehaviour {
                     }
                 
             }
+                else
+                {
+                    var position = ray.GetPoint(100f);
+                    ShootBeamInDir(instantiatedBeamPosition.position, position);
+                }
         }
 		
 		

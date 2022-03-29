@@ -612,7 +612,7 @@ public class BookBehavior : MonoBehaviour
         if (getActiveQuickSpell() != spellNumber)
         {
             activateSpell(spellNumber);
-            useSpells.Activate(spellNumber - 1);
+            useSpells.ActivateQuickSpells(spellNumber - 1);
             // insert code to call colby's function that activates spell action on character
         }
     }
