@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BookBehavior : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class BookBehavior : MonoBehaviour
 
     bool bookActive = false;
 
-    public UseSpells useSpells;
+    //public UseSpells useSpells;
 
     public TextMeshProUGUI QuestText;
     public TextMeshProUGUI SpellsText;
@@ -68,6 +69,8 @@ public class BookBehavior : MonoBehaviour
 
     public int activeQuickSpell;
 
+    public bool isPaused;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,13 +80,37 @@ public class BookBehavior : MonoBehaviour
         //StartCoroutine(testFunction());
         //StartCoroutine(TestSpells());
         unLockAll();
-        
+
+        // start with pause menu closed
+        isPaused = false;
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
+        {
+            pauseController();
+        }
+    }
+
+    // pauses and unpauses the game when called
+    public void pauseController()
+    {
+        // pause
+        if (!isPaused)
+        {
+            Time.timeScale = 0f;
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            isPaused = true;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            isPaused = false;
+        }
     }
 
     // just for testing the code
@@ -612,7 +639,7 @@ public class BookBehavior : MonoBehaviour
         if (getActiveQuickSpell() != spellNumber)
         {
             activateSpell(spellNumber);
-            useSpells.ActivateQuickSpells(spellNumber - 1);
+            //useSpells.ActivateQuickSpells(spellNumber - 1);
             // insert code to call colby's function that activates spell action on character
         }
     }
