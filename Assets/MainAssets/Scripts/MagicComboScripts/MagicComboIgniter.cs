@@ -13,13 +13,16 @@
         //public new static bool REQUIRES_COLLIDER = true; // uncomment if the igniter requires a collider
 #endif
         public float elapse = 5f;
+        public float coolDown = 5f;
+
         private float currentElapsedTime;
+        private float currentCoolDown;
 
         public KeyCode[] keysInCombo;
 
         bool[] buttons;
 
-        private int start = 0;
+        private int currentKey = 0;
 
        
 
@@ -27,12 +30,12 @@
         {
             buttons = new bool[keysInCombo.Length];
             currentElapsedTime = elapse;
+            currentCoolDown = coolDown;
         }
 
         private void Update()
         {
-            currentElapsedTime -= Time.deltaTime;
-            KeyCombo(keysInCombo, keysInCombo.Length);
+            KeyCombo(keysInCombo);
         }
 
         public bool areAllTrue(bool[] buttons)
@@ -41,36 +44,43 @@
             return true;
         }
 
-        public void KeyCombo(KeyCode[] keys, int numKeys)
+        public void setAllButtonsFalse(bool[] buttons)
         {
+            for (int i = 0; i < buttons.Length; i++) buttons[i] = false;
             
-            if(start < numKeys)
+        }
+
+        public void KeyCombo(KeyCode[] keys)
+        {
+            currentElapsedTime -= Time.deltaTime;
+            currentCoolDown -= Time.deltaTime;
+
+            if (currentKey < keys.Length && currentCoolDown <= 0)
             {
-                if (Input.GetKeyDown(keys[start]) && currentElapsedTime != 0)
+                if (Input.GetKeyDown(keys[currentKey]) && currentElapsedTime >= 0)
                 {
-                    buttons[start] = true;
-                    start++;
+                    buttons[currentKey] = true;
+                    currentKey++;
                     currentElapsedTime = elapse;
                 }
                 if (currentElapsedTime <= 0)
                 {
-                    buttons[start] = false;
+                    setAllButtonsFalse(buttons);
+                    currentKey = 0;
+                    currentElapsedTime = elapse;
                     
                 }
 
                 bool buttonsAllTrue = areAllTrue(buttons);
-                if (buttonsAllTrue)
+                if (buttonsAllTrue && currentCoolDown < 0)
                 {
-                    start = 0;
-                    print("hello");
+                    currentKey = 0;
+                    currentCoolDown = coolDown;
+                    currentElapsedTime = elapse;
                     this.ExecuteTrigger();
-                    for(int i =0; i <buttons.Length; i++)
-                    {
-                        buttons[i] = false;
-                    }
+                    setAllButtonsFalse(buttons);
 
                 }
-
             }
             
 

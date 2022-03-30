@@ -10928,6 +10928,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4447641418418439648, guid: 054baf8bfd7ab63408f3b052144efbbb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447641418418439653, guid: 054baf8bfd7ab63408f3b052144efbbb, type: 3}
+      propertyPath: elapse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447641418418439653, guid: 054baf8bfd7ab63408f3b052144efbbb, type: 3}
+      propertyPath: coolDown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533884157176867089, guid: 054baf8bfd7ab63408f3b052144efbbb, type: 3}
+      propertyPath: elapse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533884157176867091, guid: 054baf8bfd7ab63408f3b052144efbbb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533884157231827418, guid: 054baf8bfd7ab63408f3b052144efbbb, type: 3}
+      propertyPath: elapse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533884157231827418, guid: 054baf8bfd7ab63408f3b052144efbbb, type: 3}
+      propertyPath: coolDown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533884157231827420, guid: 054baf8bfd7ab63408f3b052144efbbb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533884158456608525, guid: 054baf8bfd7ab63408f3b052144efbbb, type: 3}
+      propertyPath: elapse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533884158456608525, guid: 054baf8bfd7ab63408f3b052144efbbb, type: 3}
+      propertyPath: coolDown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533884158456608527, guid: 054baf8bfd7ab63408f3b052144efbbb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8472705647410338668, guid: 054baf8bfd7ab63408f3b052144efbbb, type: 3}
       propertyPath: m_Name
       value: PlayerHolder
