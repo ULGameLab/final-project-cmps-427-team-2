@@ -9,6 +9,7 @@ public class RangeAttackState : AttackState
     protected float currentTime;
     protected bool randomNumberSet;
     protected int randomNumber;
+    protected float timeToAttack;
 
     public RangeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_RangeAttack stateData) : base(entity, stateMachine, animBoolName)
     {
@@ -23,6 +24,7 @@ public class RangeAttackState : AttackState
     public override void Enter()
     {
         base.Enter();
+        timeToAttack = 3f;
     }
 
     public override void Exit()
@@ -50,7 +52,7 @@ public class RangeAttackState : AttackState
         base.TriggerAttack();
     }
 
-    public void RangeAttack()
+    public void RangeAttackPlayer()
     {
         if (randomTimeBetweenAttacks <= 0)
         {

@@ -8,6 +8,7 @@ public class AttackState : State
     protected bool isAnimationFinished;
     protected bool isPlayerInMinAgroRange;
     protected bool performShortRangeAction;
+    protected bool isPlayerInMaxAgroRange;
 
     public AttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName) : base(entity, stateMachine, animBoolName)
     {
@@ -45,6 +46,7 @@ public class AttackState : State
     {
         base.DoChecks();
         isPlayerInMinAgroRange = entity.CheckPlayerINMinAgroRange();
+        isPlayerInMaxAgroRange = entity.CheckPlayerInMaxAgroRange();
         performShortRangeAction = entity.CheckPlayerInCloseRange();
 
     }

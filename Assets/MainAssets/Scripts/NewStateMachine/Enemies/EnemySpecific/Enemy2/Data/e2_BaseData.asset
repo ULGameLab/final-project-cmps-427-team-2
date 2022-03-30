@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec5aaed15057f042ada5cecdd508169, type: 3}
   m_Name: e2_BaseData
   m_EditorClassIdentifier: 
-  maxTime: 1
-  maxDistance: 1
-  meleeAttackDistance: 1
-  rangeAttackDistance: 4
-  minSightDistance: 5
-  maxSightDistance: 7
+  maxTime: 3
+  maxDistance: 2
+  meleeAttackDistance: 6
+  rangeAttackDistance: 10
+  minSightDistance: 10
+  maxSightDistance: 30

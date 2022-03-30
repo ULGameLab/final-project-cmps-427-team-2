@@ -18,6 +18,8 @@ public class Entity : MonoBehaviour
     public GameObject player { get; private set; }
     public Transform enemy { get; private set; }
 
+    public Ragdoll ragdoll { get; private set; }
+
     public AnimationToStateMachine animationToStateMachine { get; private set; }
 
     [HideInInspector]
@@ -32,6 +34,7 @@ public class Entity : MonoBehaviour
         enemy = GetComponent<Transform>();
         player = GameObject.FindGameObjectWithTag("Player");
         stateMachine = new FiniteStateMachine();
+        ragdoll = GetComponent<Ragdoll>();
 
         distanceFromPlayer = Vector3.Distance(player.transform.position, enemy.transform.position);
 
@@ -71,6 +74,13 @@ public class Entity : MonoBehaviour
         return false;
     }
 
+    public virtual void Die()
+    {
+        ragdoll.ActivateRagdoll();
+        aILocomotion.enabled = false;
+
+    }
+
     public virtual bool CheckPlayerInCloseRange()
     {
         if(distanceFromPlayer < entityData.meleeAttackDistance)
@@ -83,16 +93,6 @@ public class Entity : MonoBehaviour
     public virtual bool CheckPlayerInFarAttackRange()
     {
         if (distanceFromPlayer < entityData.rangeAttackDistance)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    //checks to see if the animation with specific tag is playing
-    public virtual bool AnimatorIsPlaying(string stateName)
-    {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsTag(stateName))
         {
             return true;
         }

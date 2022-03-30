@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class E2_ChaseState : ChasePlayerState
 {
     private Enemy2 enemy;
+    private float timeToMove;
     public E2_ChaseState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_Chase stateData, Enemy2 enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
@@ -14,6 +15,10 @@ public class E2_ChaseState : ChasePlayerState
     public override void Enter()
     {
         base.Enter();
+        timeToMove = 2f;
+        //timer = 0;
+
+
     }
 
     public override void Exit()
@@ -23,22 +28,25 @@ public class E2_ChaseState : ChasePlayerState
 
     public override void LogicUpdate()
     {
-        entity.SetSpeed(stateData.chaseSpeed);
-        ChasePlayer();
-
-        if (performLongRangeAction && entity.distanceFromPlayer < entity.entityData.rangeAttackDistance)
+        timeToMove -= Time.time;
+        if(timeToMove <= 0)
         {
-            stateMachine.ChangeState(enemy.rangeAttackState);
-        }
+            entity.SetSpeed(stateData.chaseSpeed);
+            ChasePlayer();
+            if (entity.distanceFromPlayer < entity.entityData.rangeAttackDistance && !performShortRangeAction)
+            {
+                stateMachine.ChangeState(enemy.rangeAttackState);
+            }
 
-        if (performShortRangeAction && entity.distanceFromPlayer < entity.entityData.meleeAttackDistance)
-        {
-            stateMachine.ChangeState(enemy.meleeAttackState);
-        }
+            if (performShortRangeAction && entity.distanceFromPlayer < entity.entityData.meleeAttackDistance)
+            {
+                stateMachine.ChangeState(enemy.meleeAttackState);
+            }
 
-        if (!isPlayerInMaxAgroRange)
-        {
-            enemy.stateMachine.ChangeState(enemy.moveState);
+            if (!isPlayerInMaxAgroRange)
+            {
+                enemy.stateMachine.ChangeState(enemy.moveState);
+            }
         }
        
     }

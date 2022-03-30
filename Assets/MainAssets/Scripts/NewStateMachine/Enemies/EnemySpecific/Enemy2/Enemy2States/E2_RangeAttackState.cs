@@ -33,6 +33,32 @@ public class E2_RangeAttackState : RangeAttackState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        timeToAttack -= Time.time;
+        if(timeToAttack <= 0)
+        {
+            RangeAttackPlayer();
+            entity.enemy.transform.LookAt(entity.player.transform.position);
+
+            var rot = entity.enemy.transform.eulerAngles;
+            entity.enemy.transform.rotation = Quaternion.Euler(new Vector3(0, rot.y, rot.z));
+
+            if (entity.distanceFromPlayer > entity.entityData.meleeAttackDistance)
+            {
+                if (entity.distanceFromPlayer > entity.entityData.rangeAttackDistance)
+                {
+                    stateMachine.ChangeState(enemy.chaseState);
+                }
+                else if (entity.distanceFromPlayer > entity.entityData.maxSightDistance)
+                {
+                    stateMachine.ChangeState(enemy.moveState);
+                }
+            }
+            else if (entity.distanceFromPlayer < entity.entityData.meleeAttackDistance)
+            {
+                stateMachine.ChangeState(enemy.meleeAttackState);
+            }
+        }
+      
     }
 
     public override void PhysicsUpdate()
@@ -44,5 +70,4 @@ public class E2_RangeAttackState : RangeAttackState
     {
         base.TriggerAttack();
     }
-
 }

@@ -10,6 +10,7 @@ public class MeleeAttackState : AttackState
     protected bool randomNumberSet;
     protected int randomNumber;
 
+    protected bool isPlayerInMaxAgroRange;
     
     public MeleeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MeleeAttack stateData) : base(entity, stateMachine, animBoolName)
     {
@@ -19,6 +20,7 @@ public class MeleeAttackState : AttackState
     public override void DoChecks()
     {
         base.DoChecks();
+        isPlayerInMaxAgroRange = entity.CheckPlayerInMaxAgroRange();
     }
 
     public override void Enter()
@@ -51,28 +53,8 @@ public class MeleeAttackState : AttackState
     public override void TriggerAttack()
     {
         base.TriggerAttack();
+        //TODO: damage player
     }
 
-    public void MeleeAttackPlayer()
-    {
-        if (randomTimeBetweenAttacks <= 0)
-        {
-            if (!randomNumberSet)
-            {
-                randomNumber = Random.Range(1, stateData.numberOfMeleeAttacks + 1);
-                randomNumberSet = true;
-            }
-            if(randomNumberSet)
-            {
-                entity.anim.SetTrigger("Attack" + randomNumber);
-                randomTimeBetweenAttacks = Random.Range(stateData.lowerRandomTimeBetweenAttacksNumber, stateData.upperRandomTimeBetweenAttacksNumber);
-                randomNumberSet = false;
-            }
-           
-        }
-        else
-        {
-            randomTimeBetweenAttacks -= Time.deltaTime;
-        }
-    }
+   
 }

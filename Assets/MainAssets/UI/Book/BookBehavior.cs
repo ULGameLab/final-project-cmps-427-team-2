@@ -11,7 +11,7 @@ public class BookBehavior : MonoBehaviour
 
     bool bookActive = false;
 
-    //public UseSpells useSpells;
+    public UseSpells useSpells;
 
     public TextMeshProUGUI QuestText;
     public TextMeshProUGUI SpellsText;
@@ -639,7 +639,7 @@ public class BookBehavior : MonoBehaviour
         if (getActiveQuickSpell() != spellNumber)
         {
             activateSpell(spellNumber);
-            //useSpells.ActivateQuickSpells(spellNumber - 1);
+            useSpells.ActivateQuickSpells(spellNumber - 1);
             // insert code to call colby's function that activates spell action on character
         }
     }

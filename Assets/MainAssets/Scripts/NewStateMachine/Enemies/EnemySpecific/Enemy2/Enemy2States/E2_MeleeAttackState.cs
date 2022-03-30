@@ -20,6 +20,7 @@ public class E2_MeleeAttackState : MeleeAttackState
     public override void Enter()
     {
         base.Enter();
+        randomTimeBetweenAttacks = 0;
     }
 
     public override void Exit()
@@ -36,27 +37,21 @@ public class E2_MeleeAttackState : MeleeAttackState
     {
         base.LogicUpdate();
 
-        if (!entity.AnimatorIsPlaying("MeleeAttacks"))
-        {
-            if (entity.distanceFromPlayer > entity.entityData.meleeAttackDistance)
-            {
-                if (isPlayerInMinAgroRange && entity.distanceFromPlayer > entity.entityData.meleeAttackDistance)
-                {
-                    stateMachine.ChangeState(enemy.chaseState);
-                }
-                
-                else
-                {
-                    stateMachine.ChangeState(enemy.moveState);
-                }
-            }
-        }
-
         MeleeAttackPlayer();
         entity.enemy.transform.LookAt(entity.player.transform.position);
 
         var rot = entity.enemy.transform.eulerAngles;
         entity.enemy.transform.rotation = Quaternion.Euler(new Vector3(0, rot.y, rot.z));
+
+        if (randomTimeBetweenAttacks >= 0 && entity.distanceFromPlayer > entity.entityData.meleeAttackDistance)
+        {
+            stateMachine.ChangeState(enemy.rangeAttackState);
+        }
+        else if(entity.distanceFromPlayer > entity.entityData.maxSightDistance)
+        {
+            stateMachine.ChangeState(enemy.chaseState);
+        }
+        
            
         
     }
@@ -64,10 +59,36 @@ public class E2_MeleeAttackState : MeleeAttackState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+       
     }
 
     public override void TriggerAttack()
     {
         base.TriggerAttack();
+    }
+
+    public void MeleeAttackPlayer()
+    {
+
+        if (randomTimeBetweenAttacks <= 0)
+        {
+            if (!randomNumberSet)
+            {
+                randomNumber = Random.Range(1, stateData.numberOfMeleeAttacks + 1);
+                randomNumberSet = true;
+            }
+            if (randomNumberSet)
+            {
+                entity.anim.SetTrigger("Attack" + randomNumber);
+                randomTimeBetweenAttacks = Random.Range(stateData.lowerRandomTimeBetweenAttacksNumber, stateData.upperRandomTimeBetweenAttacksNumber);
+                randomNumberSet = false;
+            }
+
+        }
+        else
+        {
+            randomTimeBetweenAttacks -= Time.deltaTime;
+
+        }
     }
 }

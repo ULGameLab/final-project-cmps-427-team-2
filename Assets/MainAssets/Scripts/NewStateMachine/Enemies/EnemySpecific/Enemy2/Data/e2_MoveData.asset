@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b49181591e67cc44482511aabcdb348c, type: 3}
   m_Name: e2_MoveData
   m_EditorClassIdentifier: 
-  walkSpeed: 6
+  walkSpeed: 4
   wanderRadius: 30
-  wanderTimer: 5
+  wanderTimer: 3

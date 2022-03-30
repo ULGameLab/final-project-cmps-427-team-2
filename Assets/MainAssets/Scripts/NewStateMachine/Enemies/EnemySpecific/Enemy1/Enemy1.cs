@@ -9,7 +9,9 @@ public class Enemy1 : Entity
   public E1_ChaseState chaseState { get; private set; }
   public E1_MeleeAttackState meleeAttackState { get; private set; }
 
-  private Health health;
+    public GameObject uiHealthBar;
+
+    private Health health;
 
 
     [SerializeField]
@@ -29,16 +31,17 @@ public class Enemy1 : Entity
         health = GetComponent<Health>();
 
         stateMachine.Initialize(moveState);
+       
     }
 
     public override void Update()
     {
         base.Update();
-
         if(health.currentHealth <= 0)
         {
+            uiHealthBar.SetActive(false);
+            Die();
             this.enabled = false;
         }
-
     }
 }
