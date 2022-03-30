@@ -2289,10 +2289,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8029944482284026631}
+  uiHealthBarGameObject: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
   healthbar: {fileID: 2143556918745059023}
-  agent: {fileID: 2143556920008729265}
+  healthBarDistance: 0
+  player: {fileID: 0}
+  enemy: {fileID: 8029944482276529333}
 --- !u!114 &8029944482276529334
 MonoBehaviour:
   m_ObjectHideFlags: 0

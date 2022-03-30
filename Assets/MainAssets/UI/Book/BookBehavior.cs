@@ -11,7 +11,7 @@ public class BookBehavior : MonoBehaviour
 
     bool bookActive = false;
 
-    public UseSpells useSpells;
+    private UseSpells useSpells;
 
     public TextMeshProUGUI QuestText;
     public TextMeshProUGUI SpellsText;
@@ -74,6 +74,7 @@ public class BookBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        useSpells = GameObject.Find("Player").GetComponent<UseSpells>();
         deactivatePages(1);
         openQuest();
         populateSpells();

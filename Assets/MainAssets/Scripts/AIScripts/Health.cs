@@ -16,14 +16,16 @@ public class Health : MonoBehaviour
 
     private float distnaceFromPlayer;
 
-    [SerializeField] private Transform player;
-    [SerializeField] private Transform enemy;
+    private Transform player;
+    private Transform enemy;
 
     // Start is called before the first frame update
     void Start()
     {
   
         currentHealth = maxHealth;
+        player = GameObject.Find("Player").GetComponent<Transform>();
+        enemy = GetComponent<Transform>();
         
         
         var rigidBodies = GetComponentsInChildren<Rigidbody>();
@@ -50,18 +52,10 @@ public class Health : MonoBehaviour
     public void takeDmg(float dmg)
     {
         currentHealth -= dmg;
-        animator.SetTrigger("takeDmg");
+        //animator.SetTrigger("takeDmg");
         healthbar.setHealthBarPercentage(currentHealth / maxHealth);
-        if(currentHealth <= 0)
-        {
-            //Die();
-        }
     }
 
-    //private void Die()
-    //{
-    //    AiDeathState deathState = agent.stateMachine.GetState(AiStateID.deathState) as AiDeathState;
-    //    agent.stateMachine.ChangeState(AiStateID.deathState);
-    //}
+  
 
 }
