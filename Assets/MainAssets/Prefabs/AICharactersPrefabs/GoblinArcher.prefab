@@ -893,7 +893,9 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthbar: {fileID: 5843403756640079692}
-  healthBarDistance: 0
+  healthBarDistance: 25
+  uiHealthBar: {fileID: 5843403756491782515}
+  aiAgent: {fileID: 0}
 --- !u!114 &2582979993795892533
 MonoBehaviour:
   m_ObjectHideFlags: 0

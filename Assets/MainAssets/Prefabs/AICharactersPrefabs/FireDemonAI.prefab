@@ -2582,7 +2582,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 8254876772786346277}
   wanderBounds: {fileID: 6229757242290897238}
   distanceFromPlayer: 0
-  uiHealthBar: {fileID: 6229757243626273941}
+  uiHealthBar: {fileID: 6229757243108910171}
   idleStateData: {fileID: 11400000, guid: 0e5fe8ae3a588b5499fb5b6bc9d1e915, type: 2}
   moveStateData: {fileID: 11400000, guid: a0666a299165ce3458d9de75cfcee5fe, type: 2}
   chasePlayerData: {fileID: 11400000, guid: 1cfb1dbad19495242ae95c87e35367a7, type: 2}

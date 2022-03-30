@@ -19,6 +19,11 @@ public class Health : MonoBehaviour
     private Transform player;
     private Transform enemy;
 
+    public GameObject uiHealthBar;
+    private Ragdoll ragdoll;
+    private AILocomotion aILocomotion;
+    public AiAgent aiAgent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +31,8 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
         player = GameObject.Find("Player").GetComponent<Transform>();
         enemy = GetComponent<Transform>();
+        aILocomotion = GetComponent<AILocomotion>();
+        ragdoll = GetComponent<Ragdoll>();
         
         
         var rigidBodies = GetComponentsInChildren<Rigidbody>();
@@ -38,14 +45,27 @@ public class Health : MonoBehaviour
     private void Update()
     {
         distnaceFromPlayer = Vector3.Distance(player.transform.position, enemy.transform.position);
-        if(distnaceFromPlayer > healthBarDistance)
+        if (distnaceFromPlayer > healthBarDistance)
         {
             uiHealthBarGameObject.SetActive(false);
         }
-        else if(distnaceFromPlayer < healthBarDistance)
+        else if (distnaceFromPlayer < healthBarDistance)
         {
             uiHealthBarGameObject.SetActive(true);
         }
+        if (currentHealth <= 0)
+        {
+            uiHealthBar.SetActive(false);
+            if(aiAgent != null)
+            {
+                aiAgent.enabled = false;
+            }
+           
+            ragdoll.ActivateRagdoll();
+            aILocomotion.enabled = false;
+            this.enabled = false;
+        }
+
     }
 
 
