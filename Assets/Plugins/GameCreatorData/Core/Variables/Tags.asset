@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Tags
   m_EditorClassIdentifier: 
   tags:
-  - name: 
-    color: 0
+  - name: IsAlive
+    color: 1
   - name: 
     color: 0
   - name: 

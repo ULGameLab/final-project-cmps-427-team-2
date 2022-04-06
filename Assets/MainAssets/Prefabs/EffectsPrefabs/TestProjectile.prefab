@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4858937482695692
 Transform:
   m_ObjectHideFlags: 0
@@ -53,7 +53,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c0261aee0da2f894f82665b115b480e7, type: 2}
+  - {fileID: 2100000, guid: 46d6ddafa2a2601439356a050d60bd85, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4976,8 +4976,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 692dfdefcd910164cbc23e29df21b0ef, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: d9a322a5258933746a431aebb15655ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9802,7 +9801,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 0}
-  - {fileID: 2100000, guid: 082a0f12700a64d47b9acc0e3eeab2d5, type: 2}
+  - {fileID: 2100000, guid: 557c741d3f2f09a48b43f58b9d58a659, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14689,8 +14688,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 761fcaf3853386b4c80234bc48bdd122, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: b10862899552f594b808a4416fbb7cce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14794,7 +14792,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 35f9dc64b504daa4a9c64aa3d7181c8d, type: 2}
+  - {fileID: 2100000, guid: 907edd24677360748927266b036a9a00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14890,14 +14888,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4983590539943298}
-  - component: {fileID: 114096453492018784}
   - component: {fileID: 199561757109601946}
-  - component: {fileID: 114106629700761540}
   - component: {fileID: 198302984453370694}
   - component: {fileID: 65138394354385980}
   - component: {fileID: 54780134100305680}
   m_Layer: 0
-  m_Name: vfx_Projectile_ElectricOrangeBall
+  m_Name: TestProjectile
   m_TagString: MagicShot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14923,28 +14919,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114096453492018784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823173409967616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12ba759cd568c0e47a7018ab70867a0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 22
-  accuracy: 95
-  fireRate: 1
-  muzzlePrefab: {fileID: 1237854105968354, guid: c4e4cce58d089d34a820acd185070f61, type: 3}
-  hitPrefab: {fileID: 1351045683517926, guid: f74dabd1cda930947a0337317b57e32c, type: 3}
-  shotSFX: {fileID: 0}
-  hitSFX: {fileID: 0}
-  trails:
-  - {fileID: 1590967563268456}
-  - {fileID: 1183986696126840}
 --- !u!199 &199561757109601946
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -14966,8 +14940,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8c434bf307fae51488004366fd3854eb, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: a2a358c11de5c5f489c89831797991a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15018,36 +14991,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &114106629700761540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823173409967616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9e272d634f40434b85fbf756732714d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: 0.7
-  speed: 1
-  duration: 1
-  loop: 1
-  prewarm: 0
-  lights: 1
-  trails: 1
-  changeColor: 1
-  newMaxColor: {r: 1, g: 0.60081136, b: 0.09558821, a: 1}
-  newMinColor: {r: 0.09558821, g: 0.8128805, b: 1, a: 1}
-  ParticleSystems:
-  - {fileID: 1823173409967616}
-  - {fileID: 1590967563268456}
-  - {fileID: 1183986696126840}
-  - {fileID: 1185871635733866}
-  - {fileID: 1228119561073612}
-  - {fileID: 1229182043285656}
-  ActiveParticleSystems: 010101010101
 --- !u!198 &198302984453370694
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -15237,8 +15180,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.35321155, g: 0.8836768, b: 1.0220588, a: 1}
-      maxColor: {r: 1, g: 0.6981744, b: 0.31617647, a: 1}
+      minColor: {r: 0.16911763, g: 0.8280935, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.6105476, b: 0.11764705, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -15300,8 +15243,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.4
-      minScalar: 0.7
+      scalar: 2
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:

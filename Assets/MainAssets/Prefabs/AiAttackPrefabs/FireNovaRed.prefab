@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5528972488536431616}
   - component: {fileID: 5650689954899006720}
   - component: {fileID: 5651619107138208304}
+  - component: {fileID: 5748099408337083250}
   m_Layer: 0
   m_Name: NovaRing
   m_TagString: Untagged
@@ -3699,7 +3700,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -4909,6 +4910,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5748099408337083250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5524890640736436724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 675d9746a20133f47b78e01ce79bfc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  healthBar: {fileID: 0}
 --- !u!1 &5525468901328504620
 GameObject:
   m_ObjectHideFlags: 0
@@ -9811,6 +9826,7 @@ GameObject:
   - component: {fileID: 5522738269343152830}
   - component: {fileID: 5650647496092887462}
   - component: {fileID: 5649802714802461530}
+  - component: {fileID: 2628740637799659053}
   m_Layer: 0
   m_Name: FireNovaRed
   m_TagString: Untagged
@@ -13474,7 +13490,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -13651,15 +13667,15 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 64
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 2
     inside: 1
     outside: 0
@@ -13668,12 +13684,9 @@ ParticleSystem:
     colliderQueryMode: 0
     radiusScale: 1
     primitives:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 5522738269343152830}
+    - {fileID: 5528972488536431616}
+    - {fileID: 5529189835031932952}
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -14685,3 +14698,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2628740637799659053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5525736257536474676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7ba392220200748bccfcd468136a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderGO: {fileID: 5525736257536474676}

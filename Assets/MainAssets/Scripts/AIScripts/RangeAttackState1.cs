@@ -27,8 +27,7 @@ public class RangeAttackState1 : AiState
 
     public void Update(AiAgent agent)
     {
-        Debug.Log(randomNumber);
-        
+       
 
         if (agent.animator.GetCurrentAnimatorStateInfo(0).IsTag("Arrow")) //if animation with the tag Arrow is running returns true
         {

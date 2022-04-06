@@ -98,4 +98,5 @@ public class Entity : MonoBehaviour
         }
         return false;
     }
+
 }

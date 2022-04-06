@@ -54,7 +54,9 @@ public class MeleeAttackState : AttackState
     {
         base.TriggerAttack();
         //TODO: damage player
+
     }
+    
 
    
 }
