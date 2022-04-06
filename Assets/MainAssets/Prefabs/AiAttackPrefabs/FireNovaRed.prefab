@@ -4922,7 +4922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 675d9746a20133f47b78e01ce79bfc5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damagePCT: 10
   healthBar: {fileID: 0}
 --- !u!1 &5525468901328504620
 GameObject:
@@ -9826,7 +9826,7 @@ GameObject:
   - component: {fileID: 5522738269343152830}
   - component: {fileID: 5650647496092887462}
   - component: {fileID: 5649802714802461530}
-  - component: {fileID: 2628740637799659053}
+  - component: {fileID: 2729045207932829700}
   m_Layer: 0
   m_Name: FireNovaRed
   m_TagString: Untagged
@@ -13488,7 +13488,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -13559,7 +13559,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -13612,7 +13612,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -13667,7 +13667,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 64
+      m_Bits: 256
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -13675,7 +13675,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 2
     inside: 1
     outside: 0
@@ -14698,7 +14698,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &2628740637799659053
+--- !u!114 &2729045207932829700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14707,7 +14707,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5525736257536474676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f7ba392220200748bccfcd468136a14, type: 3}
+  m_Script: {fileID: 11500000, guid: 675d9746a20133f47b78e01ce79bfc5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliderGO: {fileID: 5525736257536474676}
+  damagePCT: 20
+  healthBar: {fileID: 0}

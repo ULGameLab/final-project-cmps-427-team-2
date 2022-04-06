@@ -11,21 +11,11 @@
 	{
         //bullet 
         public GameObject bullet;
+        public float manaCost = 1;
 
-        //bullet force
-        public float shootForce, upwardForce;
 
         //Gun stats
         public float spread;
-        public int magazineSize, bulletsPerTap;
-        public bool allowButtonHold;
-
-
-        //Recoil
-        //public Rigidbody playerRb;
-        public float recoilForce;
-
-        //bools
 
         //Reference
         public Camera fpsCam;
@@ -34,14 +24,18 @@
         //Graphics
         public GameObject muzzleFlash;
 
-        //bug fixing :D
-        public bool allowInvoke = true;
+        private ManaBar manaBar;
+
+        private void Awake()
+        {
+            manaBar = GameObject.Find("ManaBar").GetComponent<ManaBar>();
+        }
 
         public override bool InstantExecute(GameObject target, IAction[] actions, int index)
         {
             Shoot();
-	
-
+            manaBar.usingMana = true;
+            manaBar.UseMana(manaCost);
 			return true;
         }
         private void Shoot()
@@ -76,7 +70,7 @@
         currentBullet.transform.forward = directionWithSpread.normalized;
 
         //Add forces to bullet
-        currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * shootForce, ForceMode.Impulse);
+        currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized, ForceMode.Impulse);
         //currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * upwardForce, ForceMode.Impulse);
 
         //Instantiate muzzle flash, if you have one

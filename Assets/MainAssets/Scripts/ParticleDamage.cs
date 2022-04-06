@@ -4,38 +4,28 @@ using UnityEngine;
 
 public class ParticleDamage : MonoBehaviour
 {
-    // The collider to Instantiate. You can also use Resources.Load<GameObject>(). "
-    public GameObject colliderGO;
-    GameObject inst;
 
-    void OnParticleTrigger()
+    public float damagePCT;
+    private ParticleSystem particleSystem;
+    private List<ParticleCollisionEvent> particleCollisionEvents;
+
+    private void Awake()
     {
-        ParticleSystem ps = GetComponent<ParticleSystem>();
+        particleSystem = GetComponent<ParticleSystem>();
+        particleCollisionEvents = new List<ParticleCollisionEvent>();
+    }
 
-        // particles
-        List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
-
-        // get
-        int numEnter = ps.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
-
-        // iterate
-        for (int i = 0; i < numEnter; i++)
+    private void OnParticleCollision(GameObject other)
+    {
+        //print("Hello");
+        ParticlePhysicsExtensions.GetCollisionEvents(particleSystem, other, particleCollisionEvents);
+        for(int i = 0; i < particleCollisionEvents.Count; i++)
         {
-            ParticleSystem.Particle p = enter[i];
-            // instantiate the Game Object
-            inst = Instantiate(colliderGO, p.position, Quaternion.identity);
-            enter[i] = p;
+            var collider = particleCollisionEvents[i].colliderComponent;
+            if (collider.CompareTag("Player"))
+            {
+                print("Player Hit");
+            }
         }
-
-        // set
-        ps.SetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        print("hello");
-        Destroy(inst);
-    }
-    
-
 }

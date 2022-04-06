@@ -14,6 +14,7 @@
 #endif
         public float elapse = 5f;
         public float coolDown = 5f;
+        public float manaCost = 1f;
 
         private float currentElapsedTime;
         private float currentCoolDown;
@@ -24,7 +25,12 @@
 
         private int currentKey = 0;
 
-       
+        private ManaBar manaBar;
+
+        private void Awake()
+        {
+            manaBar = GameObject.Find("ManaBar").GetComponent<ManaBar>();
+        }
 
         private void Start()
         {
@@ -77,6 +83,8 @@
                     currentKey = 0;
                     currentCoolDown = coolDown;
                     currentElapsedTime = elapse;
+                    manaBar.UseMana(manaCost);
+                    manaBar.currentTimeDelay = manaBar.rechargeDelay;
                     this.ExecuteTrigger();
                     setAllButtonsFalse(buttons);
 
