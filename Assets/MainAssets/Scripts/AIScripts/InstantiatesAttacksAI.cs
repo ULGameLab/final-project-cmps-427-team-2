@@ -23,6 +23,14 @@ public class InstantiatesAttacksAI : MonoBehaviour
     //goblin attack objects
     public GameObject arrowShot;
 
+    //CuteDevil AttackObjects
+    public GameObject fireBallAttack;
+    public GameObject radioActiveBallAttack;
+
+    //CuteDevilAttackLocations
+    public Transform fireBallPosition;
+    public Transform radioActiveBallPosition;
+
 
 
     private void Start()
@@ -58,5 +66,18 @@ public class InstantiatesAttacksAI : MonoBehaviour
         instatiatedObject.GetComponent<Rigidbody>().AddForce(transform.forward * 50f, ForceMode.Impulse);
         Destroy(instatiatedObject, 6);
     }
-  
+
+    public void InstantiateFireBall()
+    {
+        GameObject instatiatedObject = Instantiate(fireBallAttack, fireBallPosition.position, Quaternion.Euler(0, 0, 0));
+        instatiatedObject.GetComponent<Rigidbody>().AddForce(transform.forward * 50f, ForceMode.Impulse);
+    }
+
+    public void InstantiateRadioActiveBall()
+    {
+        GameObject instatiatedObject = Instantiate(fireBallAttack, fireBallPosition.position, Quaternion.Euler(0, 0, 0));
+        instatiatedObject.GetComponent<Rigidbody>().AddForce(transform.forward * 50f, ForceMode.Impulse);
+        Destroy(instatiatedObject, 3);
+    }
+
 }

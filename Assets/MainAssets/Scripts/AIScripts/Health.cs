@@ -53,18 +53,7 @@ public class Health : MonoBehaviour
         {
             uiHealthBarGameObject.SetActive(true);
         }
-        if (currentHealth <= 0)
-        {
-            uiHealthBar.SetActive(false);
-            if(aiAgent != null)
-            {
-                aiAgent.enabled = false;
-            }
-           
-            ragdoll.ActivateRagdoll();
-            aILocomotion.enabled = false;
-            this.enabled = false;
-        }
+        
 
     }
 

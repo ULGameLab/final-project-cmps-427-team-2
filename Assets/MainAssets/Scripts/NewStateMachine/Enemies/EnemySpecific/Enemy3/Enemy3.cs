@@ -45,7 +45,7 @@ public class Enemy3 : Entity
         if (health.currentHealth <= 0)
         {
             uiHealthBar.SetActive(false);
-            Die();
+            DeathWithAnimation();
             this.enabled = false;
         }
     }

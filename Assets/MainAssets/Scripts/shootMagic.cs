@@ -21,9 +21,6 @@
         public Camera fpsCam;
         public Transform attackPoint;
 
-        //Graphics
-        public GameObject muzzleFlash;
-
         private ManaBar manaBar;
 
         private void Awake()
@@ -73,16 +70,13 @@
         currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized, ForceMode.Impulse);
         //currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * upwardForce, ForceMode.Impulse);
 
-        //Instantiate muzzle flash, if you have one
-        if (muzzleFlash != null)
-            Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
 
 
 
     }
 
 		#if UNITY_EDITOR
-        public static new string NAME = "Custom/shootMagic";
+        public static new string NAME = "Custom/ShootMagic";
 		#endif
 	}
 }

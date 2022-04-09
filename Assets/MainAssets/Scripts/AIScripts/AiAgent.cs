@@ -11,6 +11,7 @@ public class AiAgent : MonoBehaviour
     public AiAgentConfig config;
     public Ragdoll ragdoll;
     public UIHealthBar health;
+    public Health healthScript;
     public SkinnedMeshRenderer mesh;
     public UIHealthBar ui;
     public AILocomotion aILocomotion;
@@ -24,6 +25,7 @@ public class AiAgent : MonoBehaviour
     public bool animationRunning;
     public bool arrowRunning;
     public bool randomNumberSet;
+    public GameObject healthObject;
 
     //points around the player the melee characters will go to so they dont all flock together on top of each other
     public GameObject[] meleeFollowLocations; 
@@ -58,6 +60,13 @@ public class AiAgent : MonoBehaviour
     {
         distanceFromPlayer = Vector3.Distance(playerTransform.position, enemyTransform.position);
         stateMachine.Update();
+        if(healthScript.currentHealth <= 0)
+        {
+            ragdoll.ActivateRagdoll();
+            healthObject.SetActive(false);
+            aILocomotion.enabled = false;
+            this.enabled = false;
+        }
     }
 
     public void EmptySpots()

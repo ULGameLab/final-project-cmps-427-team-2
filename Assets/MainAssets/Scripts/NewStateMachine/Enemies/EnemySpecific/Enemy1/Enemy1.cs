@@ -40,7 +40,7 @@ public class Enemy1 : Entity
         if(health.currentHealth <= 0)
         {
             uiHealthBar.SetActive(false);
-            Die();
+            RagdollDeath();
             this.enabled = false;
         }
     }

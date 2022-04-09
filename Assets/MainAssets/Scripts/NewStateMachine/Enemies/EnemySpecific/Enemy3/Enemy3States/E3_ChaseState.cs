@@ -16,6 +16,7 @@ public class E3_ChaseState : ChasePlayerState
     {
         base.Enter();
         timeToMove = 2f;
+      
         //timer = 0;
 
 

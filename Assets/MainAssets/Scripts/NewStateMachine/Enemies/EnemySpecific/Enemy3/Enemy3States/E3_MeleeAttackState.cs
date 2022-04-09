@@ -79,7 +79,7 @@ public class E3_MeleeAttackState : MeleeAttackState
             }
             if (randomNumberSet)
             {
-                entity.anim.SetTrigger("Attack" + randomNumber);
+                entity.anim.SetTrigger("MeleeAttack" + randomNumber);
                 randomTimeBetweenAttacks = Random.Range(stateData.lowerRandomTimeBetweenAttacksNumber, stateData.upperRandomTimeBetweenAttacksNumber);
                 randomNumberSet = false;
             }
