@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upperRandomTimeBetweenAttacksNumber: 2
   lowerRandomTimeBetweenAttacksNumber: 5
-  numberOfMeleeAttacks: 2
+  numberOfMeleeAttacks: 1
   attackDamage: []

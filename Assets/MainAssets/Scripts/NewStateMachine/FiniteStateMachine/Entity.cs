@@ -13,6 +13,8 @@ public class Entity : MonoBehaviour
 
     public BoxCollider wanderBounds;
 
+    public Transform startWanderPoint;
+
     public Animator anim {get; private set;}
     public AILocomotion aILocomotion { get; private set; }
     public GameObject player { get; private set; }
@@ -74,12 +76,18 @@ public class Entity : MonoBehaviour
         return false;
     }
 
-    public virtual void Die()
+    public virtual void RagdollDeath()
     {
         ragdoll.ActivateRagdoll();
         aILocomotion.enabled = false;
-
     }
+
+    public virtual void DeathWithAnimation()
+    {
+        aILocomotion.enabled = false;
+        anim.SetTrigger("Die");
+    }
+
 
     public virtual bool CheckPlayerInCloseRange()
     {

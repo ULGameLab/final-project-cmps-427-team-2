@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upperRandomTimeBetweenAttacksNumber: 1
   lowerRandomTimeBetweenAttacksNumber: 3
-  numberOfRangeAttacks: 3
+  numberOfRangeAttacks: 2
   attackDamage: []

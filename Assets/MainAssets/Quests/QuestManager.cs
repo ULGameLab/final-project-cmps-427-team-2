@@ -9,6 +9,7 @@ public class QuestManager : MonoBehaviour
     public DialogueManager dlm;
     public DialogueTrigger dlt;
     public Dialogue dl;
+    
     public GameObject npc1;
     public GameObject npc2;
     public GameObject npc3;
@@ -16,7 +17,10 @@ public class QuestManager : MonoBehaviour
     public GameObject npc5;
 
     public GameObject Goblin;
-    int goblinskilled = 0;
+    public GameObject Barbarian; 
+
+    public int goblinskilled = 0;
+    public int barbarianskilled = 0;
 
     public BookBehavior BookHandler;
 
@@ -40,10 +44,10 @@ public class QuestManager : MonoBehaviour
 
     // Description of quests. Will use dummy testables for right now 
     string Quest1Des = "Help Andre get to the road.";
-    string Quest2Des = "Protect Andre from upcoming goblins.";
-    string Quest3Des = "Kill 10 Goblins.";
-    string Quest4Des = "Help Tom get to the lake";
-    string Quest5Des = "Protect Tom from the barbarians. ";
+    string Quest2Des = "Protect Andre from gblins. Kill 5 Goblins.";
+    string Quest3Des = "Help Dustin to the road.";
+    string Quest4Des = "Protect Dustin from Barabarians. Kill 5 Barabarians ";
+    string Quest5Des = "Arrive at the Port ";
 
     QuestFinder[] ListOfQuests = new QuestFinder[5];
 
@@ -174,7 +178,7 @@ public class QuestManager : MonoBehaviour
 
     // quest 2-----------------------------------------------------------------
 
-    public void StartQuest2()
+    public void startQuest2()
     {
         if (BookHandler.questSlotAvailable() == true)
         {
@@ -196,10 +200,110 @@ public class QuestManager : MonoBehaviour
             goblinskilled++;
             if (goblinskilled == 5)
             {
-                // complete quest
+                ListOfQuests[1].setCompleted();
+                ListOfQuests[1].setActive(false);
+                // Will have a UI to say quest completed.
+                BookHandler.CompleteQuest(ListOfQuests[1].getSlot());
+                // unlock spell as reward
+
+            }
+            else
+            {
+                // Have to continue to kill gobins --> UI Will show a screen that will tell user to keep going 
+                // Could have a kill count to document the amount of kills
             }
         }
         
     }
-    
+    // quest 3-----------------------------------------------------------------
+    public void startQuest3()
+    {
+        if (BookHandler.questSlotAvailable() == true)
+        {
+            // start quest
+            ListOfQuests[2].setSlot(BookHandler.firstFreeQuestSlot());
+            BookHandler.setQuest(Quest1Title, Quest3Des);
+            ListOfQuests[2].setActive(true);
+        }
+        else
+        {
+            // dont allow quest to start
+        }
+
+
+    }
+    public void Quest3Check()
+    {
+        if (ListOfQuests[2].getActive() == true)
+        {
+            ListOfQuests[2].setCompleted();
+            ListOfQuests[2].setActive(false);
+            // call dialog manager for quest 1 complete dialog
+            BookHandler.CompleteQuest(ListOfQuests[2].getSlot());
+            // unlock spell as reward
+        }
+    }
+    // quest 4-----------------------------------------------------------------
+    public void startQuest4()
+    {
+
+        if (BookHandler.questSlotAvailable() == true)
+        {
+            // start quest
+            ListOfQuests[3].setSlot(BookHandler.firstFreeQuestSlot());
+            BookHandler.setQuest(Quest4Title, Quest3Des);
+            ListOfQuests[3].setActive(true);
+        }
+        else
+        {
+            // dont allow quest to start
+        }
+    }
+    public void Quest4Check()
+    {
+        if (ListOfQuests[3].getActive() == true)
+        {
+            barbarianskilled++;
+            if (barbarianskilled == 5)
+            {
+                ListOfQuests[3].setCompleted();
+                ListOfQuests[3].setActive(false);
+                // call dialog manager for quest 1 complete dialog
+                BookHandler.CompleteQuest(ListOfQuests[3].getSlot());
+                // unlock spell as reward
+            }
+            else
+            {
+                //Keep killing Barabarians 
+            }
+        }
+
+    }
+    // quest 5-----------------------------------------------------------------
+    public void startQuest5()
+    {
+        if (BookHandler.questSlotAvailable() == true)
+        {
+            // start quest
+            ListOfQuests[4].setSlot(BookHandler.firstFreeQuestSlot());
+            BookHandler.setQuest(Quest5Title, Quest3Des);
+            ListOfQuests[4].setActive(true);
+        }
+        else
+        {
+            // dont allow quest to start
+        }
+    }
+    public void Quest5Check()
+    {
+        if (ListOfQuests[4].getActive() == true)
+        {
+            ListOfQuests[4].setCompleted();
+            ListOfQuests[4].setActive(false);
+            // call dialog manager for quest 1 complete dialog
+            BookHandler.CompleteQuest(ListOfQuests[4].getSlot());
+            // unlock spell as reward
+        }
+    }
+
 }
