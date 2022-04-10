@@ -1,0 +1,106 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEditor;
+using UnityEngine.SceneManagement;
+
+
+public class Dialogue_Display : MonoBehaviour
+{
+    public Convo_1 conversation;
+    public Convo_1 defaultConversation;
+
+    public GameObject speakerLeft;
+    public GameObject speakerRight;
+
+    private Speaker_S speakerUILeft;
+    private Speaker_S speakerUIRight;
+
+    private int activeLines = 0;
+    public bool conversationStarted = false;
+
+    void Start()
+    {
+        speakerUILeft = speakerLeft.GetComponent<Speaker_S>();
+        speakerUIRight = speakerRight.GetComponent<Speaker_S>();
+
+        speakerUILeft.Speaker = conversation.speakerLeft;
+        speakerUIRight.Speaker = conversation.speakerRight;
+
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            AdvanceConversation();
+        }else if (Input.GetKeyDown("x"))
+        {
+            EndConversation();
+        }
+    }
+    void EndConversation()
+    {
+        conversation = defaultConversation;
+        conversationStarted = false;
+        speakerUILeft.Hide();
+        speakerUIRight.Hide();
+    }
+    void AdvanceConversation()
+    {
+        if (activeLines < conversation.lines.Length)
+        {
+            DisplayLine();
+            activeLines += 1;
+        }
+        else
+        {
+            speakerUILeft.Hide();
+            speakerUIRight.Hide();
+            activeLines = 0;
+        }
+    }
+    void DisplayLine()
+    {
+        Line line = conversation.lines[activeLines];
+        Character character = line.character;
+
+        if (speakerUILeft.SpeakerIs(character))
+        {
+            SetDialogue(speakerUILeft, speakerUIRight, line);
+        }
+        else
+        {
+            SetDialogue(speakerUIRight, speakerUILeft, line);
+        }
+        activeLines += 1;
+
+    }
+    void SetDialogue(
+        Speaker_S activeSpeakerUI,
+        Speaker_S inactiveSpeakerUI,
+        //string text
+        Line line
+    )
+    {
+        activeSpeakerUI.Show();
+        inactiveSpeakerUI.Hide();
+
+        activeSpeakerUI.Dialogue = " ";
+        activeSpeakerUI.Show();
+
+        StopAllCoroutines();
+        StartCoroutine(EffectTypeWriter(line.text, activeSpeakerUI));
+    }
+
+    private IEnumerator EffectTypeWriter(string text, Speaker_S controller)
+    {
+        foreach(char character in text.ToCharArray())
+        {
+            controller.Dialogue += character;
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+}
+    
+

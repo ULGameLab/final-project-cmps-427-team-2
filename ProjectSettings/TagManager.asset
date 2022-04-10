@@ -12,6 +12,8 @@ TagManager:
   - GoblinArcher
   - Healing
   - Enemy
+  - p1
+  - np1
   layers:
   - Default
   - TransparentFX

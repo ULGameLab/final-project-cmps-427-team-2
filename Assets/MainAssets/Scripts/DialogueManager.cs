@@ -43,6 +43,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void EndDialogue()
     {
+        //QuestShouldStart;
         Debug.Log("End of Conversation. ");
     }
 
