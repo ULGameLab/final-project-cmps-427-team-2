@@ -41,7 +41,7 @@ public class E1_MoveState : MoveState
 
     public void Wander()
     {
-        Vector3 newPos = RandomNavSphere(entity.enemy.position, stateData.wanderRadius, -1);
+        Vector3 newPos = RandomNavSphere(entity.enemy.transform.position, stateData.wanderRadius, -1);
 
         if (entity.wanderBounds.bounds.Contains(newPos))
         {
@@ -50,7 +50,7 @@ public class E1_MoveState : MoveState
         }
         else
         {
-            newPos = RandomNavSphere(entity.enemy.position, stateData.wanderRadius, -1);
+            newPos = RandomNavSphere(entity.enemy.transform.position, stateData.wanderRadius, -1);
             movePointSet = false;
         }
 

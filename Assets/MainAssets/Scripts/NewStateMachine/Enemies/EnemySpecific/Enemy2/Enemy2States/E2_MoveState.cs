@@ -41,16 +41,22 @@ public class E2_MoveState : MoveState
 
     public void Wander()
     {
-        Vector3 newPos = RandomNavSphere(entity.enemy.position, stateData.wanderRadius, -1);
+        Vector3 newPos = RandomNavSphere(entity.enemy.transform.position, stateData.wanderRadius, -1);
+
+        if (!entity.wanderBounds.bounds.Contains(entity.enemy.position))
+        {
+            movePoint = entity.startWanderPoint.position;
+            movePointSet = true;
+        }
 
         if (entity.wanderBounds.bounds.Contains(newPos))
         {
             movePoint = newPos;
             movePointSet = true;
         }
-        else
+        else if (!entity.wanderBounds.bounds.Contains(newPos) && entity.wanderBounds.bounds.Contains(entity.enemy.position))
         {
-            newPos = RandomNavSphere(entity.enemy.position, stateData.wanderRadius, -1);
+            newPos = RandomNavSphere(entity.enemy.transform.position, stateData.wanderRadius, -1);
             movePointSet = false;
         }
 
