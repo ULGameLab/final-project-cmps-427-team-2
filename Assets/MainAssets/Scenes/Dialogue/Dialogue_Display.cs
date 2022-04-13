@@ -17,7 +17,7 @@ public class Dialogue_Display : MonoBehaviour
     private Speaker_S speakerUILeft;
     private Speaker_S speakerUIRight;
 
-    private int activeLines = 0;
+    public int activeLines = 0;
     public bool conversationStarted = false;
 
     void Start()
@@ -25,9 +25,7 @@ public class Dialogue_Display : MonoBehaviour
         speakerUILeft = speakerLeft.GetComponent<Speaker_S>();
         speakerUIRight = speakerRight.GetComponent<Speaker_S>();
 
-        speakerUILeft.Speaker = conversation.speakerLeft;
-        speakerUIRight.Speaker = conversation.speakerRight;
-
+        
     }
     void Update()
     {
@@ -45,6 +43,16 @@ public class Dialogue_Display : MonoBehaviour
         conversationStarted = false;
         speakerUILeft.Hide();
         speakerUIRight.Hide();
+    }
+    public void Initialize()
+    {
+        conversationStarted = true;
+        activeLines = 0;
+
+        speakerUILeft.Speaker = conversation.speakerLeft;
+        speakerUIRight.Speaker = conversation.speakerRight;
+
+
     }
     void AdvanceConversation()
     {
@@ -69,7 +77,7 @@ public class Dialogue_Display : MonoBehaviour
         {
             SetDialogue(speakerUILeft, speakerUIRight, line);
         }
-        else
+        else if(speakerUIRight.SpeakerIs(character))
         {
             SetDialogue(speakerUIRight, speakerUILeft, line);
         }

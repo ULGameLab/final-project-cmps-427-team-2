@@ -123,6 +123,66 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &248023557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 248023559}
+  - component: {fileID: 248023558}
+  m_Layer: 0
+  m_Name: QuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &248023558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248023557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc7241d47dc3a94299edb2cd4d2cda6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bh: {fileID: 0}
+  dlm: {fileID: 0}
+  dlt: {fileID: 0}
+  dl:
+    name: 
+    sentences: []
+  npc1: {fileID: 2094013889}
+  npc2: {fileID: 0}
+  npc3: {fileID: 0}
+  npc4: {fileID: 0}
+  npc5: {fileID: 0}
+  Goblin: {fileID: 0}
+  Barbarian: {fileID: 0}
+  goblinskilled: 0
+  barbarianskilled: 0
+  BookHandler: {fileID: 0}
+--- !u!4 &248023559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248023557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 459.82968, y: 201.23305, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &427587065
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +373,7 @@ MonoBehaviour:
   defaultConversation: {fileID: 0}
   speakerLeft: {fileID: 1775431130}
   speakerRight: {fileID: 2054230902}
+  activeLines: 0
   conversationStarted: 0
 --- !u!1 &571183727
 GameObject:
@@ -476,7 +537,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582602131}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -539,7 +600,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582602131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 715, y: 288, z: 0}
+  m_LocalPosition: {x: 233, y: 27, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1458,7 +1519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094013889}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 107, y: 295, z: 0}
+  m_LocalPosition: {x: 107, y: 83, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1477,4 +1538,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f363ca29827b03342a90c380a18cf6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuestManager: {fileID: 0}
+  QuestManager: {fileID: 248023558}
+  dDisplay: {fileID: 457881911}

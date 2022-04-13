@@ -16,12 +16,12 @@ MonoBehaviour:
   speakerRight: {fileID: 11400000, guid: 135636fab6d98e44f827ba3f4a8f13eb, type: 2}
   lines:
   - character: {fileID: 11400000, guid: 5dce4987b22828e42811f5c75951b50c, type: 2}
-    text: 'Hi I am a Cube '
+    text: 'Hi I''m Andre '
   - character: {fileID: 11400000, guid: 135636fab6d98e44f827ba3f4a8f13eb, type: 2}
     text: 'Helloe Im a sphere '
   - character: {fileID: 11400000, guid: 5dce4987b22828e42811f5c75951b50c, type: 2}
-    text: Whats up with you
+    text: 'Could you help me get to the road '
   - character: {fileID: 11400000, guid: 135636fab6d98e44f827ba3f4a8f13eb, type: 2}
-    text: 'Nuthin much '
+    text: Thank you
   - character: {fileID: 11400000, guid: 5dce4987b22828e42811f5c75951b50c, type: 2}
-    text: 'Thats good thats good '
+    text: Thank you
