@@ -171,6 +171,7 @@ public class QuestManager : MonoBehaviour
             // call dialog manager for quest 1 complete dialog
             BookHandler.CompleteQuest(ListOfQuests[0].getSlot());
             // unlock spell as reward
+            BookHandler.unLockSpell(2);
         }
     }
 
