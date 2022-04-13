@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4753623713790614}
   - component: {fileID: 198136896770129860}
   - component: {fileID: 199890092704046084}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnergyNovaBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4909,7 +4909,7 @@ GameObject:
   - component: {fileID: 4362296667283484}
   - component: {fileID: 198756455533793446}
   - component: {fileID: 199393062807207776}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RingNova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9819,7 +9819,7 @@ GameObject:
   - component: {fileID: 4434461603214072}
   - component: {fileID: 198914759984715106}
   - component: {fileID: 199766190048584346}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HorizontalGlowRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14747,7 +14747,7 @@ GameObject:
   - component: {fileID: 4524973693781976}
   - component: {fileID: 198773868068237118}
   - component: {fileID: 199759471387008298}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CenterSphereGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19630,7 +19630,7 @@ GameObject:
   - component: {fileID: 4584825264875740}
   - component: {fileID: 198355571375481312}
   - component: {fileID: 199013962338104540}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CenterWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24522,7 +24522,7 @@ GameObject:
   - component: {fileID: 4225971448803408}
   - component: {fileID: 198851692528186342}
   - component: {fileID: 199008121811028404}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: VerticalGlowRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29405,7 +29405,7 @@ GameObject:
   - component: {fileID: 4440564045872578}
   - component: {fileID: 198944802805636472}
   - component: {fileID: 199399293187945154}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CenterGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

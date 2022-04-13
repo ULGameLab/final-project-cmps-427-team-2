@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4054314107881740}
   - component: {fileID: 198215772757571034}
   - component: {fileID: 199206270972493948}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StartEmbers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4903,7 +4903,7 @@ GameObject:
   - component: {fileID: 4653657156335428}
   - component: {fileID: 198062297543414648}
   - component: {fileID: 199979659462125172}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EndDebris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9876,7 +9876,7 @@ GameObject:
   - component: {fileID: 4250450563155094}
   - component: {fileID: 198708320054400642}
   - component: {fileID: 199426353783535324}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpikeWallIce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14846,7 +14846,7 @@ GameObject:
   - component: {fileID: 4833120467605062}
   - component: {fileID: 198685957947482530}
   - component: {fileID: 199267062721087258}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EndGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19783,7 +19783,7 @@ GameObject:
   - component: {fileID: 4381422297043724}
   - component: {fileID: 198602034669260020}
   - component: {fileID: 199829244024070408}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EndEmbers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24666,7 +24666,7 @@ GameObject:
   - component: {fileID: 5492502394031544011}
   - component: {fileID: 6765619622256067273}
   - component: {fileID: 6597192311391692544}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StartDebris
   m_TagString: Untagged
   m_Icon: {fileID: 0}

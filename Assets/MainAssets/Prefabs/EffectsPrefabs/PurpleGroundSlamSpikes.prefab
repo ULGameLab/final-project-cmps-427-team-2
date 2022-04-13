@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4133116666148320}
   - component: {fileID: 198648051276569986}
   - component: {fileID: 199756437378585618}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundSpikeEmbersStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4894,7 +4894,7 @@ GameObject:
   - component: {fileID: 4675445714707760}
   - component: {fileID: 198753240557448904}
   - component: {fileID: 199026942522380522}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PurpleGroundSlamSpikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9809,7 +9809,7 @@ GameObject:
   - component: {fileID: 4181728090985246}
   - component: {fileID: 198896052078216840}
   - component: {fileID: 199528470969024802}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmallRockExplosionEmbers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14692,7 +14692,7 @@ GameObject:
   - component: {fileID: 4610899510199754}
   - component: {fileID: 198037287111189256}
   - component: {fileID: 199444242994234634}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmallRockExplosionDebris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19665,7 +19665,7 @@ GameObject:
   - component: {fileID: 4619846292674634}
   - component: {fileID: 198105178890246488}
   - component: {fileID: 199680646986438214}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmallRockExplosionGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

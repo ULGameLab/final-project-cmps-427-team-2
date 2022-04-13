@@ -36,6 +36,9 @@ EditorBuildSettings:
     path: Assets/Plugins/GameCreator/Examples/Scenes/Example-3.unity
     guid: 049c31a0f8082406eb0a64934aa5f3b4
   - enabled: 1
+    path: Assets/MainAssets/Scenes/TitleScreen.unity
+    guid: e58e6c56560cf42419059ddcfe78cce5
+  - enabled: 1
     path: Assets/MainAssets/Scenes/Main.unity
     guid: 37630c7f2afcdc54cb86f0d51ac9527d
   m_configObjects: {}

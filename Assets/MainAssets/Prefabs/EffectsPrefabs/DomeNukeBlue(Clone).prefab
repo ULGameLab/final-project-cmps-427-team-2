@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5769275308984262535}
   - component: {fileID: 740361871433422603}
   - component: {fileID: 4964904491195498792}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4902,7 +4902,7 @@ GameObject:
   - component: {fileID: 7867716145807118007}
   - component: {fileID: 6730088280155173597}
   - component: {fileID: 965285176155476781}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Radius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9784,7 +9784,7 @@ GameObject:
   - component: {fileID: 8922990816039186221}
   - component: {fileID: 1714575225465659187}
   - component: {fileID: 846548167521542799}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmokeCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14675,7 +14675,7 @@ GameObject:
   - component: {fileID: 4913925446200915655}
   - component: {fileID: 4767754438829298398}
   - component: {fileID: 893075734001229856}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmokeTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19558,7 +19558,7 @@ GameObject:
   - component: {fileID: 3858815188669947465}
   - component: {fileID: 2473026525942854300}
   - component: {fileID: 1277960412393099729}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TrailEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24450,7 +24450,7 @@ GameObject:
   - component: {fileID: 6633025382697630245}
   - component: {fileID: 2973805511969392290}
   - component: {fileID: 4745558052082534315}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DomeNukeBlue(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
