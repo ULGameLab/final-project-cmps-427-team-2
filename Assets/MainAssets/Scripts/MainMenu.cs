@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -13,6 +14,19 @@ public class MainMenu : MonoBehaviour
     public GameObject InfoScreen;
     public CanvasGroup InfoGroup;
     public GameObject credits;
+    public GameObject BlackBox;
+    public CanvasGroup BlackGroup;
+    public GameObject EndScene;
+    public CanvasGroup EndGroup;
+
+    public TextMeshProUGUI EndHeader;
+    public TextMeshProUGUI EndDes;
+
+    public Material skyDay;
+    public Material skyNight;
+    public Light light;
+    bool dayTime;
+    bool blackness;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +34,13 @@ public class MainMenu : MonoBehaviour
         TitleGroup.alpha = 0;
         InfoScreen.SetActive(false);
         credits.SetActive(false);
+        EndScene.SetActive(false);
         InfoGroup.alpha = 0;
+        BlackGroup.alpha = 0;
         showUI = false;
         showInfo = false;
+        blackness = false;
+        setDay();
         fadeIn();
     }
 
@@ -32,7 +50,7 @@ public class MainMenu : MonoBehaviour
         //fade stuff for main menu
         if (showUI)
         {
-            if (!TitleScreen.activeInHierarchy)
+            if (!TitleScreen.activeInHierarchy && dayTime)
             {
                 TitleScreen.SetActive(true);
             }
@@ -57,7 +75,7 @@ public class MainMenu : MonoBehaviour
         //fade stuff for info
         if (showInfo)
         {
-            if(!InfoScreen.activeInHierarchy)
+            if(!InfoScreen.activeInHierarchy && dayTime)
             {
                 InfoScreen.SetActive(true);
             }
@@ -78,7 +96,73 @@ public class MainMenu : MonoBehaviour
             }
         }
 
+        //fade stuff for black box
+        if (blackness)
+        {
+            if(!BlackBox.activeInHierarchy)
+            {
+                BlackBox.SetActive(true);
+            }
+            if (BlackGroup.alpha<1)
+            {
+                BlackGroup.alpha += Time.deltaTime * fadeSpeed;
+            }
+        }
+        else
+        {
+            if (BlackGroup.alpha > 0)
+            {
+                BlackGroup.alpha -= Time.deltaTime * fadeSpeed;
+            }
+            if (BlackGroup.alpha == 0 && BlackBox.activeInHierarchy)
+            {
+                BlackBox.SetActive(false);
+            }
+        }
 
+
+    }
+
+    public void setDay()
+    {
+        EndScene.SetActive(false);
+        dayTime = true;
+        RenderSettings.skybox = skyDay;
+        light.intensity = 1;
+        fadeIn();
+    }
+
+    public void setNight()
+    {
+        BlackBox.SetActive(true);
+        BlackGroup.alpha = 0;
+
+        dayTime = false;
+        RenderSettings.skybox = skyNight;
+        light.intensity = 0.075f;
+
+        TitleScreen.SetActive(false);
+        credits.SetActive(false);
+        InfoScreen.SetActive(false);
+        EndScene.SetActive(true);
+
+    }
+
+    public void clickOnReturnMain()
+    {
+        StartCoroutine(NightToDaySmooth());
+    }
+
+    public void Win()
+    {
+        setNight();
+        EndHeader.SetText("You have won!");
+    }
+
+    public void Lose()
+    {
+        setNight();
+        EndHeader.SetText("You have died!");
     }
 
     public void fadeOut()
@@ -165,6 +249,14 @@ public class MainMenu : MonoBehaviour
         fadeOut();
         yield return new WaitForSeconds(1.5f);
         credits.SetActive(true);
+    }
+
+    IEnumerator NightToDaySmooth()
+    {
+        blackness = true;
+        yield return new WaitForSeconds(1.5f);
+        setDay();
+        blackness = false;
     }
 
 }
