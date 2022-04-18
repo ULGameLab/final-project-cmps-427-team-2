@@ -14,6 +14,7 @@ TagManager:
   - Enemy
   - p1
   - np1
+  - Area1
   layers:
   - Default
   - TransparentFX

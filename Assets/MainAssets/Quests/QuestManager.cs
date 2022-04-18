@@ -5,10 +5,10 @@ using UnityEngine.UI;
 using TMPro;
 public class QuestManager : MonoBehaviour
 {
-    public BookBehavior bh;
-    public DialogueManager dlm;
-    public DialogueTrigger dlt;
-    public Dialogue dl;
+    //public BookBehavior bh;
+   //public DialogueManager dlm;
+   //public DialogueTrigger dlt;
+    //public Dialogue dl;
     
     public GameObject npc1;
     public GameObject npc2;
