@@ -24548,6 +24548,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  damage: 15
+  damageHeadMultiplier: 1.5
+  damageLegsMultiplier: 0.7
   accuracy: 100
   fireRate: 1
   muzzlePrefab: {fileID: 1232470965182556, guid: 4eeb51a79b674084887bce37aa7713b3, type: 3}
@@ -24556,6 +24559,8 @@ MonoBehaviour:
   hitSFX: {fileID: 0}
   trails:
   - {fileID: 1565711884464822}
+  damageHead: 0
+  damageLegs: 0
 --- !u!199 &199336869072877302
 ParticleSystemRenderer:
   serializedVersion: 6

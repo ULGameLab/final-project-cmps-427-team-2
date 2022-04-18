@@ -5079,6 +5079,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
+  damage: 6
+  damageHeadMultiplier: 1.5
+  damageLegsMultiplier: 0.7
   accuracy: 100
   fireRate: 2
   muzzlePrefab: {fileID: 1232470965182556, guid: 1f406fcf732effc49b73c758ff73d067, type: 3}
@@ -5090,6 +5093,8 @@ MonoBehaviour:
   - {fileID: 1413449643402434}
   - {fileID: 1341208008140202}
   - {fileID: 1203728549489258}
+  damageHead: 0
+  damageLegs: 0
 --- !u!54 &54262529832021736
 Rigidbody:
   m_ObjectHideFlags: 0

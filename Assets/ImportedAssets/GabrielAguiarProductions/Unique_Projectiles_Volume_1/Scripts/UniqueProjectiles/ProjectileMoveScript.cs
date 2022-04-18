@@ -5,6 +5,9 @@ using UnityEngine;
 public class ProjectileMoveScript : MonoBehaviour {
 
 	public float speed;
+	public float damage = 10f;
+	public float damageHeadMultiplier = 1.5f;
+	public float damageLegsMultiplier = .7f;
 	[Tooltip("From 0% to 100%")]
 	public float accuracy;
 	public float fireRate;
@@ -19,7 +22,17 @@ public class ProjectileMoveScript : MonoBehaviour {
 	private bool collided;
 	private Rigidbody rb;
 
-	void Start () {	
+	[HideInInspector]
+	public float damageHead;
+	public float damageLegs;
+
+    private void Awake()
+    {
+		damageHead = damage * damageHeadMultiplier;
+		damageLegs = damage * damageLegsMultiplier;
+    }
+
+    void Start () {	
 		rb = GetComponent <Rigidbody> ();
 
 		//used to create a radius for the accuracy and have a very unique randomness
@@ -66,6 +79,22 @@ public class ProjectileMoveScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision co) {
+
+		var hitBox = co.collider.GetComponent<HitBox>();
+		if(co.gameObject.tag == "Enemy")
+        {
+			hitBox.OnHit(this);
+        }
+		if (co.gameObject.tag == "EnemyHead")
+		{
+			hitBox.OnHeadHit(this);
+		}
+		if (co.gameObject.tag == "EnemyLegs")
+		{
+			hitBox.OnLegsHit(this);
+		}
+
+
 		if (co.gameObject.tag != "Bullet" && !collided) {
 			collided = true;
 			
