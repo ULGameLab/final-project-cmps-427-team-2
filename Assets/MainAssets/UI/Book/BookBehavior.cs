@@ -311,6 +311,8 @@ public class BookBehavior : MonoBehaviour
         else return;
     }
 
+   
+
     // sets a new quest at the indicated quest slot 
     public void setQuest(int questNum, string Title, string Description)
     {
@@ -424,6 +426,38 @@ public class BookBehavior : MonoBehaviour
         Quest4DesText.text = Quest4Des;
         Quest5DesText.text = Quest5Des;
     }
+    public void UpdateQuestText(string text, string title)
+    {
+        if (Quest1TitleText.text == title)
+        {
+            Quest1Des = text;
+            Quest1DesText.text = Quest1Des;
+        }
+
+        else if (Quest2TitleText.text == title)
+        {
+            Quest2Des = text;
+            Quest2DesText.text = Quest2Des;
+        }
+
+        else if (Quest3TitleText.text == title)
+        {
+            Quest3Des = text;
+            Quest3DesText.text = Quest3Des;
+        }
+
+        else if (Quest4TitleText.text == title)
+        {
+            Quest4Des = text;
+            Quest4DesText.text = Quest4Des;
+        }
+        else if (Quest5TitleText.text == title)
+        {
+            Quest5Des = text;
+            Quest5DesText.text = Quest5Des;
+        }
+    }
+
 
     // *****************************************************************************************************************************
     //

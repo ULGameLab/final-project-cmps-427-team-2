@@ -9,7 +9,7 @@ public class Port : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("The object has collided with road.");
-        QuestManager.Quest5Check();
+        QuestManager.QuestCheck(5, 1);
     }
     void OnTriggerStay(Collider other)
     {

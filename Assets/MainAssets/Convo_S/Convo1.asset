@@ -10,18 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 245c0eeed8b90844885acaf955afd629, type: 3}
-  m_Name: FirstConvo
+  m_Name: Convo1
   m_EditorClassIdentifier: 
   speakerLeft: {fileID: 11400000, guid: 5dce4987b22828e42811f5c75951b50c, type: 2}
   speakerRight: {fileID: 11400000, guid: 135636fab6d98e44f827ba3f4a8f13eb, type: 2}
   lines:
   - character: {fileID: 11400000, guid: 5dce4987b22828e42811f5c75951b50c, type: 2}
-    text: 'Hi I''m Andre '
+    text: There's something waiting for you just up ahead
   - character: {fileID: 11400000, guid: 135636fab6d98e44f827ba3f4a8f13eb, type: 2}
-    text: 'Helloe Im a sphere '
+    text: Alright
   - character: {fileID: 11400000, guid: 5dce4987b22828e42811f5c75951b50c, type: 2}
-    text: 'Could you help me get to the road '
+    text: 'If you take this road you will be there in no time '
   - character: {fileID: 11400000, guid: 135636fab6d98e44f827ba3f4a8f13eb, type: 2}
-    text: Thank you
+    text: 'Looking forward to it '
   - character: {fileID: 11400000, guid: 5dce4987b22828e42811f5c75951b50c, type: 2}
-    text: Thank you
+    text: Keep your head on a swivle. People go missing around this area all the
+      time
+  - character: {fileID: 11400000, guid: 135636fab6d98e44f827ba3f4a8f13eb, type: 2}
+    text: Thanks for letting me know
+  - character: {fileID: 11400000, guid: 5dce4987b22828e42811f5c75951b50c, type: 2}
+    text: No problem, Good luck on your way there.
