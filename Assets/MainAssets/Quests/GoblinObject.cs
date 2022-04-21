@@ -14,7 +14,7 @@ public class GoblinObject : MonoBehaviour
     
     private void EndQuest()
     {
-        if (QuestManager.goblinskilled == 5)
+        if (QuestManager.goblinskilled == 1)
         {
             Debug.Log("The quest is finished.");
             QuestManager.Quest2Check();
@@ -22,3 +22,6 @@ public class GoblinObject : MonoBehaviour
 
     }
 }
+
+
+

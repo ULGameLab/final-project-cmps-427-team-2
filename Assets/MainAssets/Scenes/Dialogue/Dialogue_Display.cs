@@ -31,7 +31,7 @@ public class Dialogue_Display : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            AdvanceConversation();
+            DisplayLine();
         }else if (Input.GetKeyDown("x"))
         {
             EndConversation();
@@ -48,10 +48,11 @@ public class Dialogue_Display : MonoBehaviour
     {
         conversationStarted = true;
         activeLines = 0;
+        
 
         speakerUILeft.Speaker = conversation.speakerLeft;
         speakerUIRight.Speaker = conversation.speakerRight;
-
+        DisplayLine();
 
     }
     void AdvanceConversation()
@@ -76,20 +77,17 @@ public class Dialogue_Display : MonoBehaviour
         if (speakerUILeft.SpeakerIs(character))
         {
             SetDialogue(speakerUILeft, speakerUIRight, line);
+            activeLines += 1;
         }
         else if(speakerUIRight.SpeakerIs(character))
         {
             SetDialogue(speakerUIRight, speakerUILeft, line);
+            activeLines += 1;
         }
-        activeLines += 1;
+        
 
     }
-    void SetDialogue(
-        Speaker_S activeSpeakerUI,
-        Speaker_S inactiveSpeakerUI,
-        //string text
-        Line line
-    )
+    void SetDialogue( Speaker_S activeSpeakerUI, Speaker_S inactiveSpeakerUI, Line line)
     {
         activeSpeakerUI.Show();
         inactiveSpeakerUI.Hide();

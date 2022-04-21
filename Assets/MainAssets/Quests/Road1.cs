@@ -14,6 +14,7 @@ public class Road1 : MonoBehaviour
     {
         Debug.Log("The object has collided with road.");
         QuestManager.Quest1Check();
+        
     }
 
     void OnTriggerStay(Collider other)

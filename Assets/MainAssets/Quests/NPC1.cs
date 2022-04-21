@@ -9,10 +9,10 @@ public class NPC1 : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "p1")
+        if (other.gameObject.tag == "Player")
         {
             Debug.Log("The object has collided with player.");
-            //QuestManager.startQuest1();
+            QuestManager.startQuest1();
             dDisplay.Initialize();
 
         }

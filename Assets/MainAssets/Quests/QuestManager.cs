@@ -199,14 +199,14 @@ public class QuestManager : MonoBehaviour
         if (ListOfQuests[1].getActive() == true)
         {
             goblinskilled++;
-            if (goblinskilled == 5)
+            if (goblinskilled == 1)
             {
                 ListOfQuests[1].setCompleted();
                 ListOfQuests[1].setActive(false);
                 // Will have a UI to say quest completed.
                 BookHandler.CompleteQuest(ListOfQuests[1].getSlot());
                 // unlock spell as reward
-
+                print("hello");
             }
             else
             {
