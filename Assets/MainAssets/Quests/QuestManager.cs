@@ -44,6 +44,7 @@ public class QuestManager : MonoBehaviour
 
 
     // Description of quests. Will use dummy testables for right now 
+    //any quest that is a kill enemies quest will have to be formated with (0/amountOfEnemies) at the end of the string
     [HideInInspector]
     public string Quest1Des = "Help Andre get to the road.";
     public string Quest2Des = "Protect Andre from gblins. Kill 3 Goblins. (0/3)";
@@ -69,6 +70,25 @@ public class QuestManager : MonoBehaviour
     {
 
     }
+
+    public string getDes(int questNum)
+    {
+        switch (questNum)
+        {
+            case 1:
+                return Quest1Des;
+            case 2:
+                return Quest2Des;
+            case 3:
+                return Quest3Des;
+            case 4:
+                return Quest4Des;
+            case 5:
+                return Quest5Des;
+        }
+        return "";
+    }
+
 
     public class QuestFinder
     {
@@ -101,6 +121,7 @@ public class QuestManager : MonoBehaviour
         {
             return QuestDes;
         }
+
 
         public bool getActive()
         {
