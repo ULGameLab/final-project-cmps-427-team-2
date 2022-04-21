@@ -311,8 +311,6 @@ public class BookBehavior : MonoBehaviour
         else return;
     }
 
-   
-
     // sets a new quest at the indicated quest slot 
     public void setQuest(int questNum, string Title, string Description)
     {

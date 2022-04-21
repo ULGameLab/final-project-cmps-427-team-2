@@ -12,12 +12,8 @@ public class Road1 : MonoBehaviour
    
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
-        {
-            Debug.Log("The object has collided with road.");
-            QuestManager.startQuest2();
-        }
-        
+        Debug.Log("The object has collided with road.");
+        QuestManager.Quest1Check();
         
     }
 

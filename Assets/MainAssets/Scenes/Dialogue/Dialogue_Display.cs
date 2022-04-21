@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class Dialogue_Display : MonoBehaviour
 {
-    private Convo_1 defaultConversation;
-    public Convo_1[] conversations;
+    public Convo_1 conversation;
+    public Convo_1 defaultConversation;
 
     public GameObject speakerLeft;
     public GameObject speakerRight;
@@ -17,24 +17,21 @@ public class Dialogue_Display : MonoBehaviour
     private Speaker_S speakerUILeft;
     private Speaker_S speakerUIRight;
 
-
-
-    private int[] activeLines;
-    private int convoNum ;
+    public int activeLines = 0;
+    public bool conversationStarted = false;
 
     void Start()
     {
         speakerUILeft = speakerLeft.GetComponent<Speaker_S>();
         speakerUIRight = speakerRight.GetComponent<Speaker_S>();
-        activeLines = new int[conversations.Length];
 
         
     }
     void Update()
     {
-        if (Input.GetKeyDown("f"))
+        if (Input.GetKeyDown("space"))
         {
-            AdvanceConversation() ;
+            DisplayLine();
         }else if (Input.GetKeyDown("x"))
         {
             EndConversation();
@@ -42,64 +39,52 @@ public class Dialogue_Display : MonoBehaviour
     }
     void EndConversation()
     {
-        conversations[convoNum] = defaultConversation;
+        conversation = defaultConversation;
+        conversationStarted = false;
         speakerUILeft.Hide();
         speakerUIRight.Hide();
     }
-    public void Initialize(string convoNum)
+    public void Initialize()
     {
-                this.convoNum = int.Parse(convoNum) - 1;
-                activeLines[this.convoNum] = 0;
-                speakerUILeft.Speaker = conversations[this.convoNum].speakerLeft;
-                speakerUIRight.Speaker = conversations[this.convoNum].speakerRight;
-
-                AdvanceConversation();
-            
+        conversationStarted = true;
+        activeLines = 0;
         
-      
+
+        speakerUILeft.Speaker = conversation.speakerLeft;
+        speakerUIRight.Speaker = conversation.speakerRight;
+        DisplayLine();
+
     }
-
-
-
     void AdvanceConversation()
     {
-
-               
-                    if (activeLines[convoNum] < conversations[convoNum].lines.Length) 
-                    {
-                        DisplayLine();
-                        activeLines[convoNum] += 1;
-                    }
-                    else
-                    {
-                        speakerUILeft.Hide();
-                        speakerUIRight.Hide();
-                        activeLines[convoNum] = 0;
-                    }
-                
-            
-   
+        if (activeLines < conversation.lines.Length)
+        {
+            DisplayLine();
+            activeLines += 1;
+        }
+        else
+        {
+            speakerUILeft.Hide();
+            speakerUIRight.Hide();
+            activeLines = 0;
+        }
     }
-
-
     void DisplayLine()
     {
-            
-                
-                    Line line = conversations[convoNum].lines[activeLines[convoNum]];
-                    Character character = line.character;
+        Line line = conversation.lines[activeLines];
+        Character character = line.character;
 
-                    if (speakerUILeft.SpeakerIs(character))
-                    {
-                        SetDialogue(speakerUILeft, speakerUIRight, line);
-                    }
-                    else if (speakerUIRight.SpeakerIs(character))
-                    {
-                        SetDialogue(speakerUIRight, speakerUILeft, line);
-                    }
-                
-            
-       
+        if (speakerUILeft.SpeakerIs(character))
+        {
+            SetDialogue(speakerUILeft, speakerUIRight, line);
+            activeLines += 1;
+        }
+        else if(speakerUIRight.SpeakerIs(character))
+        {
+            SetDialogue(speakerUIRight, speakerUILeft, line);
+            activeLines += 1;
+        }
+        
 
     }
     void SetDialogue( Speaker_S activeSpeakerUI, Speaker_S inactiveSpeakerUI, Line line)
@@ -123,6 +108,5 @@ public class Dialogue_Display : MonoBehaviour
         }
     }
 }
-    
     
 

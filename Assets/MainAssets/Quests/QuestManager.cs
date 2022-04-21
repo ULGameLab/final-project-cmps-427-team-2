@@ -35,24 +35,21 @@ public class QuestManager : MonoBehaviour
     int questnumber5 = 5;
 
     // Quest titles
-    [HideInInspector]
-    public string Quest1Title = "Follow Road";
-    public string Quest2Title = "Goblin Siege";
-    public string Quest3Title = "Help Dustin";
-    public string Quest4Title = "Protect";
-    public string Quest5Title = "Welcome Home";
+    string Quest1Title = "Quest 1";
+    string Quest2Title = "Quest 2";
+    string Quest3Title = "Quest 3";
+    string Quest4Title = "Quest 4";
+    string Quest5Title = "Quest 5";
 
 
     // Description of quests. Will use dummy testables for right now 
-    [HideInInspector]
-    public string Quest1Des = "Help Andre get to the road.";
-    public string Quest2Des = "Protect Andre from gblins. Kill 3 Goblins. (0/3)";
-    public string Quest3Des = "Help Dustin to the road.";
-    public string Quest4Des = "Protect Dustin from Barabarians. Kill 5 Barabarians ";
-    public string Quest5Des = "Arrive at the Port ";
+    string Quest1Des = "Help Andre get to the road.";
+    string Quest2Des = "Protect Andre from gblins. Kill 5 Goblins.";
+    string Quest3Des = "Help Dustin to the road.";
+    string Quest4Des = "Protect Dustin from Barabarians. Kill 5 Barabarians ";
+    string Quest5Des = "Arrive at the Port ";
 
     QuestFinder[] ListOfQuests = new QuestFinder[5];
-    List<string> questList = new List<string>();
 
     // Start is called before the first frame update
     void Start()
@@ -145,66 +142,37 @@ public class QuestManager : MonoBehaviour
 
     }
 
-    public void StartQuest(string num)
-    {
-        switch (num)
-        {
-            case "1":
-                startQuest1();
-                break;
-            case "2":
-                startQuest2();
-                break;
-            case "3":
-                startQuest3();
-                break;
-            case "4":
-                startQuest4();
-                break;
-            case "5":
-                startQuest5();
-                break;
-
-        }
-    }
-
     // quest 1-----------------------------------------------------------------
 
     // start first quest when called
     public void startQuest1()
     {
-        if (!questList.Contains(Quest1Title))
+        if (BookHandler.questSlotAvailable() == true)
         {
-            if (BookHandler.questSlotAvailable() == true)
-            {
-                // start quest
-                ListOfQuests[0].setSlot(BookHandler.firstFreeQuestSlot());
-                BookHandler.setQuest(Quest1Title, Quest1Des);
-                ListOfQuests[0].setActive(true);
-                questList.Add(Quest1Title);
-            }
-            else
-            {
-                // dont allow quest to start
-            }
+            // start quest
+            ListOfQuests[0].setSlot(BookHandler.firstFreeQuestSlot());
+            BookHandler.setQuest(Quest1Title, Quest1Des);
+            ListOfQuests[0].setActive(true);
+        }
+        else
+        {
+            // dont allow quest to start
         }
     }
 
     // this function checks if quest 1 can be completed or not
     // if it can be completed, it is marked as complete
-    public void QuestCheck(int numQuest, int unlockNum)
+    public void Quest1Check()
     {
-        
-        if (ListOfQuests[numQuest].getActive() == true)
+        if (ListOfQuests[0].getActive() == true)
         {
-            ListOfQuests[numQuest].setCompleted();
-            ListOfQuests[numQuest].setActive(false);
+            ListOfQuests[0].setCompleted();
+            ListOfQuests[0].setActive(false);
             // call dialog manager for quest 1 complete dialog
-            BookHandler.CompleteQuest(ListOfQuests[numQuest].getSlot());
+            BookHandler.CompleteQuest(ListOfQuests[0].getSlot());
             // unlock spell as reward
-           //BookHandler.unLockSpell(2);
+            BookHandler.unLockSpell(2);
         }
-
     }
 
 
@@ -213,24 +181,41 @@ public class QuestManager : MonoBehaviour
 
     public void startQuest2()
     {
-        if (!questList.Contains(Quest2Title))
+        if (BookHandler.questSlotAvailable() == true)
         {
-            if (BookHandler.questSlotAvailable() == true)
-            {
-                // start quest
-                ListOfQuests[1].setSlot(BookHandler.firstFreeQuestSlot());
-                BookHandler.setQuest(Quest2Title, Quest2Des);
-                ListOfQuests[1].setActive(true);
-                questList.Add(Quest2Title);
-            }
-            else
-            {
-                // dont allow quest to start
-            }
+            // start quest
+            ListOfQuests[1].setSlot(BookHandler.firstFreeQuestSlot());
+            BookHandler.setQuest(Quest2Title, Quest2Des);
+            ListOfQuests[1].setActive(true);
+        }
+        else
+        {
+            // dont allow quest to start
         }
     }
 
-
+    public void Quest2Check()
+    {
+        if (ListOfQuests[1].getActive() == true)
+        {
+            goblinskilled++;
+            if (goblinskilled == 1)
+            {
+                ListOfQuests[1].setCompleted();
+                ListOfQuests[1].setActive(false);
+                // Will have a UI to say quest completed.
+                BookHandler.CompleteQuest(ListOfQuests[1].getSlot());
+                // unlock spell as reward
+                print("hello");
+            }
+            else
+            {
+                // Have to continue to kill gobins --> UI Will show a screen that will tell user to keep going 
+                // Could have a kill count to document the amount of kills
+            }
+        }
+        
+    }
     // quest 3-----------------------------------------------------------------
     public void startQuest3()
     {
@@ -238,7 +223,7 @@ public class QuestManager : MonoBehaviour
         {
             // start quest
             ListOfQuests[2].setSlot(BookHandler.firstFreeQuestSlot());
-            BookHandler.setQuest(Quest3Title, Quest3Des);
+            BookHandler.setQuest(Quest1Title, Quest3Des);
             ListOfQuests[2].setActive(true);
         }
         else
@@ -248,7 +233,17 @@ public class QuestManager : MonoBehaviour
 
 
     }
-
+    public void Quest3Check()
+    {
+        if (ListOfQuests[2].getActive() == true)
+        {
+            ListOfQuests[2].setCompleted();
+            ListOfQuests[2].setActive(false);
+            // call dialog manager for quest 1 complete dialog
+            BookHandler.CompleteQuest(ListOfQuests[2].getSlot());
+            // unlock spell as reward
+        }
+    }
     // quest 4-----------------------------------------------------------------
     public void startQuest4()
     {
@@ -265,7 +260,26 @@ public class QuestManager : MonoBehaviour
             // dont allow quest to start
         }
     }
+    public void Quest4Check()
+    {
+        if (ListOfQuests[3].getActive() == true)
+        {
+            barbarianskilled++;
+            if (barbarianskilled == 5)
+            {
+                ListOfQuests[3].setCompleted();
+                ListOfQuests[3].setActive(false);
+                // call dialog manager for quest 1 complete dialog
+                BookHandler.CompleteQuest(ListOfQuests[3].getSlot());
+                // unlock spell as reward
+            }
+            else
+            {
+                //Keep killing Barabarians 
+            }
+        }
 
+    }
     // quest 5-----------------------------------------------------------------
     public void startQuest5()
     {
@@ -279,6 +293,17 @@ public class QuestManager : MonoBehaviour
         else
         {
             // dont allow quest to start
+        }
+    }
+    public void Quest5Check()
+    {
+        if (ListOfQuests[4].getActive() == true)
+        {
+            ListOfQuests[4].setCompleted();
+            ListOfQuests[4].setActive(false);
+            // call dialog manager for quest 1 complete dialog
+            BookHandler.CompleteQuest(ListOfQuests[4].getSlot());
+            // unlock spell as reward
         }
     }
 
