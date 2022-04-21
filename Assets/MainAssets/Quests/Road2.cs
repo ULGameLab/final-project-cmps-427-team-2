@@ -9,7 +9,7 @@ public class Road2 : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("The object has collided with road.");
-        QuestManager.Quest3Check();
+        QuestManager.QuestCheck(3, 3);
     }
     void OnTriggerStay(Collider other)
     {

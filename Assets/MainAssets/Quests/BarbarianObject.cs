@@ -17,7 +17,7 @@ public class BarbarianObject : MonoBehaviour
         if (QuestManager.barbarianskilled == 5)
         {
             Debug.Log("The quest is finished.");
-            QuestManager.Quest4Check();
+            QuestManager.QuestCheck(4, 1);
         }
 
     }
