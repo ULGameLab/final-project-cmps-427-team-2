@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameCreator.Variables;
 
 public class NPC : MonoBehaviour
 {
@@ -23,10 +24,10 @@ public class NPC : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-           
             questManager.StartQuest(numNPC);
             dDisplay.Initialize(numNPC);
             NPCTrigger.enabled = false;
+            VariablesManager.SetLocal(dDisplay.player, "StopMovement", true, true);
         }
     }
     public void OnTriggerStay(Collider other)

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEditor;
 using UnityEngine.SceneManagement;
+using GameCreator.Variables;
 
 
 public class Dialogue_Display : MonoBehaviour
@@ -17,6 +18,11 @@ public class Dialogue_Display : MonoBehaviour
     private Speaker_S speakerUILeft;
     private Speaker_S speakerUIRight;
 
+    [HideInInspector]
+    public GameObject player;
+
+   
+
 
 
     private int[] activeLines;
@@ -27,7 +33,7 @@ public class Dialogue_Display : MonoBehaviour
         speakerUILeft = speakerLeft.GetComponent<Speaker_S>();
         speakerUIRight = speakerRight.GetComponent<Speaker_S>();
         activeLines = new int[conversations.Length];
-
+        player = GameObject.FindGameObjectWithTag("Player");
         
     }
     void Update()
@@ -43,6 +49,7 @@ public class Dialogue_Display : MonoBehaviour
     void EndConversation()
     {
         conversations[convoNum] = defaultConversation;
+        VariablesManager.SetLocal(player, "StopMovement", false, false);
         speakerUILeft.Hide();
         speakerUIRight.Hide();
     }
@@ -72,9 +79,7 @@ public class Dialogue_Display : MonoBehaviour
                     }
                     else
                     {
-                        speakerUILeft.Hide();
-                        speakerUIRight.Hide();
-                        activeLines[convoNum] = 0;
+                        EndConversation();
                     }
                 
             
