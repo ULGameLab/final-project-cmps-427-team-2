@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyKillQuest : MonoBehaviour
+public class EnemyKillQuest : QuestManager
 {
     public GameObject[] enemies;
-    public QuestManager questManager;
-    public BookBehavior BookHandler;
     public int questNum;
     public int rewardSpellNum;
 
@@ -14,7 +12,7 @@ public class EnemyKillQuest : MonoBehaviour
     {
         if (checkAllDead())
         {
-            questManager.QuestCheck(questNum, rewardSpellNum);
+            QuestCheck(questNum, rewardSpellNum);
             this.enabled = false;
         }
     }
@@ -35,10 +33,10 @@ public class EnemyKillQuest : MonoBehaviour
                 enemyDead++;
                 indexesDead.Add(i);
                 char[] numOfDeadEnemies = enemyDead.ToString().ToCharArray();
-                char[] numOfEnemies = questManager.getDes(questNum).ToCharArray();
+                char[] numOfEnemies = getDes(questNum).ToCharArray();
                 
                 numOfEnemies[numOfEnemies.Length - 4] = numOfDeadEnemies[0];
-                BookHandler.UpdateQuestText(new string(numOfEnemies), questManager.Quest2Title);
+                BookHandler.UpdateQuestText(new string(numOfEnemies), Quest2Title);
             }
         }
         if(enemyDead == enemies.Length)

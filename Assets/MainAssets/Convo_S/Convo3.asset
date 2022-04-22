@@ -16,8 +16,18 @@ MonoBehaviour:
   speakerRight: {fileID: 11400000, guid: 135636fab6d98e44f827ba3f4a8f13eb, type: 2}
   lines:
   - character: {fileID: 11400000, guid: 9a38c20d91534624588b86c4bc30ed39, type: 2}
-    text: 'hello '
-  - character: {fileID: 11400000, guid: 135636fab6d98e44f827ba3f4a8f13eb, type: 2}
-    text: wassup
+    text: Hey you. Can you help me get my bow back?
   - character: {fileID: 11400000, guid: 9a38c20d91534624588b86c4bc30ed39, type: 2}
-    text: 'hello world '
+    text: It was given to me by my mother before she passed.
+  - character: {fileID: 11400000, guid: 9a38c20d91534624588b86c4bc30ed39, type: 2}
+    text: I should never have lost it.
+  - character: {fileID: 11400000, guid: 135636fab6d98e44f827ba3f4a8f13eb, type: 2}
+    text: Sure. What did it look like?
+  - character: {fileID: 11400000, guid: 9a38c20d91534624588b86c4bc30ed39, type: 2}
+    text: It is a light blue coloroed bow that was carved nearly perfect.
+  - character: {fileID: 11400000, guid: 135636fab6d98e44f827ba3f4a8f13eb, type: 2}
+    text: Give me a moment to get this done for you.
+  - character: {fileID: 11400000, guid: 135636fab6d98e44f827ba3f4a8f13eb, type: 2}
+    text: I will be sure to get this back to you.
+  - character: {fileID: 11400000, guid: 9a38c20d91534624588b86c4bc30ed39, type: 2}
+    text: Thank you. Be safe out there.

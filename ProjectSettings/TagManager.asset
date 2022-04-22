@@ -18,6 +18,8 @@ TagManager:
   - EnemyHead
   - EnemyLegs
   - Bow
+  - PlayerPelvis
+  - BookHandler
   layers:
   - Default
   - TransparentFX

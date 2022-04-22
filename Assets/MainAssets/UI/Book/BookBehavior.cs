@@ -71,10 +71,14 @@ public class BookBehavior : MonoBehaviour
 
     public bool isPaused;
 
+    private void Awake()
+    {
+        useSpells = GameObject.Find("Player").GetComponent<UseSpells>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        useSpells = GameObject.Find("Player").GetComponent<UseSpells>();
         deactivatePages(1);
         openQuest();
         populateSpells();

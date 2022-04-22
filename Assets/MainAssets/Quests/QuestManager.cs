@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,20 +10,9 @@ public class QuestManager : MonoBehaviour
    //public DialogueManager dlm;
    //public DialogueTrigger dlt;
     //public Dialogue dl;
-    
-    public GameObject npc1;
-    public GameObject npc2;
-    public GameObject npc3;
-    public GameObject npc4;
-    public GameObject npc5;
 
-    public GameObject Goblin;
-    public GameObject Barbarian; 
-
-    public int goblinskilled = 0;
-    public int barbarianskilled = 0;
-
-    public BookBehavior BookHandler;
+    protected BookBehavior BookHandler;
+    public bool[] questNumActive;
 
     //player object designed with locational purposes 
     // player object dealing with goblins 
@@ -35,22 +25,20 @@ public class QuestManager : MonoBehaviour
     int questnumber5 = 5;
 
     // Quest titles
-    [HideInInspector]
-    public string Quest1Title = "Follow Road";
-    public string Quest2Title = "Goblin Siege";
-    public string Quest3Title = "Help Dustin";
-    public string Quest4Title = "Protect";
-    public string Quest5Title = "Welcome Home";
+    protected string Quest1Title = "Follow Road";
+    protected string Quest2Title = "Goblin Siege";
+    protected string Quest3Title = "Help Dustin";
+    protected string Quest4Title = "Protect";
+    protected string Quest5Title = "Welcome Home";
 
 
     // Description of quests. Will use dummy testables for right now 
     //any quest that is a kill enemies quest will have to be formated with (0/amountOfEnemies) at the end of the string
-    [HideInInspector]
-    public string Quest1Des = "Help Andre get to the road.";
-    public string Quest2Des = "Protect Andre from gblins. Kill 3 Goblins. (0/3)";
-    public string Quest3Des = "Help Dustin to the road.";
-    public string Quest4Des = "Protect Dustin from Barabarians. Kill 5 Barabarians ";
-    public string Quest5Des = "Arrive at the Port ";
+    protected string Quest1Des = "Help Andre get to the road.";
+    protected string Quest2Des = "Protect Andre from goblins. Kill 3 Goblins. (0/3)";
+    protected string Quest3Des = "Get back the bow that was stolen from dustin by the archer goblins";
+    protected string Quest4Des = "Protect Dustin from Barabarians. Kill 5 Barabarians ";
+    protected string Quest5Des = "Arrive at the Port ";
 
     QuestFinder[] ListOfQuests = new QuestFinder[5];
     List<string> questList = new List<string>();
@@ -58,11 +46,12 @@ public class QuestManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ListOfQuests[0] = new QuestFinder(Quest1Title, Quest1Des, questnumber1, npc1);
-        ListOfQuests[1] = new QuestFinder(Quest2Title, Quest2Des, questnumber2, npc2);
-        ListOfQuests[2] = new QuestFinder(Quest3Title, Quest3Des, questnumber3, npc3);
-        ListOfQuests[3] = new QuestFinder(Quest4Title, Quest4Des, questnumber4, npc4);
-        ListOfQuests[4] = new QuestFinder(Quest5Title, Quest5Des, questnumber5, npc5);
+        BookHandler = GameObject.FindGameObjectWithTag("BookHandler").GetComponent<BookBehavior>();
+        ListOfQuests[0] = new QuestFinder(Quest1Title, Quest1Des, questnumber1);
+        ListOfQuests[1] = new QuestFinder(Quest2Title, Quest2Des, questnumber2);
+        ListOfQuests[2] = new QuestFinder(Quest3Title, Quest3Des, questnumber3);
+        ListOfQuests[3] = new QuestFinder(Quest4Title, Quest4Des, questnumber4);
+        ListOfQuests[4] = new QuestFinder(Quest5Title, Quest5Des, questnumber5);
     }
 
     // Update is called once per frame
@@ -92,13 +81,12 @@ public class QuestManager : MonoBehaviour
 
     public class QuestFinder
     {
-        public QuestFinder(string Title, string description, int questNum, GameObject NPC)
+        public QuestFinder(string Title, string description, int questNum)
         {
             QuestTitle = Title;
             QuestDes = description;
             active = false;
             questNumber = questNum;
-            this.NPC = NPC;
             slotNumber = 1;
             completed = false;
         }
@@ -107,7 +95,6 @@ public class QuestManager : MonoBehaviour
         string QuestDes;
         bool active;
         int questNumber;
-        GameObject NPC;
         int slotNumber; // -1 if no slot
         bool completed;
 
@@ -131,11 +118,6 @@ public class QuestManager : MonoBehaviour
         public int getNumber()
         {
             return questNumber;
-        }
-
-        public GameObject getNPC()
-        {
-            return NPC;
         }
 
         public int getSlot()
@@ -227,7 +209,6 @@ public class QuestManager : MonoBehaviour
         }
 
     }
-
 
 
     // quest 2-----------------------------------------------------------------

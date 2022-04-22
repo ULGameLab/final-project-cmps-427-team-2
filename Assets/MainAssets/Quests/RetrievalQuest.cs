@@ -3,35 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class RetrievalQuest : MonoBehaviour
+public class RetrievalQuest : QuestManager
 {
-    public GameObject itemInHand;
     public GameObject[] enemies;
 
     public Material materialToChange;
-    private Renderer ObjectInHand;
     private CapsuleCollider trigger;
+    private GameObject childBow;
 
     private Health enemyHealth;
 
-    public int random;
+    private int random;
 
     private void Start()
     {
         random = Random.Range(0, enemies.Length);
-        print(random);
-        ObjectInHand = itemInHand.GetComponent<Renderer>();
-        ObjectInHand.material = materialToChange;
-        trigger = itemInHand.GetComponent<CapsuleCollider>();
         enemyHealth = enemies[random].GetComponent<Health>();
-        
+        childBow = enemies[random].transform.GetComponentInChildren<InteractableQuestWeapon>().gameObject;
+        childBow.GetComponent<Renderer>().material = materialToChange;
+        trigger = childBow.GetComponent<CapsuleCollider>();
     }
 
     private void Update()
     {
         if (enemyHealth.currentHealth <= 0)
         {
-            DropItemInEnemyHand(itemInHand);
+            DropItemInEnemyHand(childBow);
             trigger.enabled = true;
             this.enabled = false;
         }
