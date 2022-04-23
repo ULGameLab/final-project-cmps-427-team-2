@@ -11,7 +11,8 @@ public class QuestManager : MonoBehaviour
    //public DialogueTrigger dlt;
     //public Dialogue dl;
 
-    protected BookBehavior BookHandler;
+    [HideInInspector]
+    public BookBehavior BookHandler;
 
     [HideInInspector]
     public EnemyKillQuest killQuest1;
@@ -29,20 +30,30 @@ public class QuestManager : MonoBehaviour
     int questnumber5 = 5;
 
     // Quest titles
-    protected string Quest1Title = "Follow Road";
-    protected string Quest2Title = "Goblin Siege";
-    protected string Quest3Title = "Help Dustin";
-    protected string Quest4Title = "Protect";
-    protected string Quest5Title = "Welcome Home";
+    [HideInInspector]
+    public string Quest1Title = "Follow Road";
+    [HideInInspector]
+    public string Quest2Title = "Goblin Siege";
+    [HideInInspector]
+    public string Quest3Title = "Help Dustin";
+    [HideInInspector]
+    public string Quest4Title = "Protect";
+    [HideInInspector]
+    public string Quest5Title = "Welcome Home";
 
 
     // Description of quests. Will use dummy testables for right now 
     //any quest that is a kill enemies quest will have to be formated with (0/amountOfEnemies) at the end of the string
-    protected string Quest1Des = "Help Andre get to the road.";
-    protected string Quest2Des = "Protect Andre from goblins. Kill 3 Goblins. (0/3)";
-    protected string Quest3Des = "Get back the bow that was stolen from dustin by the archer goblins";
-    protected string Quest4Des = "Protect Dustin from Barabarians. Kill 5 Barabarians ";
-    protected string Quest5Des = "Arrive at the Port ";
+    [HideInInspector]
+    public string Quest1Des = "Help Andre get to the road.";
+    [HideInInspector]
+    public string Quest2Des = "Protect Andre from goblins. Kill 3 Goblins. (0/3)";
+    [HideInInspector]
+    public string Quest3Des = "Get back the bow that was stolen from dustin by the archer goblins";
+    [HideInInspector]
+    public string Quest4Des = "Protect Dustin from Barabarians. Kill 5 Barabarians ";
+    [HideInInspector]
+    public string Quest5Des = "Arrive at the Port ";
 
     QuestFinder[] ListOfQuests = new QuestFinder[5];
     List<string> questList = new List<string>();

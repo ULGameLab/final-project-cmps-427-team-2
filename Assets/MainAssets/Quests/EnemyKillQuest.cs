@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyKillQuest : QuestManager
+public class EnemyKillQuest : MonoBehaviour
 {
     public GameObject[] enemies;
     public int questNum;
     public int rewardSpellNum;
+    private QuestManager questManager;
+    private BookBehavior bookHandler;
+
+    private void Awake()
+    {
+       questManager = GameObject.Find("QuestManager").GetComponent<QuestManager>();
+        bookHandler = GameObject.FindGameObjectWithTag("BookHandler").GetComponent<BookBehavior>();
+    }
 
     public void Update()
     {
         if (checkAllDead())
         {
-            QuestCheck(questNum, rewardSpellNum);
+            questManager.QuestCheck(questNum, rewardSpellNum);
             this.enabled = false;
         }
     }
@@ -33,10 +41,10 @@ public class EnemyKillQuest : QuestManager
                 enemyDead++;
                 indexesDead.Add(i);
                 char[] numOfDeadEnemies = enemyDead.ToString().ToCharArray();
-                char[] numOfEnemies = getDes(questNum).ToCharArray();
+                char[] numOfEnemies = questManager.getDes(questNum).ToCharArray();
                 
                 numOfEnemies[numOfEnemies.Length - 4] = numOfDeadEnemies[0];
-                BookHandler.UpdateQuestText(new string(numOfEnemies), Quest2Title);
+                if(enemyDead != enemies.Length) bookHandler.UpdateQuestText(new string(numOfEnemies), questManager.Quest2Title);
             }
         }
         if(enemyDead == enemies.Length)
