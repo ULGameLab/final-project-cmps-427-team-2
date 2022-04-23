@@ -8,20 +8,26 @@ public class RetrievalQuest : QuestManager
     public GameObject[] enemies;
 
     public Material materialToChange;
-    private CapsuleCollider trigger;
+
     private GameObject childBow;
 
     private Health enemyHealth;
 
     private int random;
+    [HideInInspector]
+    public CapsuleCollider trigger;
 
-    private void Start()
+    private void Awake()
     {
         random = Random.Range(0, enemies.Length);
         enemyHealth = enemies[random].GetComponent<Health>();
         childBow = enemies[random].transform.GetComponentInChildren<InteractableQuestWeapon>().gameObject;
         childBow.GetComponent<Renderer>().material = materialToChange;
         trigger = childBow.GetComponent<CapsuleCollider>();
+    }
+    private void Start()
+    {
+       
     }
 
     private void Update()

@@ -6,6 +6,7 @@ public class AiAgent : MonoBehaviour
 {
 
     public AiStateMachine stateMachine;
+    public GameObject mapIcon;
     public AiStateID initializeState;
     public NavMeshAgent navMeshAgent;
     public AiAgentConfig config;
@@ -63,6 +64,7 @@ public class AiAgent : MonoBehaviour
         if(healthScript.currentHealth <= 0)
         {
             ragdoll.ActivateRagdoll();
+            mapIcon.SetActive(false);
             healthObject.SetActive(false);
             aILocomotion.enabled = false;
             this.enabled = false;

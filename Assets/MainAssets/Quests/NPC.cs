@@ -6,7 +6,10 @@ using GameCreator.Variables;
 
 public class NPC : MonoBehaviour
 {
-    private Collider NPCTrigger;
+    [HideInInspector]
+    public Collider NPCTrigger;
+
+
     private string numNPC;
     private QuestManager questManager;
     private Dialogue_Display dDisplay;

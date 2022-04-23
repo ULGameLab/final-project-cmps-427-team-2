@@ -10,7 +10,7 @@ public class Enemy1 : Entity
   public E1_MeleeAttackState meleeAttackState { get; private set; }
 
     public GameObject uiHealthBar;
-
+    public GameObject MapIcon;
     private Health health;
 
 
@@ -40,6 +40,7 @@ public class Enemy1 : Entity
         if(health.currentHealth <= 0)
         {
             uiHealthBar.SetActive(false);
+            MapIcon.SetActive(false);
             RagdollDeath();
             this.enabled = false;
         }

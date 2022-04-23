@@ -8,8 +8,8 @@ public class InteractableQuestWeapon : QuestManager
     public Vector3 rotationOfObjectPickedUp = new Vector3(35.7758713f, 96.6970825f, 359.417511f);
     private GameObject parentWeapon;
     private Rigidbody rb;
+    public BoxCollider triggerToTurnIn;
 
-    [HideInInspector]
     public bool isPickedUp;
 
     private void Start()
@@ -22,12 +22,13 @@ public class InteractableQuestWeapon : QuestManager
     {
         if (other.tag == "Player")
         {
+            triggerToTurnIn.enabled = true;
             gameObject.transform.parent = parentWeapon.transform;
             gameObject.transform.localPosition = locationOfObjectPickedUp;
             gameObject.transform.localEulerAngles = rotationOfObjectPickedUp;
             BookHandler.UpdateQuestText("Deliver the bow back to Dustin.", Quest3Title);
             rb.isKinematic = true;
-            
+        
             isPickedUp = true;
         }
     }

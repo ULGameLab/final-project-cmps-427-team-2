@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &318593749937675413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8482490337124136617}
+  - component: {fileID: 8521362207790648376}
+  - component: {fileID: 2766021040315571840}
+  m_Layer: 0
+  m_Name: returnGameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8482490337124136617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318593749937675413}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4005131932322289115}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8521362207790648376
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318593749937675413}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 2.9125977, y: 2.423767, z: 2.5441284}
+  m_Center: {x: -0.06829834, y: 0.71188354, z: 1.8639832}
+--- !u!114 &2766021040315571840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318593749937675413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dbb8ec23d0ce464d98f0856694f8634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
+  questManager: {fileID: 0}
+  questNum: 3
+  spellUnlockNum: 1
 --- !u!1 &2888553746126203249
 GameObject:
   m_ObjectHideFlags: 0
@@ -11666,6 +11728,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4005131932046732804}
+  - {fileID: 8482490337124136617}
   m_Father: {fileID: 6837974074285354342}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11824,6 +11887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf2f053617983b439595be07aee6e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NPCTrigger: {fileID: 0}
 --- !u!1 &4005131932340046564
 GameObject:
   m_ObjectHideFlags: 0
@@ -16022,7 +16086,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc7241d47dc3a94299edb2cd4d2cda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questNumActive: 
+  killQuest1: {fileID: 0}
+  retrievalQuest1: {fileID: 0}
 --- !u!114 &4005131932610257784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16030,17 +16095,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4005131932610257791}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6750c651ab65d34f872a434538ae06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questNumActive: 
+  killQuest1: {fileID: 0}
+  retrievalQuest1: {fileID: 0}
   enemies:
   - {fileID: 0}
-  - {fileID: 0}
   questNum: 2
-  rewardSpellNum: 0
+  rewardSpellNum: 2
 --- !u!114 &4005131932610257787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16048,15 +16113,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4005131932610257791}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d17a36fae0240f428d93563875e6a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questNumActive: 
+  killQuest1: {fileID: 0}
+  retrievalQuest1: {fileID: 0}
   enemies:
   - {fileID: 0}
   materialToChange: {fileID: 2100000, guid: a855ceb80801d4682a98c88eac86b1c0, type: 2}
+  trigger: {fileID: 0}
 --- !u!1 &4005131932612573815
 GameObject:
   m_ObjectHideFlags: 0
@@ -22603,6 +22670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf2f053617983b439595be07aee6e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NPCTrigger: {fileID: 0}
 --- !u!1 &4005131933162613571
 GameObject:
   m_ObjectHideFlags: 0
@@ -27430,3 +27498,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf2f053617983b439595be07aee6e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NPCTrigger: {fileID: 0}

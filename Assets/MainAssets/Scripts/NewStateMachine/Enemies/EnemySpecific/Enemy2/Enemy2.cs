@@ -11,7 +11,7 @@ public class Enemy2 : Entity
     public E2_RangeAttackState rangeAttackState { get; private set; }
 
     public GameObject uiHealthBar;
-
+    public GameObject mapIcon;
     private Health health;
 
 
@@ -44,6 +44,7 @@ public class Enemy2 : Entity
         base.Update();
         if (health.currentHealth <= 0)
         {
+            mapIcon.SetActive(false);
             uiHealthBar.SetActive(false);
             RagdollDeath();
             this.enabled = false;

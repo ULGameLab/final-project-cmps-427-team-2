@@ -12,7 +12,11 @@ public class QuestManager : MonoBehaviour
     //public Dialogue dl;
 
     protected BookBehavior BookHandler;
-    public bool[] questNumActive;
+
+    [HideInInspector]
+    public EnemyKillQuest killQuest1;
+    [HideInInspector]
+    public RetrievalQuest retrievalQuest1;
 
     //player object designed with locational purposes 
     // player object dealing with goblins 
@@ -46,6 +50,8 @@ public class QuestManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        killQuest1 = GetComponent<EnemyKillQuest>();
+        retrievalQuest1 = GetComponent<RetrievalQuest>();
         BookHandler = GameObject.FindGameObjectWithTag("BookHandler").GetComponent<BookBehavior>();
         ListOfQuests[0] = new QuestFinder(Quest1Title, Quest1Des, questnumber1);
         ListOfQuests[1] = new QuestFinder(Quest2Title, Quest2Des, questnumber2);
@@ -150,6 +156,7 @@ public class QuestManager : MonoBehaviour
 
     public void StartQuest(string num)
     {
+        
         switch (num)
         {
             case "1":
@@ -157,9 +164,11 @@ public class QuestManager : MonoBehaviour
                 break;
             case "2":
                 startQuest2();
+                killQuest1.enabled = true;
                 break;
             case "3":
                 startQuest3();
+                retrievalQuest1.enabled = true;
                 break;
             case "4":
                 startQuest4();
