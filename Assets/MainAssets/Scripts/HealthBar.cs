@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using GameCreator.Variables;
+using GameCreator.Characters;
 
 public class HealthBar : MonoBehaviour
 {
     private Slider slider;
     public float maxHealth = 100f;
     public float currentHealth;
+    public PlayerCharacter PlayerController;
     private GameObject player;
 
     private void Start()
@@ -24,6 +26,8 @@ public class HealthBar : MonoBehaviour
         if(currentHealth <= 0)
         {
             VariablesManager.SetLocal(player, "alive", false, false);
+            PlayerController.enabled = false;
+            FindObjectOfType<GameManager>().EndGame();
         }
     }
 
