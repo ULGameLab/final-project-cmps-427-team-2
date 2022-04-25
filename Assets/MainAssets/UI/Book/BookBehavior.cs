@@ -84,7 +84,7 @@ public class BookBehavior : MonoBehaviour
         populateSpells();
         //StartCoroutine(testFunction());
         //StartCoroutine(TestSpells());
-        unLockAll();
+        //unLockAll();
 
         // start with pause menu closed
         isPaused = false;
