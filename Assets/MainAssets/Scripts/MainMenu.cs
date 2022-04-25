@@ -28,6 +28,8 @@ public class MainMenu : MonoBehaviour
     bool dayTime;
     bool blackness;
 
+    int screneLoad = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,19 @@ public class MainMenu : MonoBehaviour
         blackness = false;
         setDay();
         fadeIn();
+
+        if (PlayerPrefs.HasKey("SavedInteger"))
+        {
+            screneLoad = PlayerPrefs.GetInt("SavedInteger");
+            if (screneLoad == 1)
+            {
+                Lose();
+            }
+            else
+            {
+                Win();
+            }
+        }
     }
 
     // Update is called once per frame
