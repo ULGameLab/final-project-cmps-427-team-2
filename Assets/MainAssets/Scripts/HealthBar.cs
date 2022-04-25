@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using GameCreator.Variables;
 using GameCreator.Characters;
 
@@ -27,7 +28,10 @@ public class HealthBar : MonoBehaviour
         {
             VariablesManager.SetLocal(player, "alive", false, false);
             PlayerController.enabled = false;
-            FindObjectOfType<GameManager>().EndGame();
+            PlayerPrefs.SetInt("SavedInteger", 1);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene(0);
+
         }
     }
 

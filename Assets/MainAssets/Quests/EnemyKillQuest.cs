@@ -13,7 +13,7 @@ public class EnemyKillQuest : MonoBehaviour
     private void Awake()
     {
        questManager = GameObject.Find("QuestManager").GetComponent<QuestManager>();
-        bookHandler = GameObject.FindGameObjectWithTag("BookHandler").GetComponent<BookBehavior>();
+       bookHandler = GameObject.FindGameObjectWithTag("BookHandler").GetComponent<BookBehavior>();
     }
 
     public void Update()

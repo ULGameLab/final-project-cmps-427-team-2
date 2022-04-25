@@ -16086,8 +16086,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc7241d47dc3a94299edb2cd4d2cda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BookHandler: {fileID: 0}
   killQuest1: {fileID: 0}
   retrievalQuest1: {fileID: 0}
+  Quest1Title: Follow Road
+  Quest2Title: Goblin Siege
+  Quest3Title: Help Dustin
+  Quest4Title: Protect
+  Quest5Title: Welcome Home
+  Quest1Des: Help Andre get to the road.
+  Quest2Des: Protect Andre from goblins. Kill 3 Goblins. (0/3)
+  Quest3Des: Get back the bow that was stolen from dustin by the archer goblins
+  Quest4Des: 'Protect Dustin from Barabarians. Kill 5 Barabarians '
+  Quest5Des: 'Arrive at the Port '
 --- !u!114 &4005131932610257784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16100,8 +16111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6750c651ab65d34f872a434538ae06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killQuest1: {fileID: 0}
-  retrievalQuest1: {fileID: 0}
   enemies:
   - {fileID: 0}
   questNum: 2
@@ -16118,8 +16127,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d17a36fae0240f428d93563875e6a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BookHandler: {fileID: 0}
   killQuest1: {fileID: 0}
   retrievalQuest1: {fileID: 0}
+  Quest1Title: Follow Road
+  Quest2Title: Goblin Siege
+  Quest3Title: Help Dustin
+  Quest4Title: Protect
+  Quest5Title: Welcome Home
+  Quest1Des: Help Andre get to the road.
+  Quest2Des: Protect Andre from goblins. Kill 3 Goblins. (0/3)
+  Quest3Des: Get back the bow that was stolen from dustin by the archer goblins
+  Quest4Des: 'Protect Dustin from Barabarians. Kill 5 Barabarians '
+  Quest5Des: 'Arrive at the Port '
   enemies:
   - {fileID: 0}
   materialToChange: {fileID: 2100000, guid: a855ceb80801d4682a98c88eac86b1c0, type: 2}
