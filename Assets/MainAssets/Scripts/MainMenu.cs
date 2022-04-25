@@ -44,7 +44,7 @@ public class MainMenu : MonoBehaviour
         blackness = false;
         setDay();
         fadeIn();
-
+        
         if (PlayerPrefs.HasKey("SavedInteger"))
         {
             screneLoad = PlayerPrefs.GetInt("SavedInteger");
@@ -52,11 +52,14 @@ public class MainMenu : MonoBehaviour
             {
                 Lose();
             }
-            else
+            else if (screneLoad == 2)
             {
                 Win();
+
             }
         }
+        PlayerPrefs.SetInt("SavedInteger", 0);
+        PlayerPrefs.Save();
     }
 
     // Update is called once per frame

@@ -98,6 +98,10 @@ public class BookBehavior : MonoBehaviour
         {
             pauseController();
         }
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            unLockAll();
+        }
     }
 
     // pauses and unpauses the game when called

@@ -14,12 +14,15 @@ public class HealthBar : MonoBehaviour
     public PlayerCharacter PlayerController;
     private GameObject player;
 
+    public CanvasGroup abyss;
+
     private void Start()
     {
         slider = GetComponent<Slider>();
         SetMaxHealth(maxHealth);
         currentHealth = maxHealth;
         player = GameObject.Find("Player");
+        abyss.alpha = 0;
     }
 
     private void Update()
@@ -30,9 +33,19 @@ public class HealthBar : MonoBehaviour
             PlayerController.enabled = false;
             PlayerPrefs.SetInt("SavedInteger", 1);
             PlayerPrefs.Save();
-            SceneManager.LoadScene(0);
-
+            StartCoroutine(LoadEnd());
+            if (abyss.alpha < 1)
+            {
+                abyss.alpha += Time.deltaTime * 1;
+            }
         }
+    }
+
+    IEnumerator LoadEnd()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(0);
+
     }
 
     public void SetHealth(float health)
