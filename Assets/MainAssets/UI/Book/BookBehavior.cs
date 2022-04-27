@@ -85,6 +85,8 @@ public class BookBehavior : MonoBehaviour
         //StartCoroutine(testFunction());
         //StartCoroutine(TestSpells());
         //unLockAll();
+        unLockSpell(1);
+        activateSpell(1);
 
         // start with pause menu closed
         isPaused = false;

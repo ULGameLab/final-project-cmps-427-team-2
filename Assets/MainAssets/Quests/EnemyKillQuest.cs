@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyKillQuest : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class EnemyKillQuest : MonoBehaviour
     public int rewardSpellNum;
     private QuestManager questManager;
     private BookBehavior bookHandler;
+
+    public CanvasGroup Blackness;
+    bool won = false;
 
     private void Awake()
     {
@@ -21,7 +25,19 @@ public class EnemyKillQuest : MonoBehaviour
         if (checkAllDead())
         {
             questManager.QuestCheck(questNum, rewardSpellNum);
-            this.enabled = false;
+
+            if(Blackness.alpha < 1)
+            {
+                Blackness.alpha += Time.deltaTime * 1;
+            }
+            if(won == false)
+            {
+                StartCoroutine(win());
+                won = true;
+
+            }
+
+           // this.enabled = false;
         }
     }
 
@@ -52,6 +68,14 @@ public class EnemyKillQuest : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    IEnumerator win()
+    {
+        yield return new WaitForSeconds(2);
+        PlayerPrefs.SetInt("SavedInteger", 2);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(0);
     }
 
 }
